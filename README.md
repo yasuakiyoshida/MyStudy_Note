@@ -27,13 +27,13 @@
 
 ## 設計書
 
-- [ER図](ER図.drawio)
-- [テーブル定義書](テーブル定義書.xlsx)
-- [詳細設計](詳細設計.xlsx)
+- [ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZrZfYXleJqryuVs07B8dM9c7AUSKKRcDvTP5HzWK754/edit?usp=sharing)
+- [詳細設計](https://docs.google.com/spreadsheets/d/1X0jQ6zwCz9HwTZlb_bZayzUtJzL-yeSc3J9PIY9nzIU/edit?usp=sharing)
 
 ## チャレンジ要素一覧
 
-https://docs.google.com/spreadsheets/d/1uf71gUTZzam3aA9dKymw8a_ryugLgIWPh6h5TMhJITw/edit#gid=0
+[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1uf71gUTZzam3aA9dKymw8a_ryugLgIWPh6h5TMhJITw/edit?usp=sharing)
 
 ## 開発環境
 
