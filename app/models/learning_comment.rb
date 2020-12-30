@@ -1,0 +1,2 @@
+class LearningComment < ApplicationRecord
+end
