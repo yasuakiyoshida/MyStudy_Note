@@ -10,42 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_075708) do
+ActiveRecord::Schema.define(version: 2020_12_31_080023) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "learning_id"
+    t.integer "user_id", null: false
+    t.integer "learning_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "learning_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "learning_id"
-    t.text "comment"
+    t.integer "user_id", null: false
+    t.integer "learning_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "learnings", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
+    t.integer "user_id", null: false
+    t.string "title", null: false
     t.string "image_id"
     t.text "detail"
-    t.datetime "start_date_time"
-    t.datetime "end_date_time"
-    t.boolean "is_public"
+    t.datetime "start_date_time", null: false
+    t.datetime "end_date_time", null: false
+    t.boolean "is_public", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
+    t.integer "user_id", null: false
+    t.string "title", null: false
     t.text "detail"
-    t.integer "priority_status"
-    t.datetime "due"
-    t.integer "progress_status"
+    t.integer "priority_status", default: 0, null: false
+    t.datetime "due", null: false
+    t.integer "progress_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_075708) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "nickname"
+    t.string "nickname", null: false
     t.string "image_id"
     t.text "biography"
     t.datetime "created_at", null: false
