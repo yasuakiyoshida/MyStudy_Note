@@ -1,0 +1,42 @@
+<h1>ユーザー詳細画面</h1>
+
+<table>
+  <tr>
+    <td><%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
+  </tr>
+  <tr>
+    <th>ニックネーム</th>
+    <td><%= @user.nickname %></td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><%= @user.biography %></td>
+  </tr>
+</table>
+
+<% if @user == current_user %>
+  <%= link_to '登録情報を編集する', edit_user_path(current_user) %>
+<% end %>
+
+<!-- 学習時間も後で表示 -->
+
+<h2>リスト一覧</h2>
+<!-- 後で各タスクにリンク追加 -->
+<table>
+  <tr>
+    <th>未着手タスク</th>
+    <td>全<%= @new_tasks.count %>件</td>
+  </tr>
+  <tr>
+    <th>処理中タスク</th>
+    <td>全<%= @processing_tasks.count %>件</td>
+  </tr>
+  <tr>
+    <th>完了済タスク</th>
+    <td>全<%= @completed_tasks.count %>件</td>
+  </tr>
+  <tt>
+    <th>保留中タスク</th>
+    <td>全<%= @processing_tasks.count %>件</td>
+  </tt>
+</table>
