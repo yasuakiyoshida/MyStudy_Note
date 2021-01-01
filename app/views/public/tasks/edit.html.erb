@@ -4,7 +4,7 @@
   <%= form_with model: @task, url: "/tasks/#{@task.id}", method: :patch, local:true do |f| %>
     <tr>
       <th><%= f.label :due, '期日' %></th>
-      <td><%= f.datetime_select :due, use_month_numbers: true, class: "form-control" %></td>
+      <td><%= f.datetime_select :due, use_month_numbers: true, class: "form-control", autofocus: true %></td>
     </tr>
     <tr>
       <th><%= f.label :title, 'タイトル' %></th>

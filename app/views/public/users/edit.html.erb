@@ -1,0 +1,27 @@
+<h1>ユーザー編集画面</h1>
+
+<table>
+  <%= form_with model: @user, url: "/users/#{@user.id}", method: :patch, local:true do |f| %>
+    <tr>
+      <th><%= f.label :nickname, 'ニックネーム' %></th>
+      <td><%= f.text_field :nickname, autofocus: true %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :biography, '自己紹介' %></th>
+      <td><%= f.text_area :biography %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :image, 'プロフィール画像' %></th>
+      <td><%= f.attachment_field :image %>画像選択</td>
+    </tr>
+    <tr>
+      <th><%= f.label :email, 'メールアドレス' %></th>
+      <td><%= f.email_field :email %></td>
+    </tr>
+    <tr>
+      <td><%= f.submit '変更' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%=link_to '戻る', user_path(@user) %>
