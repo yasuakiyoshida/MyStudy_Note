@@ -1,0 +1,31 @@
+<h1>リスト一覧画面</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>作成日</th>
+      <th>期日</th>
+      <th>優先度</th>
+      <th>進捗度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.title, task_path(task.id) %></td>
+        <td><%= task.created_at_jst %></td>
+        <td><%= task.due_jst %></td>
+        <td><%= task.priority_status %></td>
+        <td>
+          <%= form_with model: task, url: "/tasks/#{task.id}", method: :patch, local:true do |f| %>
+            <%= f.select :progress_status, Task.progress_statuses.keys, {} %>
+            <%= f.submit '更新' %>
+          <% end %>
+        </td>
+        <td><%= link_to '編集する', edit_task_path(task.id) %></td>
+        <td><%= link_to '削除する', task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

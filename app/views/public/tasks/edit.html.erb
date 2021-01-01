@@ -1,0 +1,30 @@
+<h1>リスト編集画面</h1>
+
+<table>
+  <%= form_with model: @task, url: "/tasks/#{@task.id}", method: :patch, local:true do |f| %>
+    <tr>
+      <th><%= f.label :due, '期日' %></th>
+      <td><%= f.datetime_select :due, use_month_numbers: true, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :title, 'タイトル' %></th>
+      <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :detail, '詳細' %></th>
+      <td><%= f.text_area :detail %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :priority_status, '優先度' %></th>
+      <td><%= f.select :priority_status, Task.priority_statuses.keys, {} %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :progress_status, '進捗度' %></th>
+      <td><%= f.select :progress_status, Task.progress_statuses.keys, {} %></td>
+    </tr>
+    <tr>
+      <td><%= f.submit '更新' %></td>
+      <td><%= link_to '削除する', task_path(@task.id), method: :delete, "data-confirm" => "#{@task.title}をリストから削除しますか？" %></td>
+    </tr>
+  <% end %>
+</table>

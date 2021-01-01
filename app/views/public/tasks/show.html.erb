@@ -1,0 +1,17 @@
+<h1>リスト詳細画面</h1>
+
+<p>期日</p>
+<%= @task.due_jst %>
+<p>タイトル</p>
+<%= @task.title %>
+<p>詳細</p>
+<%= @task.detail %>
+<p>優先度</p>
+<%= @task.priority_status %>
+<p>進捗度</p>
+<%= form_with model: @task, url: "/tasks/#{@task.id}", method: :patch, local:true do |f| %>
+  <%= f.select :progress_status, Task.progress_statuses.keys, {} %>
+  <%= f.submit '更新' %>
+<% end %>
+
+<%= link_to '編集する', edit_task_path(@task.id) %>
