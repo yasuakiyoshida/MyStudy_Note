@@ -1,0 +1,28 @@
+<h1>リスト作成画面</h1>
+
+<%= form_with model: @task, url: "/tasks", method: :post, local:true do |f| %>
+
+  <div class="form-group">
+    <%= f.label :due, '期日' %>
+    <%= f.datetime_select :due, use_month_numbers: true, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :detail, '詳細' %>
+    <%= f.text_area :detail %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :priority_status, '優先度' %>
+    <%= f.select :priority_status, Task.priority_statuses.keys, {} %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit '作成する' %>
+  </div>
+<% end %>
