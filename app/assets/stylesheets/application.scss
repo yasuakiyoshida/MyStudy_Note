@@ -16,3 +16,45 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Serif JP', sans-serif;
+}
+
+// ヘッダ、フッタ
+header,
+footer {
+  width: 100vw;
+  background: #3E3E3B;
+}
+.navbar .container {
+  width: 100%;
+}
+.logo img {
+  width: 100px;
+  height: 100px;
+  margin: 10px 10px 10px 30px;
+  border-radius: 30px;
+}
+.navbar-nav li a {
+  padding: 5px;
+  color: #FFF;
+  background-color: #808080;
+  border-radius: 10px;
+  text-decoration: none;
+}
+li {
+  padding: 10px;
+}
+.navbar-brand {
+  font-family: "Century";
+}
+footer {
+  height: 80px;
+}
+.copyright {
+  line-height: 80px;
+}
