@@ -1,27 +1,38 @@
-<h2>ログイン</h2>
-
-<%= form_with model: @user, url: user_session_path, local: true do |f| %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card mx-auto my-5">
+        <div class="card-header">ログイン</div>
+        <div class="card-body">
+          <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+            <div class="row mt-3">
+              <div class="col-lg-10 offset-lg-1">
+                <%= f.label :nickname, 'ニックネーム', class: "col-lg-10 pl-0" %>
+                <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-lg-10 offset-lg-1">
+                <%= f.label :password, 'パスワード' %>
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-lg-10 offset-lg-1 text-center">
+                <%= f.submit "ログインする", class: "btn btn-outline-primary px-5" %>
+              </div>
+            </div>
+          <% end %>  
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-lg-8 offset-lg-2 text-center">
+          <%= link_to 'ユーザー登録がお済みでない方はこちら', new_user_registration_path, class: "btn btn-outline-info px-5" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
-<%= render "public/shared/links" %>
+<!-- パスワード再設定(使用する場合はルーティングも変更する) -->
+<!--%= render "public/shared/links" %-->

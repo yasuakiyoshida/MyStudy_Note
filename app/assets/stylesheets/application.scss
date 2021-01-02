@@ -40,7 +40,7 @@ footer {
   border-radius: 30px;
 }
 .navbar-nav li a {
-  padding: 5px;
+  padding: 10px;
   color: #FFF;
   background-color: #808080;
   border-radius: 10px;
@@ -57,4 +57,31 @@ footer {
 }
 .copyright {
   line-height: 80px;
+}
+
+main {
+  background: #CBC5C1;
+}
+.card-header {
+  background: #3E3E3B;
+  padding-left: 80px;
+  font-size: 20px;
+  color: #FFF;
+}
+.card-body {
+  background: #EBECED;
+}
+
+// ボタン
+.btn {
+  color: #FFF;
+}
+.btn-outline-success {
+  background-color: #626E60;
+}
+.btn-outline-primary {
+  background-color: #494E6B;
+}
+.btn-outline-info {
+  background-color: #8EAEBD;
 }
