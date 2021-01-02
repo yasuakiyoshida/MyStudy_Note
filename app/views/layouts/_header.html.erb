@@ -7,10 +7,10 @@
           <div class="col-lg-12">
             <ul class="navbar-nav">
               <li><%= link_to 'マイページ', user_path(current_user) %></li>
-              <li><%= link_to 'MyStudy Noteとは', about_path %></li>
-              <li><%= link_to 'ユーザー一覧', users_path %></li>
-              <li><%= link_to '学習時間を確認', user_learning_times_path(current_user) %></li>
-              <li><%= link_to '学習時間を記録', new_learning_path %></li>
+              <li><%= link_to 'サイト説明', about_path %></li>
+              <li><%= link_to 'ユーザー', users_path %></li>
+              <li><%= link_to '学習時間確認', user_learning_times_path(current_user) %></li>
+              <li><%= link_to '学習時間記録', new_learning_path %></li>
               <li><%= link_to 'リスト作成', new_task_path %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
