@@ -1,0 +1,26 @@
+<h1>自分の学習記録一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>学習日</th>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>学習時間</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @learnings.each do |learning| %>
+      <tr>
+        <td><%= learning.date %></td>
+        <td><%= attachment_image_tag learning, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
+        <td><%= link_to learning.title, learning_path(learning.id) %></td>
+        <td><%= learning.time %>時間</td>
+        <td><%= learning.detail %></td>
+        <td><%= link_to '編集する', edit_learning_path(learning.id) %></td>
+        <td><%= link_to '削除する', learning_path(learning.id), method: :delete, "data-confirm" => "#{learning.title}をリストから削除しますか？" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

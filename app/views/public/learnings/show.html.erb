@@ -1,0 +1,41 @@
+<h1>学習時間詳細画面</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>ニックネーム</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
+      <td><%= link_to @user.nickname, user_path(@user) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>学習日</th>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>学習時間</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @learning.date %></td>
+      <td><%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
+      <td><%= @learning.title %></td>
+      <td><%= @learning.time %>時間</td>
+      <td><%= @learning.detail %></td>
+    </tr>
+  </tbody>
+</table>
+
+<% if @user == current_user %>
+  <%= link_to '学習内容を編集する', edit_learning_path(@learning) %>
+<% end %>

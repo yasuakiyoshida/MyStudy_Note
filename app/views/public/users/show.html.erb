@@ -16,6 +16,7 @@
 
 <% if @user == current_user %>
   <%= link_to '登録情報を編集する', edit_user_path(current_user) %>
+  <%= link_to '学習記録一覧を確認', learnings_path %>
 <% end %>
 
 <!-- 学習時間も後で表示 -->
