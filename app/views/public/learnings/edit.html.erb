@@ -1,0 +1,40 @@
+<h1>学習内容編集画面</h1>
+
+<%= form_with model: @learning, url: "/learnings/#{@learning.id}", method: :patch, local:true do |f| %>
+  
+  <div class="form-group">
+    <%= f.label :date, '学習日' %>
+    <%= f.date_field :date %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :time, '学習時間' %>
+    <%= f.number_field :time, step: "0.1", in: 0...25 %>時間
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :detail, '詳細' %>
+    <%= f.text_area :detail %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :image, '画像' %>
+    <%= f.attachment_field :image %>画像選択
+  </div>
+  
+  <div class="form-group">
+    <%= f.radio_button :is_public, true %>
+    <%= f.label :is_public, '公開する', {:value => "true", style: "display: inline-block;"} %>
+    <%= f.radio_button :is_public, false %>
+    <%= f.label :is_public, '非公開', {:value => "false", style: "display: inline-block;"} %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit '編集する' %>
+  </div>
+<% end %>

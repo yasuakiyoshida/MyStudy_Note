@@ -1,5 +1,5 @@
 class Public::TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def new
     @task = Task.new
@@ -10,6 +10,7 @@ class Public::TasksController < ApplicationController
   end
   
   def show
+    @task = Task.find(params[:id])
   end
   
   def edit
@@ -38,7 +39,10 @@ class Public::TasksController < ApplicationController
     params.require(:task).permit(:title, :detail, :priority_status, :due, :progress_status)
   end
   
-  def set_task
+  def ensure_correct_user
     @task = Task.find(params[:id])
+    unless @task.user == current_user
+      redirect_to root_path
+    end
   end
 end
