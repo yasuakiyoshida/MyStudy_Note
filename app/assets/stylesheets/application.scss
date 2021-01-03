@@ -63,6 +63,46 @@ footer {
   margin-top: auto;
 }
 
+// サイドバー
+#sidebar-head-top,
+#sidebar-head-bottom {
+  padding-left: 0;
+}
+#sidebar-head-top {
+  background: #494E6B;
+}
+#sidebar-head-bottom {
+  background: #985E6D;
+}
+.card-body a {
+  text-decoration: none;
+}
+.current-user-img {
+  width: 15%;
+  border-radius: 50px;
+}
+.current-user-name a {
+  color: #192231;
+  font-size: 16px;
+  text-decoration: none;
+}
+.fa-clock {
+  color: #94618E;
+}
+.study-time {
+  color: #94618E;
+  font-size: 32px;
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6';
+  strong {
+    font-size: 40px;
+  }
+}
+.todolist {
+  border: 2px solid;
+  background: #CBC5C1;
+  border-color: #CBC5C1;
+}
+
 // 共通
 #wrapper {
   background: #CBC5C1;
