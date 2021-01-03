@@ -7,8 +7,8 @@
           <%= form_with model: @user, url: user_session_path, local: true do |f| %>
             <div class="row mt-3">
               <div class="col-lg-10 offset-lg-1">
-                <%= f.label :nickname, 'ニックネーム', class: "col-lg-10 pl-0" %>
-                <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control" %>
+                <%= f.label :email, 'メールアドレス' %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-3">
