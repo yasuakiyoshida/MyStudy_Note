@@ -52,14 +52,19 @@ li {
 .navbar-brand {
   font-family: "Century";
 }
-footer {
-  height: 80px;
+// フッタ下部固定
+.body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-.copyright {
-  line-height: 80px;
+footer {
+  margin-top: auto;
 }
 
-main {
+// 共通
+#wrapper {
   background: #CBC5C1;
 }
 .card-header {
@@ -71,7 +76,6 @@ main {
 .card-body {
   background: #EBECED;
 }
-
 // ボタン
 .btn {
   color: #FFF;
