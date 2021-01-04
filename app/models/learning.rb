@@ -17,8 +17,12 @@ class Learning < ApplicationRecord
   
   def self.yesterday_study_time
     today_learnings = self.where(date: Date.yesterday)
+    self.study(today_learnings)
+  end
+  
+  def self.study(yesterday)
     total_time = 0
-    today_learnings.each do |today_learning|
+    yesterday.each do |today_learning|
       total_time += today_learning.time
     end
     total_time.floor(1)
