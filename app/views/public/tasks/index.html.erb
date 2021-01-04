@@ -16,7 +16,7 @@
                           <h4><%= link_to task.title, task_path(task.id), class: "text-dark" %></h4>
                         </div>
                         <div class="col-lg-5 text-right">
-                          <small>期限：<%= task.due_jst %></small>
+                          <small>期限：<%= task.due.strftime("%Y年%m月%d日 %H:%M") %></small>
                         </div>
                       </div>
                       <div class="row mt-2">

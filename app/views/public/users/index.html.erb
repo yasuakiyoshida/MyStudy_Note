@@ -15,4 +15,8 @@
       </tr>
     <% end %>
   </tbody>
+  <div class="sidebar col-lg-4">
+      <%= render 'layouts/sidebar_top', today_study_time: @today_study_time, yesterday_study_time: @yesterday_study_time %>
+      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    </div>
 </table>
