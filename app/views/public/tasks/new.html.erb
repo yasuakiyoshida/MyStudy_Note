@@ -7,7 +7,7 @@
           <%= form_with model: @task, url: "/tasks", method: :post, local:true do |f| %>
             <div class="row mt-3">
               <div class="col-lg-10 offset-lg-1">
-                <%= f.label :due, '期限日' %></br>
+                <%= f.label :due, '期限' %></br>
                 <%= raw sprintf(
                   f.datetime_select(
                     :due,

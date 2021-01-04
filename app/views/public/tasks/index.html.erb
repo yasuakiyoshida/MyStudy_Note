@@ -1,31 +1,54 @@
-<h1>リスト一覧画面</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>作成日</th>
-      <th>期日</th>
-      <th>優先度</th>
-      <th>進捗度</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= link_to task.title, task_path(task.id) %></td>
-        <td><%= task.created_at_jst %></td>
-        <td><%= task.due_jst %></td>
-        <td><%= task.priority_status %></td>
-        <td>
-          <%= form_with model: task, url: "/tasks/#{task.id}", method: :patch, local:true do |f| %>
-            <%= f.select :progress_status, Task.progress_statuses.keys, {} %>
-            <%= f.submit '更新' %>
-          <% end %>
-        </td>
-        <td><%= link_to '編集する', edit_task_path(task.id) %></td>
-        <td><%= link_to '削除する', task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header">ToDoリスト一覧</div>
+        <div class="card-body p-4">
+          <div class="row text-center">
+            <div class="col-lg-12">
+            <% if @tasks.exists? %>
+              <% @tasks.each do |task| %>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="todolist rounded mb-3 p-2 text-center">
+                      <small>期限：<strong><%= task.due_jst %></strong></small>
+                      <h4 class="mt-3"><strong><%= link_to task.title, task_path(task.id), class: "text-dark" %></strong></h4>
+                      <div class="m-3">《詳細》<br>
+                        <%= task.detail.truncate(100) %>
+                      </div>
+                      <div>
+                        <%= form_with model: task, url: "/tasks/#{task.id}", method: :patch, local:true do |f| %>
+                          <small class="mr-3">優先度：<strong><%= task.priority_status %></strong></small>
+                          <small class="">進捗度：<%= f.select :progress_status, Task.progress_statuses.keys, {}, class: "col-form-label-sm py-2" %></small>
+                          <%= f.submit '更新', class: "btn-outline-success text-light mr-3" %>
+                          <%= link_to '編集する', edit_task_path(task.id), class: "btn btn-outline-info btn-sm" %>
+                          <%= link_to '削除する', task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？", class: "btn btn-outline-danger btn-sm mx-3" %>
+                          <span><small><%= link_to '詳細を確認>>', task_path(task.id) %></small></span>
+                        <% end %>
+                      </div>
+                    </div>  
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="todolist rounded mb-3 p-3 text-center">
+                    <h2>リストはありません</h2><br>
+                    <p>リストを作成しましょう</p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            </div>
+          </div>
+          <%= paginate @tasks %>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar col-lg-4">
+      <%= render 'layouts/sidebar_top', today_study_time: @today_study_time, yesterday_study_time: @yesterday_study_time %>
+      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    </div>
+  </div>
+</div>

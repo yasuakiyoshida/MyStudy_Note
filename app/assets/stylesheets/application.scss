@@ -21,7 +21,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Noto Serif JP', sans-serif;
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
 }
 
 // ヘッダ、フッタ
@@ -48,9 +48,6 @@ footer {
 }
 li {
   padding: 10px;
-}
-.navbar-brand {
-  font-family: "Century";
 }
 // フッタ下部固定
 .body,
@@ -92,7 +89,6 @@ footer {
 .study-time {
   color: #94618E;
   font-size: 32px;
-  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6';
   strong {
     font-size: 40px;
   }
@@ -128,4 +124,7 @@ footer {
 }
 .btn-outline-info {
   background-color: #8EAEBD;
+}
+.btn-outline-danger {
+  background-color: #985E6D;
 }
