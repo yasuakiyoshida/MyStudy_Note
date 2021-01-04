@@ -1,12 +1,14 @@
 class Public::LearningsController < ApplicationController
+  include Sidebarable
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :set_sidebar, only: [:new, :index, :show, :edit]
   
   def new
     @learning = Learning.new
   end
   
   def index
-    @learnings = current_user.learnings
+    @learnings = current_user.learnings.page(params[:page]).reverse_order.per(8)
   end
   
   def show

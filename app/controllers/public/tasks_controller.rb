@@ -27,12 +27,12 @@ class Public::TasksController < ApplicationController
   
   def update
     @task.update(task_params)
-    redirect_to request.referer
+    redirect_to tasks_path
   end
   
   def destroy
     @task.destroy
-    redirect_to request.referer
+    redirect_to tasks_path
   end
   
   private
