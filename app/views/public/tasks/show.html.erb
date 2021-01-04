@@ -1,17 +1,52 @@
-<h1>リスト詳細画面</h1>
-
-<p>期日</p>
-<%= @task.due_jst %>
-<p>タイトル</p>
-<%= @task.title %>
-<p>詳細</p>
-<%= @task.detail %>
-<p>優先度</p>
-<%= @task.priority_status %>
-<p>進捗度</p>
-<%= form_with model: @task, url: "/tasks/#{@task.id}", method: :patch, local:true do |f| %>
-  <%= f.select :progress_status, Task.progress_statuses.keys, {} %>
-  <%= f.submit '更新' %>
-<% end %>
-
-<%= link_to '編集する', edit_task_path(@task.id) %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header">ToDoリスト詳細</div>
+        <div class="card-body">
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h4>《期限》</h4>
+              <p><%= @task.due_jst %></p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h4>《題名》</h4>
+              <p><strong><%= @task.title %></strong></p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h4>《詳細》</h4>
+              <p><%= @task.detail %></p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h6>《優先度<span>：<strong><%= @task.priority_status %></strong></span>》</h6>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h6>《進捗度》</h6>
+              <%= form_with model: @task, url: "/tasks/#{@task.id}", method: :patch, local:true do |f| %>
+                <%= f.select :progress_status, Task.progress_statuses.keys, {}, class: "col-form-label-lg px-2" %>
+                <%= f.submit '更新', class: "btn-outline-success text-light p-2 ml-1" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-lg-10 offset-lg-1 text-center">
+              <%= link_to '編集する', edit_task_path(@task.id), class: "btn btn-outline-info px-5" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar col-lg-4">
+      <%= render 'layouts/sidebar_top', today_study_time: @today_study_time, yesterday_study_time: @yesterday_study_time %>
+      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    </div>
+  </div>
+</div>

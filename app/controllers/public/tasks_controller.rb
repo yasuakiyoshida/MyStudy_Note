@@ -1,14 +1,14 @@
 class Public::TasksController < ApplicationController
   include Sidebarable
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_sidebar, only: [:new]
+  before_action :set_sidebar, only: [:new, :index, :show, :edit]
   
   def new
     @task = Task.new
   end
   
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.page(params[:page]).order("due").per(8)
   end
   
   def show
