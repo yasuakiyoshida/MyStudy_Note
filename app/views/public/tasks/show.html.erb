@@ -7,7 +7,7 @@
           <div class="row mt-3">
             <div class="col-lg-10 offset-lg-1">
               <h4>《期限》</h4>
-              <p><%= @task.due_jst %></p>
+              <p><%= @task.due.strftime("%Y年%m月%d日 %H:%M") %></p>
             </div>
           </div>
           <div class="row mt-3">
