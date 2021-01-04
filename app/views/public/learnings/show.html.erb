@@ -1,41 +1,53 @@
-<h1>学習時間詳細画面</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>画像</th>
-      <th>ニックネーム</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
-      <td><%= link_to @user.nickname, user_path(@user) %></td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>学習日</th>
-      <th>画像</th>
-      <th>タイトル</th>
-      <th>学習時間</th>
-      <th>詳細</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @learning.date %></td>
-      <td><%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
-      <td><%= @learning.title %></td>
-      <td><%= @learning.time %>時間</td>
-      <td><%= @learning.detail %></td>
-    </tr>
-  </tbody>
-</table>
-
-<% if @user == current_user %>
-  <%= link_to '学習内容を編集する', edit_learning_path(@learning) %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header">学習記録詳細</div>
+        <div class="card-img-top text-center pt-3"><%= attachment_image_tag @learning, :image, format: "jpeg", class: "w-75" %></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+              <%= link_to user_path(current_user) do %>
+                <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", class: "user-img" %>
+              <% end %>
+              <span class="ml-2 user-name"><%= link_to @user.nickname, user_path(@user) %></span>
+            </div>
+        　</div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h6>《学習日：<span><%= @learning.date.strftime("%Y年%m月%d日") %></span>》</h6>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h6>《学習時間：<span><%= @learning.time %></span> 時間》</h6>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h4>《タイトル》</h4>
+              <p><%= @learning.title %></p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h4>《詳細》</h4>
+              <p><%= @learning.detail %></p>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-lg-10 offset-lg-1 text-center">
+              <% if @user == current_user %>
+                <%= link_to '学習内容を編集する', edit_learning_path(@learning), class: "btn btn-outline-info px-5" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar col-lg-4">
+      <%= render 'layouts/sidebar_top', today_study_time: @today_study_time, yesterday_study_time: @yesterday_study_time %>
+      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    </div>
+  </div>
+</div>
