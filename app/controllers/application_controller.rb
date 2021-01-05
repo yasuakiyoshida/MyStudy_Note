@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  def set_sidebar_base_data
+    @today_study_time = current_user.learnings.today_study_time
+    @yesterday_study_time = current_user.learnings.yesterday_study_time
+    @my_tasks = current_user.tasks.limit(5).order("due")
+  end
 
   protected
 
