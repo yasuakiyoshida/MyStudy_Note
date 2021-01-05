@@ -1,5 +1,5 @@
 <div class="card mx-auto my-5 shadow-lg">
-  <div class="card-header"><i class="fa fa-comment"></i>　コメント　<%= learning.learning_comments.count %>件</div>
+  <div class="card-header comment-header"><i class="fa fa-comment"></i>　コメント　<%= learning.learning_comments.count %>件</div>
   <div class="card-body">
     <% learning_comments.each do |learning_comment| %>
       <div class="row">
