@@ -44,6 +44,7 @@
           </div>
         </div>
       </div>
+      <%= render 'comment', learning: @learning, learning_comment: @learning_comment, learning_comments: @learning_comments %>
     </div>
     <div class="sidebar col-lg-4">
       <%= render 'layouts/sidebar_top', today_study_time: @today_study_time, yesterday_study_time: @yesterday_study_time %>
