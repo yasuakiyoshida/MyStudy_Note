@@ -1,4 +1,4 @@
-# MyStudy ノート
+# MyStudy Note
 
 ## サイト概要
 
