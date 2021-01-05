@@ -1,7 +1,6 @@
 class Public::TasksController < ApplicationController
-  include Sidebarable
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_sidebar, only: [:new, :index, :show, :edit]
+  before_action :set_sidebar_base_data, only: [:new, :index, :show, :edit]
   
   def new
     @task = Task.new

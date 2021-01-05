@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
-  include Sidebarable
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :set_sidebar, only: [:index, :show, :edit]
+  before_action :set_sidebar_base_data, only: [:index, :show, :edit]
   
   def index
     @users = User.all
