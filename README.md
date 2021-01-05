@@ -31,9 +31,9 @@
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZrZfYXleJqryuVs07B8dM9c7AUSKKRcDvTP5HzWK754/edit?usp=sharing)
 - [詳細設計](https://docs.google.com/spreadsheets/d/1X0jQ6zwCz9HwTZlb_bZayzUtJzL-yeSc3J9PIY9nzIU/edit?usp=sharing)
 
-## チャレンジ要素一覧
+## 機能一覧
 
-[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1uf71gUTZzam3aA9dKymw8a_ryugLgIWPh6h5TMhJITw/edit?usp=sharing)
+[機能一覧](https://docs.google.com/spreadsheets/d/1uf71gUTZzam3aA9dKymw8a_ryugLgIWPh6h5TMhJITw/edit?usp=sharing)
 
 ## 開発環境
 
