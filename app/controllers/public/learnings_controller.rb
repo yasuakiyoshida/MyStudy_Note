@@ -14,6 +14,8 @@ class Public::LearningsController < ApplicationController
   def show
     @learning = Learning.find(params[:id])
     @user = @learning.user
+    @learning_comment = LearningComment.new
+    @learning_comments = @learning.learning_comments.page(params[:page]).per(5)
   end
   
   def edit
