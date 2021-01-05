@@ -35,6 +35,7 @@
               <p><%= @learning.detail %></p>
             </div>
           </div>
+          <%= render 'favorite', learning: @learning %>
           <div class="row mt-4">
             <div class="col-lg-10 offset-lg-1 text-center">
               <% if @user == current_user %>
