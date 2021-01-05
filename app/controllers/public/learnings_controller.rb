@@ -8,6 +8,7 @@ class Public::LearningsController < ApplicationController
   end
   
   def index
+    # byebug
     @learnings = current_user.learnings.page(params[:page]).reverse_order.per(8)
   end
   

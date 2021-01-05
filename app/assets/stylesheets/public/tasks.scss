@@ -1,3 +1,13 @@
 // Place all the styles related to the public::tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// public/tasks/index ¥
+.card .tasks-header {
+  background: #6B7A8F;
+  height: 32px;
+  a {
+    font-size: 16px;
+    text-decoration: none;
+  }
+}

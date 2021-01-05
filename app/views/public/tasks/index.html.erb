@@ -3,68 +3,45 @@
     <div class="col-lg-8">
       <div class="card mx-auto my-5 shadow-lg">
         <div class="card-header">ToDoリスト一覧</div>
-        <div class="card-body p-4">
-          <div class="row">
-            <div class="col-lg-12">
-            <% if @tasks.exists? %>
+        <% if @tasks.exists? %>
+          <div class="caed-deck p-2">
+            <div class="row">
               <% @tasks.each do |task| %>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="todolist rounded mb-3 p-3">
-                      <div class="row">
-                        <div class="col-lg-7">
-                          <h4><%= link_to task.title, task_path(task.id), class: "text-dark" %></h4>
-                        </div>
-                        <div class="col-lg-5 text-right">
-                          <small>期限：<%= task.due.strftime("%Y年%m月%d日 %H:%M") %></small>
-                        </div>
+                <div class="col-lg-6 mb-2">
+                  <div class="card h-100">
+                    <div class="card-header tasks-header text-center p-0"><i class="fa fa-check"></i> <%= link_to task.title, task_path(task.id), class: "text-light" %></div>
+                    <div class="card-body">
+                      <small>期限：<%= task.due.strftime("%Y年%m月%d日 %H:%M") %></small>
+                      <p class="bg-light border-top border-bottom border-dark my-2 p-2"><%= task.detail.truncate(100) %></p>
+                      <div class="text-center border-bottom border-dark pb-2">
+                        <%= form_with model: task, url: "/tasks/#{task.id}", method: :patch, local:true do |f| %>
+                          <small>優先度：<%= f.select :priority_status, Task.priority_statuses.keys, {}, class: "col-form-label-sm" %></small>
+                          <small>進捗度：<%= f.select :progress_status, Task.progress_statuses.keys, {}, class: "col-form-label-sm" %></small>
+                          <%= f.submit '更新', class: "btn btn-outline-success btn-sm ml-2" %>
+                        <% end %>
                       </div>
-                      <div class="row mt-2">
-                        <div class="col-lg-12">
-                          <div class="row mt-1">
-                            <div class="col-lg-10 offset-lg-1">詳細</div>
-                          </div>
-                          <div class="row mt-1">
-                            <div class="col-lg-10 offset-lg-1 border rounded p-2">
-                              <%= task.detail.truncate(100) %>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="text-center border-bottom border-dark pb-2 my-2">
+                        <%= link_to '編集する', edit_task_path(task.id), class: "btn btn-outline-info btn-sm mr-3" %>
+                        <%= link_to '削除する', task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？", class: "btn btn-outline-danger btn-sm" %>
                       </div>
-                      <div class="row mt-2 text-center">
-                        <div class="col-lg-10 offset-lg-1">
-                          <%= form_with model: task, url: "/tasks/#{task.id}", method: :patch, local:true do |f| %>
-                            <small class="mr-3">優先度：<strong><%= task.priority_status %></strong></small>
-                            <small class="">進捗度：<%= f.select :progress_status, Task.progress_statuses.keys, {}, class: "col-form-label-sm" %></small>
-                            <%= f.submit '更新', class: "btn-outline-success text-light mr-3" %>
-                          <% end %>
-                        </div>
-                      </div>
-                      <div class="row mt-2 text-center">
-                        <div class="col-lg-10 offset-lg-1">
-                          <%= link_to '編集する', edit_task_path(task.id), class: "btn btn-outline-info btn-sm" %>
-                          <%= link_to '削除する', task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？", class: "btn btn-outline-danger btn-sm mx-3" %>
-                          <small><%= link_to '詳細を確認>>', task_path(task.id) %></small>
-                        </div>
-                      </div>
-                    </div>  
+                      <small><%= link_to '詳細を確認>>', task_path(task.id) %></small>
+                    </div>
                   </div>
                 </div>
               <% end %>
-            <% else %>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="todolist rounded mb-3 p-3 text-center">
-                    <h2>リストはありません</h2><br>
-                    <p>リストを作成しましょう</p>
-                  </div>
-                </div>
+            </div>
+            <%= paginate @tasks %>
+          </div>
+        <% else %>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="todolist rounded m-3 p-3 text-center">
+                <h2>リストはありません</h2><br>
+                <p>リストを作成しましょう</p>
               </div>
-            <% end %>
             </div>
           </div>
-          <%= paginate @tasks %>
-        </div>
+        <% end %>
       </div>
     </div>
     <div class="sidebar col-lg-4">
