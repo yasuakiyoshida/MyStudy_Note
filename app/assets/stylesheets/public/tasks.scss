@@ -2,7 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// public/tasks/index ¥
+// public/tasks/index
+.fa-check {
+  font-size: 12px;
+}
 .card .tasks-header {
   background: #6B7A8F;
   height: 32px;
