@@ -1,0 +1,22 @@
+<h1>public/learnings/index</h1>
+
+<div class="container figure-container">
+  <h1 class="title">グラフ</h1>
+  <div class="figure-sum-and-button row">
+    <span class="figure-sum-text col-sm">
+      <div>合計：<em class="figure-sum"><%= sum_times %></em> 分</div>
+      <div>（<em class="figure-sum"><%= to_hour %></em> 時間）</div>
+    </span>
+    <span class="dropdown col-sm">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= current_user.learnings.learnings_period(@period).keys.first %> - <%= current_user.learnings.learnings_period(@period).keys.last %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to "週間", user_learning_times_path(current_user, period: "week"), class: "dropdown-item" %>
+        <%= link_to "月間", user_learning_times_path(current_user, period: "month"), class: "dropdown-item" %>
+        <%= link_to "年間", user_learning_times_path(current_user, period: "year"), class: "dropdown-item" %>
+      </div>
+    </span>
+  </div>
+  <%= line_chart @chart %>
+</div>
