@@ -1,3 +1,22 @@
 // Place all the styles related to the public::users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// public/users/show
+.user-img-big {
+  width: 15%;
+  border-radius: 50px;
+}
+.user-name-big a {
+  color: #192231;
+  font-size: 24px;
+  text-decoration: none;
+}
+.card .learnings-header {
+  background: #494E6B;
+  height: 32px;
+  a {
+    font-size: 16px;
+    text-decoration: none;
+  }
+}
