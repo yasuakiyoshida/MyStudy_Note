@@ -1,22 +1,35 @@
-<h1>public/learnings/index</h1>
-
-<div class="container figure-container">
-  <h1 class="title">グラフ</h1>
-  <div class="figure-sum-and-button row">
-    <span class="figure-sum-text col-sm">
-      <div>合計：<em class="figure-sum"><%= sum_times %></em> 分</div>
-      <div>（<em class="figure-sum"><%= to_hour %></em> 時間）</div>
-    </span>
-    <span class="dropdown col-sm">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= current_user.learnings.learnings_period(@period).keys.first %> - <%= current_user.learnings.learnings_period(@period).keys.last %>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <%= link_to "週間", user_learning_times_path(current_user, period: "week"), class: "dropdown-item" %>
-        <%= link_to "月間", user_learning_times_path(current_user, period: "month"), class: "dropdown-item" %>
-        <%= link_to "年間", user_learning_times_path(current_user, period: "year"), class: "dropdown-item" %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header"><%= current_user.nickname %> さんの学習時間</div>
+        <div class="card-body">
+          <div class="row">
+            <span class="col-sm mb-3">
+              <div>合計：<%= sum_times %> 時間</div>
+              <div>（<%= to_minute %> 分）</div>
+            </span>
+            <span class="dropdown col-sm">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_menu_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.learnings.learnings_period(@period).keys.first.to_date.strftime("%Y年%m月%d日") %> 〜 <%= current_user.learnings.learnings_period(@period).keys.last.to_date.strftime("%Y年%m月%d日") %>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdown_menu_btn">
+                <%= link_to "週間", user_learning_times_path(current_user, period: "week"), class: "dropdown-item" %>
+                <%= link_to "月間", user_learning_times_path(current_user, period: "month"), class: "dropdown-item" %>
+                <%= link_to "年間", user_learning_times_path(current_user, period: "year"), class: "dropdown-item" %>
+              </div>
+            </span>
+          </div>
+          <%= column_chart @chart, xtitle: "日付 [date]", ytitle: "時間 [hour]", label: "学習時間 ", id: "learning_chart" %>
+        </div>
       </div>
-    </span>
+    </div>
+    <div class="sidebar col-lg-4">
+      <%= render 'layouts/sidebar_top', my_today_study_time: @my_today_study_time, my_yesterday_study_time: @my_yesterday_study_time %>
+      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    </div>
   </div>
-  <%= line_chart @chart %>
 </div>
+
+
+

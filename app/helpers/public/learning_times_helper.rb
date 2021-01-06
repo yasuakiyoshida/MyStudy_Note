@@ -3,8 +3,8 @@ module Public::LearningTimesHelper
     @chart.values.inject(:+) unless @chart.nil?
   end
 
-  def to_hour
-    hour = sum_times / 60.0
-    hour.round(2)
+  def to_minute
+    hour = sum_times * 60.0
+    hour.round(0)
   end
 end

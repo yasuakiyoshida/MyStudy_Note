@@ -1,4 +1,5 @@
 class Public::LearningTimesController < ApplicationController
+  before_action :set_sidebar_base_data
   
   def index
     @period = params[:period]
