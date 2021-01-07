@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Admins::UsersController < ApplicationController
   skip_before_action :authenticate_user!
   
   def index
