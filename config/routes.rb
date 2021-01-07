@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  
   devise_for :users, controllers: {
     sessions: 'public/sessions',
     registrations: 'public/registrations',
@@ -15,6 +17,10 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :tasks
-    resources :task_progresses, only: [:update]
+  end
+  
+  namespace :admin do
+    resources :users, except: [:new, :show, :create]
+    resources :learnings, except: [:new, :show, :create]
   end
 end
