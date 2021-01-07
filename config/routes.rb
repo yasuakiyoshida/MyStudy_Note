@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :tasks
   end
   
-  namespace :admin do
+  namespace :admins do
     resources :users, except: [:new, :show, :create]
     resources :learnings, except: [:new, :show, :create]
   end

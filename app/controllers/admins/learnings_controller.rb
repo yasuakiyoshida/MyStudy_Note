@@ -1,4 +1,4 @@
-class Admin::LearningsController < ApplicationController
+class Admins::LearningsController < ApplicationController
   skip_before_action :authenticate_user!
   
   def index
