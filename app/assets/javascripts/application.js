@@ -20,9 +20,3 @@
 //= require Chart.bundle
 //= require_tree .
 /*global $ */
-
-$(document).ready(function () {
-  $('.nav-toggle').on('click', function () {
-    $('.nav-toggle, .nav').toggleClass('show');
-  });
-});
