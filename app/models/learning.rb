@@ -41,7 +41,8 @@ class Learning < ApplicationRecord
   # end
   
   def self.learning_time_sum(date_ranges)
-    date_ranges.inject(0) { |sum, date_range| sum + date_range.time }
+    total_time = date_ranges.inject(0) { |sum, date_range| sum + date_range.time }
+    total_time.floor(1)
   end
   
   def self.learnings_period(period)

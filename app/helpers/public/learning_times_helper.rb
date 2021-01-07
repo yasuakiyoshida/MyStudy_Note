@@ -1,6 +1,6 @@
 module Public::LearningTimesHelper
   def sum_times
-    @chart.values.inject(:+) unless @chart.nil?
+    @chart.values.inject(:+).floor(1) unless @chart.nil?
   end
 
   def to_minute

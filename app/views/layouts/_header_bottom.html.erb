@@ -1,0 +1,7 @@
+<div class="header-bottom text-center">
+  <span><%= link_to 'マイページ', user_path(current_user) %></span>
+  <span><%= link_to '学習時間を確認する', user_learning_times_path(current_user) %></span>
+  <span><%= link_to 'ToDoリストを確認する', tasks_path %></span>
+  <span><%= link_to '学習内容を記録する', new_learning_path %></span>
+  <span><%= link_to 'ToDoリストを作成する', new_task_path %></span>
+</div>
