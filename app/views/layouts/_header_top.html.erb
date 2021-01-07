@@ -1,0 +1,24 @@
+<header class="header-top">
+  <div class="container d-flex align-items-center">
+    <%= link_to image_tag('logo.png'), root_path, class: "logo" %>
+    <% if user_signed_in? %>
+      <div class="header-ul ml-auto">
+        <div class="header-li">
+          <span class="border-left"><%= link_to 'Home', root_path %></span>
+          <span class="border-left"><%= link_to 'About', about_path %></span>
+          <span class="border-left"><%= link_to 'User list', users_path %></span>
+          <span class="border-left border-right"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
+        </div>
+      </div>
+    <% else %>
+      <div class="header-ul ml-auto">
+        <div class="header-li">
+          <span class="border-left"><%= link_to 'Home', root_path %></span>
+          <span class="border-left"><%= link_to 'About', about_path %></span>
+          <span class="border-left"><%= link_to 'Sign up', new_user_registration_path %></span>
+          <span class="border-left border-right"><%= link_to 'Sign in', new_user_session_path %></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</header>
