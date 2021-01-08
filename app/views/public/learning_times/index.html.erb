@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header"><%= current_user.nickname %> さんの学習時間</div>
+        <div class="card-header learning-time-header text-center"><i class="fas fa-user-clock"></i> <%= current_user.nickname %> さんの学習時間</div>
         <div class="card-body">
           <div class="row">
             <span class="col-sm mb-3">
@@ -20,7 +20,7 @@
               </div>
             </span>
           </div>
-          <%= column_chart @chart, xtitle: "日付 [date]", ytitle: "時間 [hour]", label: "学習時間 ", id: "learning_chart" %>
+          <%= column_chart @chart, xtitle: "日付 [date]", ytitle: "時間 [hour]", label: "学習時間 ", id: "learning_timechart" %>
         </div>
       </div>
     </div>
@@ -30,6 +30,3 @@
     </div>
   </div>
 </div>
-
-
-

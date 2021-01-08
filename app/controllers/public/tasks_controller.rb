@@ -20,13 +20,21 @@ class Public::TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
-    @task.save
-    redirect_to tasks_path
+    if @task.save
+      redirect_to task_path(@task)
+    else
+      set_sidebar_base_data
+      render :new
+    end
   end
   
   def update
-    @task.update(task_params)
-    redirect_to tasks_path
+    if @task.update(task_params)
+      redirect_to task_path(@task)
+    else
+      set_sidebar_base_data
+      render :edit
+    end
   end
   
   def destroy

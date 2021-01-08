@@ -1,7 +1,8 @@
 <header class="header-top">
   <div class="container d-flex align-items-center">
     <% if admin_signed_in? %>
-    <%= link_to image_tag('logo.png'), admins_users_path, class: "logo" %>
+      <%= link_to image_tag('logo.png'), admins_users_path, class: "logo" %>
+      <h2 class="ml-5 text-light">管理者専用</h2>
       <div class="header-ul ml-auto">
         <div class="header-li">
           <span class="border-left"><%= link_to 'User list', admins_users_path %></span>
@@ -10,7 +11,7 @@
         </div>
       </div>
     <% elsif user_signed_in? %>
-    <%= link_to image_tag('logo.png'), root_path, class: "logo" %>
+      <%= link_to image_tag('logo.png'), root_path, class: "logo" %>
       <div class="header-ul ml-auto">
         <div class="header-li">
           <span class="border-left"><%= link_to 'Home', root_path %></span>
@@ -20,7 +21,7 @@
         </div>
       </div>
     <% else %>
-    <%= link_to image_tag('logo.png'), root_path, class: "logo" %>
+      <%= link_to image_tag('logo.png'), root_path, class: "logo" %>
       <div class="header-ul ml-auto">
         <div class="header-li">
           <span class="border-left"><%= link_to 'Home', root_path %></span>

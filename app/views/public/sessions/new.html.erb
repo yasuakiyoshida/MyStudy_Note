@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header">ログイン</div>
+        <div class="card-header sign-header"><i class="fas fa-sign-in-alt"></i> ログイン</div>
         <div class="card-body">
           <%= form_with model: @user, url: user_session_path, local: true do |f| %>
             <div class="row mt-3">
@@ -33,6 +33,3 @@
     </div>
   </div>
 </div>
-
-<!-- パスワード再設定(使用する場合はルーティングも変更する) -->
-<!--%= render "public/shared/links" %-->

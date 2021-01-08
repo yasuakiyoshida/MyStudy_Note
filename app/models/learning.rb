@@ -4,7 +4,11 @@ class Learning < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   attachment :image
-
+  
+  validates :title, presence: true
+  validates :date, presence: true
+  validates :time, presence: true, numericality: true
+  
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
@@ -19,7 +23,6 @@ class Learning < ApplicationRecord
     self.learning_time_sum(yesterday_learnings)
   end
   
-  # 学習時間を集計するメソッドの取得範囲は現在の日時から1週間(ヶ月・年)前の0:00を指定
   def self.week_study_time
     to = Time.current
     from = (to - 6.day).at_beginning_of_day
@@ -33,12 +36,6 @@ class Learning < ApplicationRecord
     month_learnings = self.where(date: from...to)
     self.learning_time_sum(month_learnings)
   end
-  
-  # def self.learning_time_sum(date_ranges)
-    # total_time = 0
-    # date_ranges.each { |date_range| total_time += date_range.time }
-    # total_time.floor(1)
-  # end
   
   def self.learning_time_sum(date_ranges)
     total_time = date_ranges.inject(0) { |sum, date_range| sum + date_range.time }

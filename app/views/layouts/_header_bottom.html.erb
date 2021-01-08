@@ -1,6 +1,6 @@
 <div class="header-bottom text-center">
   <span><i class="fa fa-user"></i> <%= link_to 'マイページ', user_path(current_user) %></span>
-  <span><i class="fa fa-book"></i> <%= link_to '学習時間を確認', user_learning_times_path(current_user) %></span>
+  <span><i class="fas fa-book-open"></i> <%= link_to '学習記録を確認', learnings_path %></span>
   <span><i class="fa fa-list-alt"></i> <%= link_to 'ToDoリストを確認', tasks_path %></span>
   <span><i class="fa fa-edit"></i> <%= link_to '学習内容を記録', new_learning_path %></span>
   <span><i class="fa fa-plus-square"></i> <%= link_to 'ToDoリストを作成', new_task_path %></span>

@@ -1,0 +1,22 @@
+<div class="col-lg-6 mb-2">
+  <div class="card h-100">
+    <div class="header-sm text-center py-1 border-bottom"><i class="fa fa-list"></i> ToDoリスト</div>
+    <div class="card-body text-center">
+      <table border="1" width="80%" class="mx-auto">
+        <tr>
+          <th>未着手</th>
+          <th>処理中</th>
+          <th>完了済</th>
+          <th>保留中</th>
+        </tr>
+          <tr>
+          <th><%= new_tasks %>件</th>
+          <th><%= processing_tasks %>件</th>
+          <th><%= completed_tasks %>件</th>
+          <th><%= pending_tasks %>件</th>
+        </tr>
+      </table>
+    </div>
+    <%= pie_chart task_chart, colors: ["#2C4B79","#8B342A","#3A614F","#6C5776"], donut: true, width: "100%", id: "task_chart" %>
+  </div>
+</div>
