@@ -24,15 +24,23 @@ class Public::LearningsController < ApplicationController
   def create
     @learning = Learning.new(learning_params)
     @learning.user_id = current_user.id
-    @learning.save
-    redirect_to learning_path(@learning)
+    if @learning.save
+      redirect_to learning_path(@learning)
+    else
+      set_sidebar_base_data
+      render :new
+    end
   end
-
+  
   def update
-    @learning.update(learning_params)
-    redirect_to learning_path(@learning)
+    if @learning.update(learning_params)
+      redirect_to learning_path(@learning)
+    else
+      set_sidebar_base_data
+      render :edit
+    end
   end
-
+  
   def destroy
     @learning.destroy
     redirect_to learnings_path

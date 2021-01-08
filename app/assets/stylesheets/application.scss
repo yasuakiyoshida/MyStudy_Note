@@ -46,7 +46,7 @@
 .header-bottom {
   width: 100vw;
   height: 70px;
-  background: #3E3E3B;
+  background: linear-gradient(#3E3E3B, #98878F);
   line-height: 70px;
   span {
     padding: 20px;
@@ -60,6 +60,7 @@
     }
   }
 }
+
 // フッタ下部固定
 .body,
 #wrapper {
@@ -72,69 +73,69 @@ footer {
   width: 100vw;
   background: #000;
 }
+
 // サイドバー
-#sidebar-head-top,
-#sidebar-head-bottom {
-  padding-left: 0;
-}
-#sidebar-head-top {
-  background: #494E6B;
-}
-#sidebar-head-bottom {
-  background: #985E6D;
-}
-.card-body a {
-  text-decoration: none;
-}
-.current-user-img {
-  width: 15%;
-  border-radius: 50px;
-}
-.current-user-name a {
-  color: #192231;
-  font-size: 16px;
-  text-decoration: none;
-}
-.fa-clock {
-  color: #94618E;
-}
-.study-time {
-  color: #94618E;
-  font-size: 32px;
-  strong {
-    font-size: 40px;
+.sidebar {
+  .sidebar-header {
+    background: linear-gradient(#000, #C0C0C0);
+    font-size: 20px;
+    color: #FFF;
   }
-}
-.todolist {
-  border: 2px solid;
-  background: #CBC5C1;
-  border-color: #CBC5C1;
-}
-
-// コメント
-.card .comment-header {
-  background: #192231;
-}
-
-// いいね
-.heart {
-  color: #94618E;
+  .card-body {
+    .row .col-lg-12 a img {
+      width: 25%;
+      padding: 0.2em;
+      border-radius: 50%;
+      border: dashed 3px #98878F;
+    }
+    .row .current-user-name a {
+      font-size: 20px;
+      color: #000;
+      text-decoration: none;
+    }
+    .row .my-study-time {
+      padding: 10px 0;
+      border-top: dashed 2px #98878F;
+      border-bottom: dashed 2px #98878F;
+      .fa-clock {
+        color: #94618E;
+      }
+    }
+  }
+  .sidebar-bottom {
+    background: linear-gradient(#3E3E3B, #98878F);
+    font-size: 20px;
+    color: #FFF;
+  }
+  ul .list-group-item {
+    background: #EBECED;
+    a { 
+      text-decoration: none;
+    }
+  }
+  .row .col-lg-12 small a {
+    text-decoration: none;
+  }
 }
 
 // 共通
 #wrapper {
   background: #CBC5C1;
 }
-.card-header {
-  background: #3E3E3B;
+.sign-header {
+  background: linear-gradient(#3E3E3B, #98878F);
   padding-left: 80px;
   font-size: 20px;
   color: #FFF;
+}
+.card-body a {
+  text-decoration: none;
 }
 .card-body,
 .card-img-top {
   background: #EBECED;
 }
+
 // ボタン
 .btn {
   color: #FFF;
@@ -150,4 +151,104 @@ footer {
 }
 .btn-outline-danger {
   background-color: #985E6D;
+}
+
+// user系
+.user-header {
+  background: linear-gradient( #192231, #494E68);
+  font-size: 20px;
+  color: #FFF;
+}
+.user-img-lg {
+  width: 15%;
+  padding: 0.2em;
+  border-radius: 50%;
+  border: dashed 3px #98878F;
+}
+.user-name-lg a {
+  color: #192231;
+  font-size: 24px;
+  text-decoration: none;
+}
+.user-text {
+  position: relative;
+  padding: 0.25em 0;
+}
+.user-text:after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: -webkit-linear-gradient(to right, rgb(25, 34, 49), transparent);
+  background: linear-gradient(to right, rgb(25, 34, 49), transparent);
+}
+.card .learnings-header {
+  background: #494E6B;
+  height: 32px;
+  a {
+    font-size: 16px;
+    text-decoration: none;
+  }
+}
+.header-sm,
+#task_chart,
+#learning_chart {
+  background: #EBECED;
+}
+
+// task系
+.list-header {
+  background: linear-gradient( #985E6D, #8F324A);
+  font-size: 20px;
+  color: #FFF;
+}
+.list-text {
+  background: #EBBFC5;
+  box-shadow: 0px 0px 0px 5px #EBBFC5;
+  border: dashed 1px #985E6D;
+  padding: 0.2em 0.5em;
+  color: #454545;
+}
+.list-status span {
+  font-size: 20px;
+  color: #985E6D;
+}
+
+// learning系
+.learning-header {
+  background: linear-gradient(#000, #C0C0C0);
+  font-size: 20px;
+  color: #FFF;
+}
+.learning-text {
+  background: #CCC;
+  box-shadow: 0px 0px 0px 5px #CCC;
+  border: dashed 1px #000;
+  padding: 0.2em 0.5em;
+}
+.user-img {
+  width: 10%;
+  padding: 0.2em;
+  border-radius: 50%;
+  border: dashed 3px #98878F;
+}
+.user-name a {
+  color: #192231;
+  font-size: 16px;
+  text-decoration: none;
+}
+// leaning_times
+.learning-time-header {
+  background: linear-gradient(#3A614F, #BABEA5);
+  font-size: 20px;
+  color: #FFF;
+}
+
+// コメント
+.comment-header {
+  background: #DDD;
+}
+
+// いいね
+.heart {
+  color: #94618E;
 }

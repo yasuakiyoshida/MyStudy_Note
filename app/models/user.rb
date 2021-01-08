@@ -11,4 +11,6 @@ class User < ApplicationRecord
   
   attachment :image
   
+  validates :nickname, presence: true, length: { in: 2..10 }
+  validates :email, presence: true, uniqueness: true
 end
