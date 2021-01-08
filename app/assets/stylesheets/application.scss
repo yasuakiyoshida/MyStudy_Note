@@ -212,6 +212,28 @@ footer {
   font-size: 20px;
   color: #985E6D;
 }
+.task-group {
+  position: relative;
+  li {
+    background: #EBECED;
+    a {
+      text-decoration: none;
+    }
+  }
+  .task-btn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    .edit-btn {
+      border: 2px solid #6495ED;
+      border-radius: 100vh;
+    }
+    .delete-btn {
+      border: 2px solid #b84c00;
+      border-radius: 100vh;
+    }
+  }
+}
 
 // learning系
 .learning-header {
@@ -236,6 +258,7 @@ footer {
   font-size: 16px;
   text-decoration: none;
 }
+
 // leaning_times
 .learning-time-header {
   background: linear-gradient(#3A614F, #BABEA5);
@@ -251,4 +274,9 @@ footer {
 // いいね
 .heart {
   color: #94618E;
+}
+
+// 検索
+.search-form {
+  background: #EBECED;
 }

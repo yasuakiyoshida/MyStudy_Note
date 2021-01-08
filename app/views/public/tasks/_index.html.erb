@@ -1,0 +1,26 @@
+<% if tasks.exists? %>
+  <% tasks.each.with_index(1) do |task, index| %>
+    <ul class="list-group list-group-flush task-group">
+      <li class="list-group-item border-bottom border-secondary">
+        <small>期限：<%= task.due.strftime("%Y年%m月%d日 %H:%M") %></small></br>
+        <%= link_to "#{index}. " + task.title, task_path(task.id), class: "text-dark" %></br>
+        <small>優先度：<%= task.priority_status %><span class="mx-3">進捗度：<%= task.progress_status %></span></small></br>
+        <small><%= link_to '>>詳細を確認する', task_path(task.id) %></small>
+        <div class="task-btn">
+          <%= link_to '編集する', edit_task_path(task.id), class: "btn btn-outline-info btn-sm mr-3 mb-2 edit-btn" %></br>
+          <%= link_to '削除する', task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？", class: "btn btn-outline-danger btn-sm delete-btn" %>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+  <%= paginate tasks %>
+<% else %>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="m-3 p-3 text-center">
+        <h2>リストはありません</h2><br>
+        <p>リストを作成しましょう</p>
+      </div>
+    </div>
+  </div>
+<% end %>

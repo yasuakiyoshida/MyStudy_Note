@@ -1,10 +1,11 @@
 class Public::UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :set_sidebar_base_data, only: [:index, :show, :edit]
+  before_action :set_sidebar_base_data, only: [:index, :show, :edit, :search]
+  before_action :set_user_search, only: [:index, :search]
   
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(8)
   end
   
   def show
@@ -32,6 +33,9 @@ class Public::UsersController < ApplicationController
     end
   end
   
+  def search
+  end
+  
   private
   
   def user_params
@@ -43,5 +47,10 @@ class Public::UsersController < ApplicationController
     unless @user == current_user
       redirect_to user_path(current_user)
     end
+  end
+  
+  def set_user_search
+    @search = User.ransack(params[:q])
+    @user_search = @search.result.page(params[:page]).per(8)
   end
 end

@@ -1,8 +1,9 @@
 class Public::LearningsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_sidebar_base_data, only: [:new, :index, :show, :edit]
-
+  before_action :set_sidebar_base_data, only: [:new, :index, :show, :edit, :search]
+  before_action :set_learning_search, only: [:index, :search]
+  
   def new
     @learning = Learning.new
   end
@@ -45,6 +46,9 @@ class Public::LearningsController < ApplicationController
     @learning.destroy
     redirect_to learnings_path
   end
+  
+  def search
+  end
 
   private
 
@@ -57,5 +61,10 @@ class Public::LearningsController < ApplicationController
     unless @learning.user == current_user
       redirect_to learning_path(@learning)
     end
+  end
+  
+  def set_learning_search
+    @search = Learning.ransack(params[:q])
+    @learning_search = @search.result.page(params[:page]).reverse_order.per(8)
   end
 end

@@ -1,13 +1,14 @@
 class Public::TasksController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_sidebar_base_data, only: [:new, :index, :show, :edit]
+  before_action :set_sidebar_base_data, only: [:new, :index, :show, :edit, :search]
+  before_action :set_task_search, only: [:index, :search]
   
   def new
     @task = Task.new
   end
   
   def index
-    @tasks = current_user.tasks.page(params[:page]).order("due").per(8)
+    @tasks = current_user.tasks.page(params[:page]).order("due").per(10)
   end
   
   def show
@@ -42,6 +43,9 @@ class Public::TasksController < ApplicationController
     redirect_to tasks_path
   end
   
+  def search
+  end
+  
   private
   
   def task_params
@@ -53,5 +57,10 @@ class Public::TasksController < ApplicationController
     unless @task.user == current_user
       redirect_to root_path
     end
+  end
+  
+  def set_task_search
+    @search = Task.ransack(params[:q])
+    @task_search = @search.result.page(params[:page]).order("due").per(10)
   end
 end
