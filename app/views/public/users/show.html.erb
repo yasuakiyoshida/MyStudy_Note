@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card mx-auto mt-5 mb-2 shadow-lg">
+        <% if @user == current_user %> 
+          <div class="card-header user-header text-center"><i class="fa fa-user"></i> マイページ</div>
+        <% else %>
+          <div class="card-header user-header text-center"><i class="fa fa-user"></i> ユーザー情報</div>
+        <% end %>
+        <div class="card-body">
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <%= link_to user_path(current_user) do %>
+                <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", class: "user-img-lg" %>
+              <% end %>
+              <span class="ml-2 user-name-lg"><%= link_to @user.nickname, user_path(@user) %></span>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1">
+              <h5 class="user-text mb-2"> 自己紹介</h5>
+              <p><%= @user.biography %></p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-10 offset-lg-1 text-center">
+              <% if @user == current_user %>
+                <%= link_to '登録情報を編集する', edit_user_path(current_user), class: "btn btn-outline-info px-5" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caed-deck">
+        <div class="row">
+          <%= render 'learning_chart', today_study_time: @today_study_time, week_study_time: @week_study_time, month_study_time: @month_study_time, learning_chart: @learning_chart %>
+          <%= render 'task_chart', new_tasks: @new_tasks , processing_tasks: @processing_tasks, completed_tasks: @completed_tasks, pending_tasks: @pending_tasks, task_chart: @task_chart %>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar col-lg-4">
+      <%= render 'layouts/sidebar_top', my_today_study_time: @my_today_study_time, my_yesterday_study_time: @my_yesterday_study_time %>
+      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    </div>
+  </div>
+</div>

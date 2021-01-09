@@ -1,0 +1,38 @@
+<div class="card mx-auto mt-0 mb-5 shadow-lg">
+  <div class="card-header comment-header text-center"><i class="fa fa-comment"></i>　コメント　<%= learning.learning_comments.count %>件</div>
+  <div class="card-body">
+    <% learning_comments.each do |learning_comment| %>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <%= learning_comment.user.nickname %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <small><%= learning_comment.created_at.strftime("%Y年%m月%d日") %></small>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-10 offset-lg-1">
+          <%= learning_comment.comment %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-10 offset-lg-1 text-right">
+          <% if learning_comment.user == current_user %>
+            <%= link_to "削除", learning_learning_comment_path(learning_comment.learning_id, learning_comment.id), method: :delete, class: "btn btn-sm btn-outline-danger" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate learning_comments %>
+    <div class="row mt-5">
+      <div class="col-lg-8 offset-lg-4 text-right">
+        <%= form_with(model:[learning, learning_comment], local: true) do |f| %>
+          <%= f.text_area :comment, rows:'5', placeholder: "コメント" %>
+          <%= f.submit '送信', class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

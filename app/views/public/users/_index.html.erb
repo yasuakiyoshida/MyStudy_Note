@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th>プロフィール画像</th>
+      <th>ニックネーム</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= attachment_image_tag user, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
+        <td><%= user.nickname %></td>
+      </tr>
+    <% end %>
+    <%= paginate users %>
+  </tbody>
+</table>

@@ -1,0 +1,12 @@
+<div class="container">
+  <%= render 'layouts/errors', obj: @task %>
+  <div class="row">
+    <div class="col-lg-8">
+      <%= render 'edit_form', task: @task %>
+    </div>
+    <div class="sidebar col-lg-4">
+      <%= render 'layouts/sidebar_top', my_today_study_time: @my_today_study_time, my_yesterday_study_time: @my_yesterday_study_time %>
+      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    </div>
+  </div>
+</div>

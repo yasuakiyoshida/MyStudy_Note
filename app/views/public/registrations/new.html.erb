@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header sign-header"><i class="fas fa-user-plus"></i> 新規登録</div>
+        <div class="card-body">
+          <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+            <div class="row mt-3">
+              <div class="col-lg-10 offset-lg-1">
+                <%= f.label :nickname, 'ニックネーム（2〜10文字）', class: "col-lg-10 pl-0" %>
+                <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-lg-10 offset-lg-1">
+                <%= f.label :email, 'メールアドレス' %>
+                <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-lg-10 offset-lg-1">
+                <%= f.label :password, 'パスワード' %>
+                <% if @minimum_password_length %>
+                  <span>（<%= @minimum_password_length %>文字以上）</span>
+                <% end %>
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-lg-10 offset-lg-1">
+                <%= f.label :password_confirmation, '確認用パスワード' %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-lg-10 offset-lg-1 text-center">
+                <%= f.submit "新規登録する", class: "btn btn-outline-success px-5" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

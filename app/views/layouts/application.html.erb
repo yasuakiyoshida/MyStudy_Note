@@ -10,6 +10,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <%= render 'layouts/header_top' %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/header_bottom' %>
+      <% end %>
+      <main>
+        <%= yield %>
+      </main>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

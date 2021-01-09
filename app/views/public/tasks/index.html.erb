@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header list-header text-center"><i class="fa fa-list-alt"></i> ToDoリスト一覧</div>
+        <div class="search-form text-center py-2">
+          <%= render 'search_form', search: @search %>
+        </div>
+        <%= render 'index', tasks: @tasks %>
+      </div>
+    </div>
+    <div class="sidebar col-lg-4">
+      <%= render 'layouts/sidebar_top', my_today_study_time: @my_today_study_time, my_yesterday_study_time: @my_yesterday_study_time %>
+      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    </div>
+  </div>
+</div>
