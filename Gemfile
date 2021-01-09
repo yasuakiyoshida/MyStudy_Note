@@ -72,3 +72,4 @@ gem 'kaminari','~> 1.2.1'
 gem "chartkick"
 gem 'ransack'
 gem 'enum_help'
+gem 'acts-as-taggable-on', '~> 6.0'

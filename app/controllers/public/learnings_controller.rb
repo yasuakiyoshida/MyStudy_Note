@@ -10,6 +10,9 @@ class Public::LearningsController < ApplicationController
 
   def index
     @learnings = current_user.learnings.page(params[:page]).reverse_order.per(8)
+    if params[:tag_name]
+      @learnings = Learning.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order.per(8)
+    end
   end
 
   def show
@@ -53,7 +56,7 @@ class Public::LearningsController < ApplicationController
   private
 
   def learning_params
-    params.require(:learning).permit(:title, :image, :detail, :date, :time, :is_public)
+    params.require(:learning).permit(:title, :image, :detail, :date, :time, :is_public, :tag_list)
   end
 
   def ensure_correct_user

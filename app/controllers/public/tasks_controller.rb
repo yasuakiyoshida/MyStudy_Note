@@ -9,6 +9,9 @@ class Public::TasksController < ApplicationController
   
   def index
     @tasks = current_user.tasks.page(params[:page]).order("due").per(10)
+    if params[:tag_name]
+      @tasks = Task.tagged_with("#{params[:tag_name]}").page(params[:page]).order("due").per(10)
+    end
   end
   
   def show
@@ -49,7 +52,7 @@ class Public::TasksController < ApplicationController
   private
   
   def task_params
-    params.require(:task).permit(:title, :detail, :priority_status, :due, :progress_status)
+    params.require(:task).permit(:title, :detail, :priority_status, :due, :progress_status, :tag_list)
   end
   
   def ensure_correct_user

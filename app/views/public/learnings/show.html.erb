@@ -37,6 +37,7 @@
               <p><%= @learning.detail %></p>
             </div>
           </div>
+          <%= render 'tag_list', tag_list: @learning.tag_list %>
           <%= render 'favorite', learning: @learning %>
           <div class="row mt-4">
             <div class="col-lg-10 offset-lg-1 text-center">
