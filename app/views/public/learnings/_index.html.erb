@@ -16,6 +16,7 @@
         <td><%= link_to learning.title, learning_path(learning.id) %></td>
         <td><%= learning.time %>時間</td>
         <td><%= learning.detail %></td>
+        <%= render 'tag_list', tag_list: learning.tag_list %>
         <td><%= link_to '編集する', edit_learning_path(learning.id) %></td>
         <td><%= link_to '削除する', learning_path(learning.id), method: :delete, "data-confirm" => "#{learning.title}をリストから削除しますか？" %></td>
       </tr>

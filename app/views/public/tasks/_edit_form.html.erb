@@ -37,6 +37,12 @@
       </div>
       <div class="row mt-3">
         <div class="col-lg-10 offset-lg-1">
+          <%= f.label :tag_list, 'タグ（","で区切ることで複数のタグを入力できます）' %>
+          <%= f.text_field :tag_list, value: task.tag_list.join(','), class: "form-control", placeholder: '例：プログラミング,ruby,rails' %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-10 offset-lg-1">
           <%= f.label :priority_status, 'タスクの優先度' %></br>
           <%= f.select :priority_status, Task.priority_statuses.keys, {}, class: "col-form-label-lg px-2" %>
         </div>

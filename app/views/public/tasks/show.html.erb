@@ -23,6 +23,7 @@
               <p><%= @task.detail %></p>
             </div>
           </div>
+          <%= render 'tag_list', tag_list: @task.tag_list %>
           <div class="row mt-3">
             <div class="col-lg-4 offset-lg-1 p-3 list-status">
                優先度：<span><%= @task.priority_status %></span>
