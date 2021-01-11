@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.find_or_create_by(id: 1) do |admin|
-  admin.email = 'admin@example.com'
-  admin.password = 'password'
+  admin.email = ENV['ADMIN_EMAIL']
+  admin.password = ENV['ADMIN_PASSWORD']
 end
