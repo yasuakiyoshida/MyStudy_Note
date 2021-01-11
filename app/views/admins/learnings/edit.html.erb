@@ -1,1 +1,65 @@
-admin/learnings/edit
+<div class="container">
+  <%= render 'layouts/errors', obj: @learning %>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header admin-header">　<%= @learning.title %>の学習記録編集</div>
+        <div class="card-body">
+          <%= form_with model: @learning, url: admins_learning_path(@learning), method: :patch, local:true do |f| %>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :date, '学習日' %>
+                <%= f.date_field :date, class: "mr-5" %>
+                <%= f.label :time, '学習時間' %>
+                <%= f.number_field :time, step: "0.1", in: 0...25 %> 時間
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :title, 'タイトル' %>
+                <%= f.text_field :title, class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :detail, '詳細' %>
+                <%= f.text_area :detail, size: "20x10", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :tag_list, 'タグ（","で区切ることで複数のタグを入力できます）' %>
+                <%= f.text_field :tag_list, value: @learning.tag_list.join(','), class: "form-control", placeholder: '例：プログラミング,ruby,rails' %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :image, '画像選択' %><br>
+                <%= f.attachment_field :image %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.radio_button :is_public, true, checked: true %>
+                <%= f.label :is_public, '公開する', {:value => "true", style: "display: inline-block;"} %>
+                <%= f.radio_button :is_public, false %>
+                <%= f.label :is_public, '非公開', {:value => "false", style: "display: inline-block;"} %><br>
+                <small class="text-danger">※「公開する」を選択すると全てのユーザーがこの学習記録を閲覧できます</small>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-10 offset-1 text-center">
+                <%= f.submit '更新する', class: "btn btn-outline-primary px-5" %>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-10 offset-1 text-center">
+                <%= link_to '削除する', admins_learning_path(@learning.id), method: :delete, "data-confirm" => "#{@learning.title}を削除しますか？", class: "btn btn-outline-danger px-5" %>
+              </div>
+            </div>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

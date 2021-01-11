@@ -27,19 +27,29 @@
 // ヘッダ、フッタ
 .header-top {
   width: 100vw;
-  background: #000;
+  background: #FFF;
+   border-bottom: solid 2px #A9A9A9	;
   .container {
     width: 100%;
-    .logo img {
-      width: 100px;
-      height: 100px;
-      margin: 10px 10px 10px 30px;
-    }
-    .header-ul .header-li span a {
-      padding: 15px;
-      font-size: 18px;
-      color: #FFF;
+    margin: 0 auto;
+    .logo {
+      font-size: 24px;
+      color: #000;
       text-decoration: none;
+      img {
+        width: 50px;
+        height: 50px;
+        margin: 10px 10px 10px 30px;
+      }
+    }
+    .header-ul {
+      position: absolute;
+      right: 30px;
+      .header-li span a {
+        padding: 15px;
+        color: rgb(0, 150, 250);
+        text-decoration: none;
+      }
     }
   }
 }
@@ -71,7 +81,6 @@
 footer {
   margin-top: auto;
   width: 100vw;
-  background: #000;
 }
 
 // サイドバー
@@ -120,20 +129,23 @@ footer {
 
 // 共通
 #wrapper {
-  background: #CBC5C1;
-}
-.sign-header {
-  background: linear-gradient(#3E3E3B, #98878F);
-  padding-left: 80px;
-  font-size: 20px;
-  color: #FFF;
+  background: #EBECED;
 }
 .card-body a {
   text-decoration: none;
 }
-.card-body,
-.card-img-top {
-  background: #EBECED;
+
+// 新規登録・ログイン
+.sign-header {
+  background: linear-gradient(#1E90FF, #2C7CFF);
+  padding-left: 80px;
+  font-size: 20px;
+  color: #FFF;
+}
+// 管理者共通
+.admin-header {
+  padding-left: 80px;
+  font-size: 20px;
 }
 
 // ボタン
@@ -141,16 +153,16 @@ footer {
   color: #FFF;
 }
 .btn-outline-success {
-  background-color: #626E60;
+  background-color: #00CC00;
 }
 .btn-outline-primary {
-  background-color: #494E6B;
+  background-color: #0000FF;
 }
 .btn-outline-info {
-  background-color: #8EAEBD;
+  background-color: #00BFFF;
 }
 .btn-outline-danger {
-  background-color: #985E6D;
+  background-color: #CC0000;
 }
 
 // user系
