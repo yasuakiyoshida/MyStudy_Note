@@ -1,0 +1,4 @@
+<%= search_form_for search, url: search_admins_users_path do |f| %>
+  <%= f.search_field :nickname_cont, class: "search", placeholder: 'ニックネームで検索' %>
+  <%= f.submit '検索', class: "search-btn p-1" %>
+<% end %>

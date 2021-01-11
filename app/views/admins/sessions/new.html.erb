@@ -1,24 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 offset-lg-2">
+    <div class="col-10 offset-1">
       <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header sign-header"><i class="fas fa-user-shield"></i> 管理者ログイン</div>
+        <div class="card-header admin-header"><i class="fas fa-user-shield"></i> 管理者ログイン</div>
         <div class="card-body">
           <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
-            <div class="row mt-3">
-              <div class="col-lg-10 offset-lg-1">
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
                 <%= f.label :email, 'メールアドレス' %>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-lg-10 offset-lg-1">
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
                 <%= f.label :password, 'パスワード' %>
                 <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-4">
-              <div class="col-lg-10 offset-lg-1 text-center">
+              <div class="col-10 offset-1">
+                <small class="text-danger">＊管理者メールアドレス：admin4321@example.com<br>
+                　管理者パスワード：adminpassword</small>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1 text-center">
                 <%= f.submit "ログインする", class: "btn btn-outline-primary px-5" %>
               </div>
             </div>
