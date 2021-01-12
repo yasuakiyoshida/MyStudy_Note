@@ -32,16 +32,7 @@
   .container {
     width: 100%;
     margin: 0 auto;
-    .logo {
-      font-size: 24px;
-      color: #000;
-      text-decoration: none;
-      img {
-        width: 50px;
-        height: 50px;
-        margin: 10px 10px 10px 30px;
-      }
-    }
+    
     .header-ul {
       position: absolute;
       right: 30px;
@@ -141,11 +132,6 @@ footer {
   padding-left: 80px;
   font-size: 20px;
   color: #FFF;
-}
-// 管理者共通
-.admin-header {
-  padding-left: 80px;
-  font-size: 20px;
 }
 
 // ボタン
@@ -292,4 +278,38 @@ footer {
 // 検索
 .search-form {
   background: #EBECED;
+}
+
+
+// 管理者ヘッダー
+.admin-header-top {
+  background: #222;
+  nav .container {
+    .navbar-brand a {
+      color: #FFF;
+      text-decoration: none;
+    }
+    .navbar-toggler {
+      border-color: #FFF;
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+      }
+    }
+  }
+}
+
+
+
+
+
+
+.navbar-brand {
+  font-size: 24px;
+  color: #000;
+  text-decoration: none;
+  img {
+    width: 50px;
+    height: 50px;
+    margin: 10px 10px 10px 30px;
+  }
 }
