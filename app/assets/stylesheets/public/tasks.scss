@@ -1,3 +1,42 @@
 // Place all the styles related to the public::tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.list-header {
+  background: linear-gradient(#009900, #759350);
+  font-size: 20px;
+  color: #FFF;
+}
+.list-text {
+  background: #EBBFC5;
+  box-shadow: 0px 0px 0px 5px #EBBFC5;
+  border: dashed 1px #985E6D;
+  padding: 0.2em 0.5em;
+  color: #454545;
+}
+.list-status span {
+  font-size: 20px;
+  color: #985E6D;
+}
+.task-group {
+  position: relative;
+  li {
+    background: #EBECED;
+    a {
+      text-decoration: none;
+    }
+  }
+  .task-btn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    .edit-btn {
+      border: 2px solid #6495ED;
+      border-radius: 100vh;
+    }
+    .delete-btn {
+      border: 2px solid #b84c00;
+      border-radius: 100vh;
+    }
+  }
+}
