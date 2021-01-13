@@ -20,3 +20,11 @@
 //= require Chart.bundle
 //= require_tree .
 /*global $ */
+
+$(document).on('turbolinks:load', function() {
+  $('.slick-wrapper').slick({
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 1200,
+  });
+});
