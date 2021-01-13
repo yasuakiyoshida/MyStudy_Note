@@ -38,7 +38,7 @@
             </div>
           </div>
           <%= render 'tag_list', tag_list: @learning.tag_list %>
-          <%= render 'favorite', learning: @learning %>
+          <div class="favorite-btn"><%= render 'favorite', learning: @learning %></div>
           <div class="row mt-4">
             <div class="col-lg-10 offset-lg-1 text-center">
               <% if @user == current_user %>
