@@ -1,6 +1,6 @@
 class Public::TasksController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_sidebar_base_data, only: [:new, :index, :show, :edit, :search]
+  before_action :set_sidebar_base_data, only: [:index, :show, :search]
   before_action :set_task_search, only: [:index, :search]
   
   def new

@@ -89,7 +89,7 @@
   }
 }
 .study-record-title {
-  background: linear-gradient(#009900, #759350);
+  background: linear-gradient(#512700, #B38355);
   font-size: 20px;
   color: #FFF;
 }
@@ -105,7 +105,10 @@
   .row .col-6 .card-body {
     h4 {
       border-bottom: solid 2px #512700;
-      color: #512700;
+      a {
+        color: #512700;
+        text-decoration: none;
+      }
     }
     .card-text {
       color: #512700;
