@@ -11,10 +11,7 @@
 
   <body>
     <div id="wrapper">
-      <%= render 'layouts/header_top' %>
-      <% if user_signed_in? %>
-        <%= render 'layouts/header_bottom' %>
-      <% end %>
+      <%= render 'layouts/header' %>
       <main>
         <%= yield %>
       </main>
