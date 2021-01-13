@@ -17,7 +17,13 @@
                 <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
               </div>
             </div>
-            <div class="row mt-5">
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <small class="text-danger">＊ゲストユーザーメールアドレス：test1234user5678@example.com<br>
+                　ゲストユーザーパスワード：123456789</small>
+              </div>
+            </div>
+            <div class="row mt-4">
               <div class="col-10 offset-1 text-center">
                 <%= f.submit "ログインする", class: "btn btn-outline-primary px-5" %>
               </div>

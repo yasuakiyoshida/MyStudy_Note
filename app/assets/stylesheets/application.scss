@@ -24,55 +24,91 @@
   font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
 }
 
-// ヘッダ、フッタ
-.header-top {
-  width: 100vw;
-  background: #FFF;
-   border-bottom: solid 2px #A9A9A9	;
-  .container {
-    width: 100%;
-    margin: 0 auto;
-    
-    .header-ul {
-      position: absolute;
-      right: 30px;
-      .header-li span a {
-        padding: 15px;
-        color: rgb(0, 150, 250);
-        text-decoration: none;
+// ヘッダー、フッター
+.header-main, // ログイン前
+.user-header-main .user-header-top, // ログイン後ヘッダー上部
+.user-header-main .user-header-content { // ログイン後ハンバーガーメニュー
+  background-image: image-url('header-image.jpg');
+  background-color: rgba(255,255,255,0.3);
+  background-blend-mode: lighten;
+  background-size: cover;
+  background-position: center;
+  border-bottom: solid 2px #CD853F;
+}
+.header-main .navbar-brand a,
+.user-header-main .navbar-brand a,
+.user-header-content .navbar-brand a {
+  font-size: 26px;
+  color: #512700;
+  text-shadow: 2px 2px 3px #00AA00;
+  text-decoration: none;
+  font-weight: 900;
+  font-family: 'Comic Sans MS', sans-serif;
+}
+.header-main .navbar-brand a img,
+.user-header-main .navbar-brand a img,
+.user-header-content .navbar-brand a img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.header-main .navbar-nav .nav-item a,
+.user-header-main .navbar-nav .nav-item a,
+.user-header-content .navbar-nav .nav-item a {
+  color: #512700;
+  font-weight: 600;
+}
+.header-main .navbar-toggler,
+.user-header-main .navbar-toggler,
+.user-header-content .navbar-toggler {
+  border-color: #512700;
+}
+.header-main .navbar-toggler-icon,
+.user-header-main .navbar-toggler-icon,
+.user-header-content .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(81,39,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+// ログイン後ヘッダー下部
+.user-header-bottom nav .navbar-collapse {
+  background: #F4EDE6;
+  border-bottom: solid 2px #CD853F;
+  padding: 1rem;
+  .navbar-nav .navbar-nav .nav-item a {
+    color: #512700;
+    text-decoration: none;
+  }
+}
+// 管理者ヘッダー
+.admin-header-main {
+  background: #222;
+  border-bottom: solid 2px #808080;
+  nav .container {
+    .navbar-brand a {
+      font-size: 24px;
+      color: #FFF;
+      text-decoration: none;
+    }
+    .navbar-toggler {
+      border-color: #FFF;
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
       }
     }
   }
 }
-.header-bottom {
-  width: 100vw;
-  height: 70px;
-  background: linear-gradient(#3E3E3B, #98878F);
-  line-height: 70px;
-  span {
-    padding: 20px;
-    a {
-      color: #FFF;
-      font-size: 14px;
-      text-decoration: none;
-    }
-    i {
-      color: #FFF;
-    }
-  }
-}
-
-// フッタ下部固定
+// フッター下部固定
 .body,
 #wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  footer {
+    margin-top: auto;
+    width: 100vw;
+    color: #512700;
+  }
 }
-footer {
-  margin-top: auto;
-  width: 100vw;
-}
+
 
 // サイドバー
 .sidebar {
@@ -120,7 +156,7 @@ footer {
 
 // 共通
 #wrapper {
-  background: #EBECED;
+  background: #F4EDE6;
 }
 .card-body a {
   text-decoration: none;
@@ -280,36 +316,18 @@ footer {
   background: #EBECED;
 }
 
-
-// 管理者ヘッダー
-.admin-header-top {
-  background: #222;
-  nav .container {
-    .navbar-brand a {
-      color: #FFF;
-      text-decoration: none;
-    }
-    .navbar-toggler {
-      border-color: #FFF;
-      .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-      }
-    }
-  }
+// タグ
+.tag {
+  border: solid 1px #009900;
+  border-radius: 25px;
+  font-size: 12px;
+  color: #FFF;
+  background: #00CC00;
+  text-decoration: none;
 }
 
-
-
-
-
-
-.navbar-brand {
-  font-size: 24px;
-  color: #000;
-  text-decoration: none;
-  img {
-    width: 50px;
-    height: 50px;
-    margin: 10px 10px 10px 30px;
-  }
+// ページング
+.pagination {
+  display: flex;
+  justify-content: center;
 }

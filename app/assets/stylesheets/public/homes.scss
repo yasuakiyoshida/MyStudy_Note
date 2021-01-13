@@ -1,3 +1,100 @@
 // Place all the styles related to the public::homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// public/homes/top
+.main-visual {
+  height: 600px;
+  background-image: image-url('main-visual1.jpg');
+  background-size: cover;
+  background-position: center;
+  .mv-title {
+    padding-top: 200px;
+    text-align: center;
+    font-size: 64px;
+    color: #FAFAFA;
+    text-shadow: black 1px 1px 0px, black -1px 1px 0px, black 1px -1px 0px, black -1px -1px 0px;
+  }
+  .mv-text {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: #FAFAFA;
+    text-shadow: black 1px 1px 0px, black -1px 1px 0px, black 1px -1px 0px, black -1px -1px 0px;
+  }
+}
+.top-content {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  color: #512700;
+  .top-title {
+    font-weight: 800;
+  }
+}
+.introduction-content {
+  width: 95%;
+  margin: 0 auto;
+  color: #512700;
+  .explanation {
+    display: flex;
+    margin-bottom: 90px;
+    .e-content {
+      width: 30%;
+      margin: 0 auto;
+      text-align: center;
+      .e-visual { /* あとそれぞれ差し替える */
+        background-image: image-url('main-visual2.jpg');
+      }
+      .e-visual {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+      .e-title {
+        margin: 20px 0;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .e-text {
+        text-align: left;
+      }
+    }
+    .e-content:nth-child(2) {
+      margin: 0 10px 0 10px;
+    }
+  }
+}
+.study-record-title {
+  background: linear-gradient(#009900, #759350);
+  font-size: 20px;
+  color: #FFF;
+}
+.study-record .card {
+  max-width: 700px;
+  .row {
+    background: #F4EDE6;
+    .col-6 a img {
+      width: 300px;
+      height: 250px;
+    }
+  }
+  .row .col-6 .card-body {
+    h4 {
+      border-bottom: solid 2px #512700;
+      color: #512700;
+    }
+    .card-text {
+      color: #512700;
+      .fa-clock {
+        color: #3300FF;
+      }
+      .fa-comment {
+        color: #FF6633;
+      }
+      .fa-heart {
+        color: #FF0033;
+      }
+    }
+  }
+}
