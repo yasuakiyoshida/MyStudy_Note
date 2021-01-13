@@ -330,4 +330,13 @@
 .pagination {
   display: flex;
   justify-content: center;
+  text-decoration: none;
+}
+.page-item.active .page-link {
+  border: 1px solid #512700;
+  background: #512700;
+}
+.page-item .page-link {
+  border: 1px solid #512700;
+  color: #512700;
 }
