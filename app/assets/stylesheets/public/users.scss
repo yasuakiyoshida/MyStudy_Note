@@ -1,3 +1,72 @@
 // Place all the styles related to the public::users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// user関係共通
+.user-header {
+  background: linear-gradient(#2B2BD5, #236AB1);
+  font-size: 20px;
+  color: #FFF;
+}
+// public/users/show
+.profile-title {
+  color: #512700;
+  text-shadow: 0px 0px 20px #00AA00;
+}
+.profile .row{
+  color: #512700;
+  .profile-content-left .card .card-body {
+    .user-img-lg {
+      width: 150px;
+      border-radius: 50%;
+    }
+    .profile-text {
+      border-bottom: solid 1px #DEC8B1;
+    }
+    .btn {
+      border-radius: 25px;
+      width: 350px;
+    }
+    .profile-time-btn {
+      background: #005FFF;
+    }
+    .profile-learning-btn {
+      background: #FF3333;
+    }
+    .profile-list-btn {
+      background: #759350;
+    }
+  }
+}
+.profile-table {
+  table-layout: fixed;
+}
+.new-task {
+  color: #FF3333;
+}
+.processing-task {
+  color: #FF9900;
+}
+.completed-task {
+  color: #005FFF;
+}
+.pending-task {
+  color: #00DD00;
+}
+
+
+.user-text:after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: -webkit-linear-gradient(to right, rgb(25, 34, 49), transparent);
+  background: linear-gradient(to right, rgb(25, 34, 49), transparent);
+}
+.card .learnings-header {
+  background: #494E6B;
+  height: 32px;
+  a {
+    font-size: 16px;
+    text-decoration: none;
+  }
+}
