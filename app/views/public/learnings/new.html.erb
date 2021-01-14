@@ -5,7 +5,7 @@
       <div class="card mx-auto my-5 shadow-lg">
         <div class="card-header learning-header text-center"><i class="fa fa-edit"></i> 学習内容を記録する</div>
         <div class="card-body">
-          <%= form_with model: @learning, url: "/learnings", method: :post, local:true do |f| %>
+          <%= form_with model: @learning, url: learnings_path, method: :post, local:true do |f| %>
             <div class="row mt-4">
               <div class="col-lg-10 offset-1">
                 <%= f.label :date, '学習日' %>

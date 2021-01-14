@@ -1,7 +1,6 @@
 class Public::LearningsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_sidebar_base_data, only: [:index, :show, :search]
   before_action :set_learning_search, only: [:index, :search]
   
   def new
@@ -31,7 +30,6 @@ class Public::LearningsController < ApplicationController
     if @learning.save
       redirect_to learning_path(@learning)
     else
-      set_sidebar_base_data
       render :new
     end
   end
@@ -40,7 +38,6 @@ class Public::LearningsController < ApplicationController
     if @learning.update(learning_params)
       redirect_to learning_path(@learning)
     else
-      set_sidebar_base_data
       render :edit
     end
   end

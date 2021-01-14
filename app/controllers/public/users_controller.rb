@@ -1,7 +1,6 @@
 class Public::UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :set_sidebar_base_data, only: [:index, :show, :edit, :search]
   before_action :set_user_search, only: [:index, :search]
   
   def index
@@ -16,9 +15,10 @@ class Public::UsersController < ApplicationController
     @pending_tasks = @user.tasks.where(progress_status: 3).count
     @task_chart = { '未着手' => @new_tasks, '処理中' => @processing_tasks, '完了済' => @completed_tasks, '保留中' => @pending_tasks }
     @today_study_time = @user.learnings.today_study_time
+    @yesterday_study_time = @user.learnings.yesterday_study_time
     @week_study_time = @user.learnings.week_study_time
     @month_study_time = @user.learnings.month_study_time
-    @learning_chart = {'今日' => @today_study_time, '過去一週間' => @week_study_time, '過去1ヶ月' => @month_study_time }
+    @learning_chart = {'今日' => @today_study_time, '昨日' => @yesterday_study_time, '過去一週間' => @week_study_time, '過去1ヶ月' => @month_study_time }
   end
   
   def edit
@@ -28,7 +28,6 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
-      set_sidebar_base_data
       render :edit
     end
   end

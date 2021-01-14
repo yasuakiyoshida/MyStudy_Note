@@ -1,6 +1,5 @@
 class Public::TasksController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_sidebar_base_data, only: [:index, :show, :search]
   before_action :set_task_search, only: [:index, :search]
   
   def new
@@ -27,7 +26,6 @@ class Public::TasksController < ApplicationController
     if @task.save
       redirect_to task_path(@task)
     else
-      set_sidebar_base_data
       render :new
     end
   end
@@ -36,7 +34,6 @@ class Public::TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to task_path(@task)
     else
-      set_sidebar_base_data
       render :edit
     end
   end

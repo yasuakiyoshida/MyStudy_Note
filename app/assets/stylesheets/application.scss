@@ -16,12 +16,13 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  font-family: 'Yusei Magic', 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
 }
 
 // ヘッダー、フッター
@@ -84,6 +85,7 @@
   border-bottom: solid 2px #808080;
   nav .container {
     .navbar-brand a {
+      font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
       font-size: 24px;
       color: #FFF;
       text-decoration: none;
@@ -93,6 +95,9 @@
       .navbar-toggler-icon {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
       }
+    }
+    .navbar-collapse ul li a {
+      font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
     }
   }
 }
@@ -108,6 +113,116 @@
     color: #512700;
   }
 }
+// 管理者フッター
+.admin-footer p {
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+}
+// 共通
+#wrapper {
+  background: #F4EDE6;
+}
+.card-body a {
+  text-decoration: none;
+}
+// 新規登録・ログイン
+.sign-header {
+  background: linear-gradient(#1E90FF, #2C7CFF);
+  padding-left: 80px;
+  font-size: 20px;
+  color: #FFF;
+}
+// 管理者ログイン
+.admin-header,
+.admin-title,
+.admin-search {
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+}
+.admin {
+  label,
+  .form-control,
+  small,
+  a,
+  input,
+  span {
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+}
+// ボタン
+.btn {
+  color: #FFF;
+}
+.btn-outline-success {
+  background-color: #00CC00;
+}
+.btn-outline-primary {
+  background-color: #0000FF;
+}
+.btn-outline-info {
+  background-color: #00BFFF;
+}
+.btn-outline-danger {
+  background-color: #CC0000;
+}
+
+// leaning_times
+.learning-time-header {
+  background: linear-gradient(#3A614F, #BABEA5);
+  font-size: 20px;
+  color: #FFF;
+}
+
+// コメント
+.comment-header {
+  background: #DDD;
+}
+// いいね
+.heart {
+  color: #94618E;
+}
+// 検索
+.search-form {
+  background: #EBECED;
+}
+// タグ
+.tag {
+  border: solid 1px #009900;
+  border-radius: 25px;
+  font-size: 12px;
+  color: #FFF;
+  background: #00CC00;
+  text-decoration: none;
+}
+.admin-learning-tag {
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  border: solid 1px #009900;
+  border-radius: 25px;
+  font-size: 12px;
+  color: #FFF;
+  background: #00CC00;
+  text-decoration: none;
+}
+// ページング
+.pagination {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+.page-item.active .page-link {
+  border: 1px solid #512700;
+  background: #512700;
+}
+.page-item .page-link {
+  border: 1px solid #512700;
+  color: #512700;
+}
+.admin-paginate {
+  .pagination,
+  .page-item.active .page-link,
+  .page-item .page-link {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+}
+
 
 
 // サイドバー
@@ -152,130 +267,4 @@
   .row .col-lg-12 small a {
     text-decoration: none;
   }
-}
-
-// 共通
-#wrapper {
-  background: #F4EDE6;
-}
-.card-body a {
-  text-decoration: none;
-}
-
-// 新規登録・ログイン
-.sign-header {
-  background: linear-gradient(#1E90FF, #2C7CFF);
-  padding-left: 80px;
-  font-size: 20px;
-  color: #FFF;
-}
-
-// ボタン
-.btn {
-  color: #FFF;
-}
-.btn-outline-success {
-  background-color: #00CC00;
-}
-.btn-outline-primary {
-  background-color: #0000FF;
-}
-.btn-outline-info {
-  background-color: #00BFFF;
-}
-.btn-outline-danger {
-  background-color: #CC0000;
-}
-
-// user系
-.user-header {
-  background: linear-gradient( #192231, #494E68);
-  font-size: 20px;
-  color: #FFF;
-}
-.user-img-lg {
-  width: 15%;
-  padding: 0.2em;
-  border-radius: 50%;
-  border: dashed 3px #98878F;
-}
-.user-name-lg a {
-  color: #192231;
-  font-size: 24px;
-  text-decoration: none;
-}
-.user-text {
-  position: relative;
-  padding: 0.25em 0;
-}
-.user-text:after {
-  content: "";
-  display: block;
-  height: 4px;
-  background: -webkit-linear-gradient(to right, rgb(25, 34, 49), transparent);
-  background: linear-gradient(to right, rgb(25, 34, 49), transparent);
-}
-.card .learnings-header {
-  background: #494E6B;
-  height: 32px;
-  a {
-    font-size: 16px;
-    text-decoration: none;
-  }
-}
-.header-sm,
-#task_chart,
-#learning_chart,
-.list-none {
-  background: #EBECED;
-}
-
-
-
-
-// leaning_times
-.learning-time-header {
-  background: linear-gradient(#3A614F, #BABEA5);
-  font-size: 20px;
-  color: #FFF;
-}
-
-// コメント
-.comment-header {
-  background: #DDD;
-}
-
-// いいね
-.heart {
-  color: #94618E;
-}
-
-// 検索
-.search-form {
-  background: #EBECED;
-}
-
-// タグ
-.tag {
-  border: solid 1px #009900;
-  border-radius: 25px;
-  font-size: 12px;
-  color: #FFF;
-  background: #00CC00;
-  text-decoration: none;
-}
-
-// ページング
-.pagination {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-}
-.page-item.active .page-link {
-  border: 1px solid #512700;
-  background: #512700;
-}
-.page-item .page-link {
-  border: 1px solid #512700;
-  color: #512700;
 }
