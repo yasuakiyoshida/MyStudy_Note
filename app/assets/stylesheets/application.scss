@@ -58,6 +58,7 @@
 .user-header-content .navbar-nav .nav-item a {
   color: #512700;
   font-weight: 600;
+  font-size: 18px;
 }
 .header-main .navbar-toggler,
 .user-header-main .navbar-toggler,
@@ -109,7 +110,7 @@
   min-height: 100vh;
   footer {
     margin-top: auto;
-    width: 100vw;
+    // width: 100vw;
     color: #512700;
   }
 }
@@ -175,12 +176,25 @@
 }
 
 // コメント
-.comment-header {
-  background: #DDD;
+.user-comment {
+  .fa-comment {
+    color: #FF6633;
+  }
+  div, small {
+    color: #512700;
+  }
+  .comment-delete {
+    border-bottom: solid 1px #512700;
+  }
 }
 // いいね
-.heart {
-  color: #94618E;
+.favorite {
+  a {
+    text-decoration: none;
+  }
+  .heart {
+    color: #FF3300;
+  }
 }
 // 検索
 .search-form {
