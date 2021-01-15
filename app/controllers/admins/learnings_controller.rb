@@ -12,7 +12,7 @@ class Admins::LearningsController < ApplicationController
   end
   
   def show
-    @user = @learning.user
+    @learning_comments = @learning.learning_comments.page(params[:page]).per(5)
     if params[:tag_name]
       @learnings = Learning.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order.per(8)
     end

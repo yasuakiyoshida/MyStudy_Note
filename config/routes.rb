@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     end
     resources :learnings, except: [:new, :create] do
       get :search, on: :collection
+      resources :learning_comments, only: [:destroy]
     end
   end
 end

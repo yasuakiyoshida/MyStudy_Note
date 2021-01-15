@@ -45,7 +45,8 @@
       </table>
     </div>
   </div>
-  <div class="text-center">
+  <div class="text-center mb-5">
     <%= link_to '編集する', edit_admins_learning_path(@learning), class: "btn btn-outline-info px-5" %>
   </div>
+  <%= render 'admins/learnings/comment', learning_comments: @learning_comments, learning: @learning, learning_comment: @learning_comment %>
 </div>
