@@ -1,16 +1,16 @@
-<div class=".container profile">
+<div class="container profile">
   <h1 class="my-3 text-center profile-title">
     <% if @user == current_user %>
-      マイページ
+      <i class="fa fa-user"></i> マイページ
     <% else %>
-      ユーザー情報
+      <i class="fa fa-user"></i> ユーザー情報
     <% end %>
   </h1>
   <div class="row mx-0">
-    <div class="col-6 profile-content-left px-0">
+    <div class="col-lg-6 profile-content-left px-0">
       <div class="card m-3">
         <div class="card-body text-center">
-          <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", class: "user-img-lg" %>
+          <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", class: "user-img-lg" %>
           <h3 class="mt-3"><%= @user.nickname %></h3>
           <p class="profile-text px-5 mt-3 pb-3"><%= @user.biography %></p>
           <%= link_to '過去の学習時間を確認する', user_learning_times_path(@user), class: "btn btn-outline-info profile-time-btn px-5 mt-2" %><br>
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="col-6 px-0">
+    <div class="col-lg-6 px-0">
       <div class="card profile-content-right m-3">
         <div class="card-body text-center">
           <h3 class="mb-3">学習時間</h3>

@@ -1,54 +1,58 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="card mx-auto mt-5 mb-2 shadow-lg">
-        <div class="card-header learning-header text-center"><i class="fa fa-book"></i> 学習記録詳細</div>
-        <div class="card-img-top text-center pt-3"><%= attachment_image_tag @learning, :image, format: "jpeg", class: "w-75" %></div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-              <%= link_to user_path(current_user) do %>
-                <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", class: "user-img" %>
+  <h1 class="my-3 text-center learning-show-title"><i class="fa fa-book"></i> 学習記録詳細</h1>
+  <div class="row mx-0">
+    <div class="col-4 text-center">
+      <%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg", class: "w-100" %>
+    </div>
+    <div class="col-7">
+      <table class="table show-table">
+        <tbody>
+          <tr>
+            <th>タイトル</th>
+            <td colspan="2"><%= @learning.title %></td>
+          </tr>
+          <tr>
+            <th>学習日</th>
+            <td colspan="2"><%= @learning.date.strftime("%Y年%m月%d日") %></td>
+          </tr>
+          <tr>
+            <th>学習時間</th>
+            <td colspan="2"><%= @learning.time %>時間</td>
+          </tr>
+          <tr>
+            <th>詳細</th>
+            <td colspan="2"><%= @learning.detail %></td>
+          </tr>
+          <tr>
+            <th>タグ</th>
+            <td colspan="2"><%= render 'public/learnings/tag_list', tag_list: @learning.tag_list %></td>
+          </tr>
+          <tr>
+            <th>ユーザー名</th>
+            <td class="user-img">
+              <%= link_to user_path(@learning.user) do %>
+                <%= attachment_image_tag @learning.user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", class: "mb-1" %>
               <% end %>
-              <span class="ml-2 user-name"><%= link_to @user.nickname, user_path(@user) %></span>
-            </div>
-        　</div>
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <h5 class="learning-text mb-3"> 学習日</h5>
-              <p><%= @learning.date.strftime("%Y年%m月%d日") %></p>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <h5 class="learning-text mb-3"> 学習時間</h5>
-              <p><%= @learning.time %> 時間</p>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <h5 class="learning-text mb-3"> タイトル</h5>
-              <p><%= @learning.title %></p>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <h5 class="learning-text mb-3"> 詳細</h5>
-              <p><%= @learning.detail %></p>
-            </div>
-          </div>
-          <%= render 'tag_list', tag_list: @learning.tag_list %>
-          <div class="favorite-btn"><%= render 'favorite', learning: @learning %></div>
-          <div class="row mt-4">
-            <div class="col-lg-10 offset-lg-1 text-center">
-              <% if @user == current_user %>
-                <%= link_to '学習内容を編集する', edit_learning_path(@learning), class: "btn btn-outline-info px-5" %>
+              <%= link_to @learning.user.nickname, user_path(@learning.user) %></td>
+          </tr>
+          <tr>
+            <th>
+              <% if user_signed_in? %>
+                <div class="favorite-btn"><%= render 'favorite', learning: @learning %></div>
+              <% else %>
+                <div class="favorite-btn favorite"><p class="heart">♥<%= @learning.favorites.count %> いいね</p></div>
               <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <%= render 'public/learnings/comment', learning: @learning, learning_comment: @learning_comment, learning_comments: @learning_comments %>
+            </th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+  <% if @learning.user == current_user %>
+    <div class="text-center mb-5">
+      <%= link_to '学習内容を編集する', edit_learning_path(@learning), class: "btn btn-outline-info px-5" %>
+    </div>
+  <% end %>
+  <%= render 'public/learnings/comment', learning: @learning, learning_comment: @learning_comment, learning_comments: @learning_comments %>
 </div>

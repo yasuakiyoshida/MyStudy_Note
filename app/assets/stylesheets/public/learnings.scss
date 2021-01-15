@@ -2,28 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// learning関係
+// public/learnings/new,edit
 .learning-header {
   background: linear-gradient(#8D1D55, #AAAA00);
   font-size: 20px;
   color: #FFF;
 }
-
-
-.learning-text {
-  background: #CCC;
-  box-shadow: 0px 0px 0px 5px #CCC;
-  border: dashed 1px #000;
-  padding: 0.2em 0.5em;
+// public/learnings/show
+.learning-show-title {
+  color: #512700;
+  text-shadow: 0px 0px 20px #AAAA00;
 }
-.user-img {
-  width: 10%;
-  padding: 0.2em;
-  border-radius: 50%;
-  border: dashed 3px #98878F;
-}
-.user-name a {
-  color: #192231;
-  font-size: 16px;
-  text-decoration: none;
+.show-table {
+  table-layout: fixed;
+  tbody th, tbody td {
+    font-size: 18px;
+    border: none;
+    color: #512700;
+  }
+  .learning-tag,
+  tr td a {
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .user-img a {
+    text-decoration: none;
+    color: #512700;
+    img {
+      width: 20%;
+      border-radius: 50%;
+    }
+  }
 }

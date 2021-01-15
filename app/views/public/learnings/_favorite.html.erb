@@ -1,5 +1,5 @@
 <div class="row mt-2">
-  <div class="col-lg-10 offset-lg-1">
+  <div class="col-lg-10 offset-lg-1 favorite">
     <% if learning.favorited_by?(current_user) %>
       <%= link_to learning_favorites_path(learning), method: :delete, remote: true do %>
         <p class="heart">♥<%= learning.favorites.count %> いいね</p>

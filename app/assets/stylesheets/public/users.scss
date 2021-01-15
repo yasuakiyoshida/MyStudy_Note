@@ -53,20 +53,3 @@
 .pending-task {
   color: #00DD00;
 }
-
-
-.user-text:after {
-  content: "";
-  display: block;
-  height: 4px;
-  background: -webkit-linear-gradient(to right, rgb(25, 34, 49), transparent);
-  background: linear-gradient(to right, rgb(25, 34, 49), transparent);
-}
-.card .learnings-header {
-  background: #494E6B;
-  height: 32px;
-  a {
-    font-size: 16px;
-    text-decoration: none;
-  }
-}
