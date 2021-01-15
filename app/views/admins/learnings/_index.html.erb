@@ -17,20 +17,24 @@
       <tbody>
         <% learnings.each do |learning| %>
           <tr>
-            <td><%= learning.user.nickname %></td>
-            <td><%= learning.title %></td>
-            <td><%= learning.detail.truncate(20) %></td>
+            <td><%= link_to learning.user.nickname, admins_user_path(learning.user) %></td>
+            <td><%= link_to learning.title, admins_learning_path(learning) %></td>
+            <td>
+              <% if learning.detail.present? %>
+                <%= learning.detail.truncate(20) %>
+              <% end %>
+            </td>
             <td>
               <% if learning.is_public == true %>
-                <p>公開</p>
+                公開中
               <% else %>
-                <p>非公開</p>
+                非公開
               <% end %>
             </td>
             <td><%= render 'admins/learnings/tag_list', tag_list: learning.tag_list %></td>
             <td class="text-center px-1">
-              <%= link_to '編集', edit_admins_learning_path(learning.id), class: "btn btn-outline-info btn-sm ml-1 my-1" %>
-              <%= link_to '削除', admins_learning_path(learning.id), method: :delete, "data-confirm" => "#{learning.title}を削除しますか？", class: "btn btn-outline-danger btn-sm ml-2 mr-1 my-1" %>
+              <%= link_to '編集', edit_admins_learning_path(learning), class: "btn btn-outline-info btn-sm ml-1 my-1" %>
+              <%= link_to '削除', admins_learning_path(learning), method: :delete, "data-confirm" => "#{learning.title}を削除しますか？", class: "btn btn-outline-danger btn-sm ml-2 mr-1 my-1" %>
             </td>
           </tr>
         <% end %>

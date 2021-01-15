@@ -1,11 +1,14 @@
 class Admins::UsersController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :authenticate_admin!
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user_search, only: [:index, :search]
   
   def index
     @users = User.page(params[:page]).per(5)
+  end
+  
+  def show
   end
   
   def edit
@@ -13,7 +16,7 @@ class Admins::UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to admins_users_path
+      redirect_to admins_user_path(@user)
     else
       render :edit
     end

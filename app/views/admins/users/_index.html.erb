@@ -15,9 +15,13 @@
       <tbody>
         <% users.each do |user| %>
           <tr>
-            <td><%= user.nickname %></td>
+            <td><%= link_to user.nickname, admins_user_path(user) %></td>
             <td><%= user.email %></td>
-            <td colspan="2"><%= user.biography.truncate(40) %></td>
+            <td colspan="2">
+              <% if user.biography.present? %>
+                <%= user.biography.truncate(40) %>
+              <% end %>
+            </td>
             <td class="text-center">
               <%= link_to '編集', edit_admins_user_path(user.id), class: "btn btn-outline-info btn-sm ml-1 my-1" %>
               <%= link_to '削除', admins_user_path(user.id), method: :delete, "data-confirm" => "#{user.nickname}さんを削除しますか？", class: "btn btn-outline-danger btn-sm ml-2 mr-1 my-1" %>

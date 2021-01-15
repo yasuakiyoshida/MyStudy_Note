@@ -1,0 +1,29 @@
+<div class="container admin admin-show-title">
+  <h2 class="my-4"><%= @user.nickname %>さんの登録情報詳細</h2>
+  <div class="row">
+    <div class="col-4 text-center">
+      <%= attachment_image_tag @user, :image, size:'200x200', format: "jpeg", fallback: "user-no-img-min.jpg", class: "admin-user-image" %>
+    </div>
+    <div class="col-7">
+      <table class="table admin-show-table">
+        <tbody>
+          <tr>
+            <th>ニックネーム</th>
+            <td><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <td><%= @user.biography %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= link_to '編集する', edit_admins_user_path(@user), class: "btn btn-outline-info px-5" %>
+  </div>
+</div>

@@ -1,11 +1,18 @@
 class Admins::LearningsController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :authenticate_admin!
-  before_action :set_learning, only: [:edit, :update, :destroy]
+  before_action :set_learning, only: [:show, :edit, :update, :destroy]
   before_action :set_learning_search, only: [:index, :search]
   
   def index
     @learnings = Learning.page(params[:page]).reverse_order.per(8)
+    if params[:tag_name]
+      @learnings = Learning.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order.per(8)
+    end
+  end
+  
+  def show
+    @user = @learning.user
     if params[:tag_name]
       @learnings = Learning.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order.per(8)
     end
@@ -16,7 +23,7 @@ class Admins::LearningsController < ApplicationController
   
   def update
     if @learning.update(learning_params)
-      redirect_to admins_learnings_path
+      redirect_to admins_learning_path(@learning)
     else
       render :edit
     end
@@ -25,6 +32,9 @@ class Admins::LearningsController < ApplicationController
   def destroy
     @learning.destroy
     redirect_to admins_learnings_path
+  end
+  
+  def search
   end
   
   private
