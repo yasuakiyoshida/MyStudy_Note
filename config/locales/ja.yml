@@ -23,3 +23,18 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+  activerecord:
+    attributes:
+      task:
+        title: "題名"
+        detail: "詳細"
+        priority_status: "タスクの優先度"
+        due: "期限"
+        progress_status: "タスクの進捗度"
+      learning:
+        title: "タイトル"
+        detail: "詳細"
+        date: "学習日"
+        time: "学習時間"
+      learning_comment:
+        comment: "コメント"

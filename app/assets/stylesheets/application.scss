@@ -49,8 +49,8 @@
 .header-main .navbar-brand a img,
 .user-header-main .navbar-brand a img,
 .user-header-content .navbar-brand a img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   margin-right: 10px;
 }
 .header-main .navbar-nav .nav-item a,
@@ -222,8 +222,20 @@
     font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
   }
 }
-
-
+// エラーメッセージ
+#error_explanation {
+  text-align: center;
+  background: #FADBDA;
+  border: solid 1px red;
+  color: red;
+  h3 {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+  ul li {
+    list-style: none;
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+}
 
 // サイドバー
 .sidebar {
