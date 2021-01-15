@@ -117,6 +117,13 @@
 .admin-footer p {
   font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
 }
+// 共通
+#wrapper {
+  background: #F4EDE6;
+}
+.card-body a {
+  text-decoration: none;
+}
 // 新規登録・ログイン
 .sign-header {
   background: linear-gradient(#1E90FF, #2C7CFF);
@@ -125,20 +132,23 @@
   color: #FFF;
 }
 // 管理者ログイン
-.admin-header, .admin-title, .admin-search-form, .admin-search-btn, .admin-search-label {
+.admin-header,
+.admin-title,
+.admin-search-form,
+.admin-search-btn,
+.admin-search-label {
   font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
 }
 .admin {
-  label, .form-control, small, a, input, span, p {
+  label,
+  .form-control,
+  small,
+  a,
+  input,
+  span,
+  p {
   font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
   }
-}
-// 共通
-#wrapper {
-  background: #F4EDE6;
-}
-.card-body a {
-  text-decoration: none;
 }
 // ボタン
 .btn {
@@ -205,9 +215,13 @@
   justify-content: center;
   text-decoration: none;
 }
-.page-item.active .page-link, .page-item .page-link {
+.page-item.active .page-link {
   border: 1px solid #512700;
   background: #512700;
+}
+.page-item .page-link {
+  border: 1px solid #512700;
+  color: #512700;
 }
 .admin-paginate {
   .pagination, .page-item.active .page-link, .page-item .page-link {
