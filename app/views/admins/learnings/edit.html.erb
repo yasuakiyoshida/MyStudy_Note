@@ -1,11 +1,11 @@
 <div class="container admin">
-  <%= render 'layouts/errors', obj: @learning %>
   <div class="row">
     <div class="col-10 offset-1">
       <div class="card mx-auto my-5 shadow-lg">
         <div class="card-header admin-header">　<%= @learning.title %>の学習記録編集</div>
         <div class="card-body">
           <%= form_with model: @learning, url: admins_learning_path(@learning), method: :patch, local:true do |f| %>
+          <%= render 'layouts/errors', obj: @learning %>
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :date, '学習日' %>

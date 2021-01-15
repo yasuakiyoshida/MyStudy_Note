@@ -5,15 +5,33 @@ class Learning < ApplicationRecord
   acts_as_taggable
 
   attachment :image
-  
+
   validates :title, presence: true
   validates :date, presence: true
-  validates :time, presence: true, numericality: true
+  validates :time, presence: true, numericality: {less_than_or_equal_to: 24}
+  validate :date_cannot_be_in_the_future
+  validate :total_time_cannot_exceed_24_hours
+
+  def time_sum(date)
+    Learning.where(date: date).sum(:time)
+  end
   
+  def total_time_cannot_exceed_24_hours
+    if date.presence && time.presence && time_sum(date) + time >= 24.0
+      errors.add(:date, "について、#{date.strftime("%Y年%m月%d日")}の合計が24時間を超えています")
+    end
+  end
+  
+  def date_cannot_be_in_the_future
+    if date.presence && date > Date.today
+      errors.add(:date, "に未来の日付を設定することはできません")
+    end
+  end
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  
+
   def self.today_study_time
     today_learnings = self.where(date: Date.today)
     self.learning_time_sum(today_learnings)
@@ -23,26 +41,26 @@ class Learning < ApplicationRecord
     yesterday_learnings = self.where(date: Date.yesterday)
     self.learning_time_sum(yesterday_learnings)
   end
-  
+
   def self.week_study_time
     to = Time.current
     from = (to - 6.day).at_beginning_of_day
     week_learnings = self.where(date: from...to)
     self.learning_time_sum(week_learnings)
   end
-  
+
   def self.month_study_time
     to = Time.current
     from = (1.month.ago + 1.day).at_beginning_of_day
     month_learnings = self.where(date: from...to)
     self.learning_time_sum(month_learnings)
   end
-  
+
   def self.learning_time_sum(date_ranges)
     total_time = date_ranges.inject(0) { |sum, date_range| sum + date_range.time }
     total_time.floor(1)
   end
-  
+
   def self.learnings_period(period)
     current = Time.current.beginning_of_day
     case period
