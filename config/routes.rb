@@ -23,10 +23,10 @@ Rails.application.routes.draw do
   end
   
   namespace :admins do
-    resources :users, except: [:new, :show, :create] do
+    resources :users, except: [:new, :create] do
       get :search, on: :collection
     end
-    resources :learnings, except: [:new, :show, :create] do
+    resources :learnings, except: [:new, :create] do
       get :search, on: :collection
     end
   end

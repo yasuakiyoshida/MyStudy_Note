@@ -1,4 +1,11 @@
 <%= search_form_for search, url: search_admins_learnings_path do |f| %>
-  <%= f.search_field :title_or_detail_cont, class: "search admin-search", placeholder: 'タイトル or 詳細で検索' %>
-  <%= f.submit '検索', class: "search-btn p-1 admin-search" %>
+  <%= f.search_field :user_nickname_or_title_or_detail_cont, class: "search admin-search-form", placeholder: '投稿ユーザー名 or タイトル or 詳細で検索' %>
+  <%= f.label :is_public_eq, '公開フラグ：', class: "admin-search-label" %>
+  <%= f.radio_button :is_public_eq, '', {:checked => true} %>
+  <span class="admin-search-label">指定なし</span>
+  <%= f.radio_button :is_public_eq, true %>
+  <span class="admin-search-label">公開中</span>
+  <%= f.radio_button :is_public_eq, false %>
+  <span class="admin-search-label">非公開</span>
+  <%= f.submit '検索', class: "search-btn p-1 admin-search-btn" %>
 <% end %>
