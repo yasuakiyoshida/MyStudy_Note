@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user!
   
   def create
     @learning = Learning.find(params[:learning_id])

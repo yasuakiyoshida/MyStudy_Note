@@ -1,5 +1,4 @@
 class Admins::LearningsController < ApplicationController
-  skip_before_action :authenticate_user!
   before_action :authenticate_admin!
   before_action :set_learning, only: [:show, :edit, :update, :destroy]
   before_action :set_learning_search, only: [:index, :search]

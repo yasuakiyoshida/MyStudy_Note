@@ -1,5 +1,5 @@
 class Public::LearningsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :set_learning_search, only: [:index, :search]
   

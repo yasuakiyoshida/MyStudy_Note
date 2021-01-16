@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :set_user_search, only: [:index, :search]
   
