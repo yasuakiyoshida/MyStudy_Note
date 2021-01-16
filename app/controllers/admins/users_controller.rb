@@ -1,5 +1,4 @@
 class Admins::UsersController < ApplicationController
-  skip_before_action :authenticate_user!
   before_action :authenticate_admin!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user_search, only: [:index, :search]

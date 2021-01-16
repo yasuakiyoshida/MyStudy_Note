@@ -1,4 +1,5 @@
 class Public::TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :set_task_search, only: [:index, :search]
   

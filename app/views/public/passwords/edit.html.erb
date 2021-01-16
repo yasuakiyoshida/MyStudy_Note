@@ -4,7 +4,7 @@
       <div class="card mx-auto my-5 shadow-lg">
         <div class="card-header sign-header"><i class="fas fa-key"></i> パスワード変更画面</div>
         <div class="card-body">
-          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= form_for(resource, as: resource_name, url: password_path, html: { method: :put }) do |f| %>
           <%= render "public/shared/error_messages", resource: resource %>
             <%= f.hidden_field :reset_password_token %>
             <div class="row mt-4">
