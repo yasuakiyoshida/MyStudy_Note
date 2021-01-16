@@ -1,0 +1,7 @@
+ja:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: 'アカウントの有効化のご案内'
+      reset_password_instructions:
+        subject: 'パスワード再設定のご案内'

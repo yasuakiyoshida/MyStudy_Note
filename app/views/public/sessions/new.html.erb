@@ -31,9 +31,14 @@
           <% end %>  
         </div>
       </div>
-      <div class="row mb-5">
+      <div class="row mb-3 sign-btn">
         <div class="col-8 offset-2 text-center">
-          <%= link_to '会員登録がお済みでない方はこちら', new_user_registration_path, class: "btn btn-outline-info px-5" %>
+          <%= link_to '会員登録がお済みでない方はこちら', new_user_registration_path, class: "btn btn-outline-info" %>
+        </div>
+      </div>
+      <div class="row mb-5 sign-btn">
+        <div class="col-8 offset-2 text-center">
+          <%= link_to 'パスワードを忘れた方はこちら', new_user_password_path, class: "btn btn-outline-dark" %>
         </div>
       </div>
     </div>
