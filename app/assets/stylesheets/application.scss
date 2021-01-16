@@ -132,6 +132,9 @@
   font-size: 20px;
   color: #FFF;
 }
+.sign-btn div .btn {
+  width: 300px;
+}
 // 管理者ログイン
 .admin-header,
 .admin-title,
@@ -166,6 +169,9 @@
 }
 .btn-outline-danger {
   background-color: #CC0000;
+}
+.btn-outline-dark {
+  background-color: #999;
 }
 
 // leaning_times
