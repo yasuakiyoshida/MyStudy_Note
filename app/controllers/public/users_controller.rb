@@ -14,11 +14,12 @@ class Public::UsersController < ApplicationController
     @completed_tasks = @user.tasks.where(progress_status: 2).count
     @pending_tasks = @user.tasks.where(progress_status: 3).count
     @task_chart = { '未着手' => @new_tasks, '処理中' => @processing_tasks, '完了済' => @completed_tasks, '保留中' => @pending_tasks }
-    @today_study_time = @user.learnings.today_study_time
-    @yesterday_study_time = @user.learnings.yesterday_study_time
-    @week_study_time = @user.learnings.week_study_time
-    @month_study_time = @user.learnings.month_study_time
-    @learning_chart = {'今日' => @today_study_time, '昨日' => @yesterday_study_time, '過去一週間' => @week_study_time, '過去1ヶ月' => @month_study_time }
+    @learning_chart = {
+      '今日' => @user.learnings.today_study_time,
+      '昨日' => @user.learnings.yesterday_study_time,
+      '過去一週間' => @user.learnings.week_study_time,
+      '過去1ヶ月' => @user.learnings.month_study_time
+      }
   end
   
   def edit

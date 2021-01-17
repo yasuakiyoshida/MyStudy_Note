@@ -1,17 +1,27 @@
-<table>
-  <thead>
-    <tr>
-      <th>プロフィール画像</th>
-      <th>ニックネーム</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="row user-list-content">
+  <div class="col-10 offset-1">
     <% users.each do |user| %>
-      <tr>
-        <td><%= attachment_image_tag user, :image, format: "jpeg", fallback: "user-no-img-min.jpg" %></td>
-        <td><%= user.nickname %></td>
-      </tr>
+      <div class="card mb-1 mx-auto">
+        <div class="row no-gutters p-2">
+          <div class="col-4 d-flex align-items-center justify-content-end">
+            <%= link_to user_path(user.id) do %>
+              <%= attachment_image_tag user, :image, format: "jpeg", fallback: "user-no-img-min.jpg" %>
+            <% end %>
+          </div>
+          <div class="col-8 p-2">
+            <div class="card-body p-2">
+              <h4 class="user-name"><%= link_to user.nickname, user_path(user.id) %></h4>
+              <p class="card-text my-2"><i class="far fa-clock"></i> 今日の学習時間：<%= user.learnings.today_study_time %> 時間</p>
+              <p class="card-text">
+                <% if user.biography.present? %>
+                  <%= user.biography.truncate(80) %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
     <%= paginate users %>
-  </tbody>
-</table>
+  </div>
+</div>

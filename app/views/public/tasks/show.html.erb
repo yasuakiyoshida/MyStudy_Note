@@ -6,7 +6,7 @@
         <tbody>
           <tr>
             <th>期限</th>
-            <td colspan="2"><%= @task.due.strftime("%Y年%m月%d日 %H:%M") %></td>
+            <td class="<%= "text-danger" if @task.due < Time.now %>" colspan="2"><%= @task.due.strftime("%Y年%m月%d日 %H:%M") %><%= "　＊期限が過ぎています" if @task.due < Time.now %></td>
           </tr>
           <tr>
             <th>題名</th>

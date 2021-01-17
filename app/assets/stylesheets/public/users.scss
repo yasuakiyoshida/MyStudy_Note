@@ -53,3 +53,27 @@
 .pending-task {
   color: #00DD00;
 }
+// public/users/show
+.user-list-title {
+  color: #512700;
+  text-shadow: 0px 0px 20px #00AA00;
+}
+.user-list-content {
+  .card {
+    border: none;
+    background: none;
+    .col-4 img {
+      width: 180px;
+      height: 180px;
+      border: 8px outset #00BB00;
+    }
+    .col-8 {
+      background: #FFF;
+      color: #512700;
+      border: 1px solid #00BB00;
+      a {
+        color: #512700;
+      }
+    }
+  }
+}
