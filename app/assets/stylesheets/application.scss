@@ -203,11 +203,14 @@
   }
 }
 // 検索
+.admin-search-form,
 .search-form {
-  background: #EBECED;
-}
-.admin-search-form {
   width: 400px;
+}
+.search-button {
+  border-color : #00AA00;
+  background: #00CC00;
+  color: #FFF;
 }
 // タグ
 .tag {

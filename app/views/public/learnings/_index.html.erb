@@ -1,26 +1,26 @@
-<table>
-  <thead>
-    <tr>
-      <th>学習日</th>
-      <th>画像</th>
-      <th>タイトル</th>
-      <th>学習時間</th>
-      <th>詳細</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% learnings.each do |learning| %>
-      <tr>
-        <td><%= learning.date %></td>
-        <td><%= attachment_image_tag learning, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
-        <td><%= link_to learning.title, learning_path(learning.id) %></td>
-        <td><%= learning.time %>時間</td>
-        <td><%= learning.detail %></td>
-        <%= render 'tag_list', tag_list: learning.tag_list %>
-        <td><%= link_to '編集する', edit_learning_path(learning.id) %></td>
-        <td><%= link_to '削除する', learning_path(learning.id), method: :delete, "data-confirm" => "#{learning.title}をリストから削除しますか？" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  <%= paginate learnings %>
-</table>
+<% learnings.each do |learning| %>
+  <div class="card mb-3 mx-auto">
+    <div class="row no-gutters p-2 bg-white">
+      <div class="col-6 d-flex align-items-center justify-content-center">
+        <%= link_to learning_path(learning.id), class: "image-link-border" do %>
+          <%= attachment_image_tag learning, :image, format: "jpeg", fallback: "no_image.jpg" %>
+        <% end %>
+      </div>
+      <div class="col-6">
+        <div class="card-body p-2">
+          <small class="card-text">学習日：<%= learning.date.strftime("%Y年%m月%d日") %></small>
+          <h4 class="card-title my-2 pb-1"><%= link_to learning.title, learning_path(learning.id) %></h4>
+          <p class="card-text my-1">学習時間：<i class="far fa-clock"></i><%= learning.time %>時間</p>
+          <small class="card-text my-3"><i class="far fa-comment"></i>コメント：<%= learning.learning_comments.count %>　<i class="far fa-heart"></i>いいね：<%= learning.favorites.count %></small><br>
+          <small class="card-text my-3"><%= learning.created_at.strftime("%Y年%m月%d日") %>投稿</small><br>
+          <p class="card-text my-2">タグ：<%= render 'tag_list', tag_list: learning.tag_list %></p>
+          <% if learning.user = current_user %>
+            <%= link_to '編集する', edit_learning_path(learning.id), class: "btn btn-outline-info btn-sm m-2 edit-btn" %>
+            <%= link_to '削除する', learning_path(learning.id), method: :delete, "data-confirm" => "#{learning.title}をリストから削除しますか？", class: "btn btn-outline-danger btn-sm m-2 delete-btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= paginate learnings %>

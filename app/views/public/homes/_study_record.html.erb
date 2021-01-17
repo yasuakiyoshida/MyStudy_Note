@@ -1,29 +1,23 @@
-<div class="card mx-5">
-  <div class="card-header text-center study-record-title">みんなの学習記録</div>
-  <div class="card-body">
-    <div class="container study-record">
-      <% learnings.each do |learning| %>
-        <div class="card mb-3 mx-auto">
-          <div class="row no-gutters p-2">
-            <div class="col-6">
-              <%= link_to learning_path(learning.id), class: "image-link-border" do %>
-                <%= attachment_image_tag learning, :image, format: "jpeg", fallback: "no_image.jpg" %>
-              <% end %>
-            </div>
-            <div class="col-6">
-              <div class="card-body">
-                <small class="card-text">学習日：<%= learning.date.strftime("%Y年%m月%d日") %></small>
-                <h4 class="card-title my-3 pb-1"><%= link_to learning.title, learning_path(learning.id) %></h4>
-                <p class="card-text my-2">学習時間：<i class="far fa-clock"></i><%= learning.time %>時間</p>
-                <small class="card-text my-3"><i class="far fa-comment"></i>コメント：<%= learning.learning_comments.count %>　<i class="far fa-heart"></i>いいね：<%= learning.favorites.count %></small><br>
-                <small class="card-text my-3"><%= learning.created_at.strftime("%Y年%m月%d日") %>投稿 by <%= link_to learning.user.nickname, user_path(learning.user) %></small><br>
-                <p class="card-text my-2">タグ：<%= render 'tag_list', tag_list: learning.tag_list %></p>
-              </div>
-            </div>
+<div class="container study-record">
+  <% learnings.each do |learning| %>
+    <div class="card mb-3 mx-auto">
+      <div class="row no-gutters p-2 bg-white">
+        <div class="col-6 d-flex align-items-center justify-content-center">
+          <%= link_to learning_path(learning.id), class: "image-link-border" do %>
+            <%= attachment_image_tag learning, :image, format: "jpeg", fallback: "no_image.jpg" %>
+          <% end %>
+        </div>
+        <div class="col-6">
+          <div class="card-body">
+            <small class="card-text">学習日：<%= learning.date.strftime("%Y年%m月%d日") %></small>
+            <h4 class="card-title my-3 pb-1"><%= link_to learning.title, learning_path(learning.id) %></h4>
+            <p class="card-text my-2">学習時間：<i class="far fa-clock"></i><%= learning.time %>時間</p>
+            <small class="card-text my-3"><i class="far fa-comment"></i>コメント：<%= learning.learning_comments.count %>　<i class="far fa-heart"></i>いいね：<%= learning.favorites.count %></small><br>
+            <small class="card-text my-3"><%= learning.created_at.strftime("%Y年%m月%d日") %>投稿 by <%= link_to learning.user.nickname, user_path(learning.user) %></small><br>
+            <p class="card-text my-2">タグ：<%= render 'tag_list', tag_list: learning.tag_list %></p>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
-    <%= paginate learnings %>
-  </div>
+  <% end %>
 </div>

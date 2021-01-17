@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root 'homes#top'
+    get 'common_learnings' => 'homes#common_learnings'
+    get 'common_learnings/search' => 'homes#search', as: :search_common_learnings
     resources :users, only: [:index, :show, :edit, :update] do
       get 'learning_times' => 'learning_times#index'
       get :search, on: :collection
