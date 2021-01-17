@@ -1,8 +1,10 @@
-<%= search_form_for search, url: search_tasks_path do |f| %>
-  <%= f.search_field :title_or_detail_cont, class: "search mr-3", placeholder: 'リストを検索' %>
-  <%= f.label :priority_status_eq, '優先度:' %>
-  <%= f.select :priority_status_eq, Task.priority_statuses.map{|k, v| [Task.priority_statuses_i18n[k], v]}, {include_blank: '選択なし'}, class: "py-2 mr-3" %>
-  <%= f.label :progress_status_eq, '進捗度:' %>
-  <%= f.select :progress_status_eq, Task.progress_statuses.map{|k, v| [Task.progress_statuses_i18n[k], v]}, {include_blank: '選択なし'}, class: "py-2 mr-3" %>
-  <%= f.submit '検索', class: "search-btn p-1" %>
-<% end %>
+<div class="search-field text-center my-2">
+  <%= search_form_for search, url: search_tasks_path do |f| %>
+    <%= f.search_field :title_or_detail_cont, class: "task-search-form mr-3", placeholder: 'リストを検索' %>
+    <%= f.label :priority_status_eq, '優先度:' %>
+    <%= f.select :priority_status_eq, Task.priority_statuses.map{|k, v| [Task.priority_statuses_i18n[k], v]}, {include_blank: '選択なし'}, class: "mr-2" %>
+    <%= f.label :progress_status_eq, '進捗度:' %>
+    <%= f.select :progress_status_eq, Task.progress_statuses.map{|k, v| [Task.progress_statuses_i18n[k], v]}, {include_blank: '選択なし'} %>
+    <%= f.submit '検索', class: "search-button p-1" %>
+  <% end %>
+</div>

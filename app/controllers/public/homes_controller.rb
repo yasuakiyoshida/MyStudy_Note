@@ -8,17 +8,14 @@ class Public::HomesController < ApplicationController
   def common_learnings
     @learnings = Learning.where(is_public: 1).page(params[:page]).reverse_order.per(8)
     if params[:tag_name]
-      @learnings = Learning.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order.per(8)
+      @learnings = Learning.where(is_public: 1).tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order.per(8)
     end
-  end
-  
-  def search
   end
   
   private
   
   def set_learning_search
-    @search = Learning.ransack(params[:q])
+    @search = Learning.where(is_public: 1).ransack(params[:q])
     @learning_search = @search.result.page(params[:page]).reverse_order.per(8)
   end
 end

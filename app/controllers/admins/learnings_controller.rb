@@ -33,9 +33,6 @@ class Admins::LearningsController < ApplicationController
     redirect_to admins_learnings_path
   end
   
-  def search
-  end
-  
   private
 
   def learning_params
