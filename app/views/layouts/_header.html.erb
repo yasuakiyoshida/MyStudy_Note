@@ -102,6 +102,11 @@
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
+                <%= link_to user_learning_times_path(current_user), class: 'nav-link' do %>
+                  <i class="fas fa-user-clock"></i> 過去の学習時間
+                <% end %>
+              </li>
+              <li class="nav-item nav-bottom">
                 <%= link_to learnings_path, class: 'nav-link' do %>
                   <i class="fas fa-book-open"></i> 学習記録を確認
                 <% end %>
@@ -134,6 +139,11 @@
               <li class="nav-item nav-bottom mr-5">
                 <%= link_to user_path(current_user) do %>
                   <i class="fa fa-user"></i> マイページ
+                <% end %>
+              </li>
+              <li class="nav-item nav-bottom mr-5">
+                <%= link_to user_learning_times_path(current_user), class: 'nav-link' do %>
+                  <i class="fas fa-user-clock"></i> 過去の学習時間
                 <% end %>
               </li>
               <li class="nav-item nav-bottom mr-5">
@@ -175,6 +185,11 @@
             <li class="nav-item mr-4">
               <%= link_to root_path, class: 'nav-link' do %>
                 <i class="fas fa-home"></i> ホーム
+              <% end %>
+            </li>
+            <li class="nav-item mr-4">
+              <%= link_to common_learnings_path, class: 'nav-link' do %>
+                <i class="fas fa-book"></i> みんなの学習記録
               <% end %>
             </li>
             <li class="nav-item mr-4">
