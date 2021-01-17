@@ -1,13 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header list-header text-center"><i class="fa fa-list-alt"></i> ToDoリスト一覧</div>
-        <div class="search-form text-center py-2">
-          <%= render 'search_form', search: @search %>
-        </div>
-        <%= render 'index', tasks: @tasks %>
-      </div>
-    </div>
-  </div>
+  <h1 class="my-3 text-center task-title"><i class="fa fa-list-alt"></i> <%= current_user.nickname %>さんのToDoリスト一覧</h1>
+  <%= render 'public/tasks/search_form', search: @search %>
+  <%= render 'public/tasks/index', tasks: @tasks %>
 </div>
+<div class="text-center my-3"><%= paginate @tasks %></div>

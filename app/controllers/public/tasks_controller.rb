@@ -1,6 +1,6 @@
 class Public::TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
   before_action :set_task_search, only: [:index, :search]
   
   def new
@@ -10,12 +10,11 @@ class Public::TasksController < ApplicationController
   def index
     @tasks = current_user.tasks.page(params[:page]).order("due").per(10)
     if params[:tag_name]
-      @tasks = Task.tagged_with("#{params[:tag_name]}").page(params[:page]).order("due").per(10)
+      @tasks = current_user.tasks.tagged_with("#{params[:tag_name]}").page(params[:page]).order("due").per(10)
     end
   end
   
   def show
-    @task = Task.find(params[:id])
   end
   
   def edit
@@ -44,9 +43,6 @@ class Public::TasksController < ApplicationController
     redirect_to tasks_path
   end
   
-  def search
-  end
-  
   private
   
   def task_params
@@ -61,7 +57,7 @@ class Public::TasksController < ApplicationController
   end
   
   def set_task_search
-    @search = Task.ransack(params[:q])
+    @search = current_user.tasks.ransack(params[:q])
     @task_search = @search.result.page(params[:page]).order("due").per(10)
   end
 end

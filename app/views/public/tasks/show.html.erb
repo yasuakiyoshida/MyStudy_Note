@@ -1,43 +1,38 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header list-header text-center"><i class="fa fa-list-alt"></i> ToDoリスト詳細</div>
-        <div class="card-body">
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <h4 class="list-text mb-3"> 期限</h4>
-              <p><%= @task.due.strftime("%Y年%m月%d日 %H:%M") %></p>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <h4 class="list-text mb-3"> 題名</h4>
-              <p><%= @task.title %></p>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <h4 class="list-text mb-3"> 詳細</h4>
-              <p><%= @task.detail %></p>
-            </div>
-          </div>
-          <%= render 'tag_list', tag_list: @task.tag_list %>
-          <div class="row mt-3">
-            <div class="col-lg-4 offset-lg-1 p-3 list-status">
-               優先度：<span><%= @task.priority_status %></span>
-            </div>
-            <div class="col-lg-4 offset-lg-1 p-3 list-status">
-               進捗度：<span><%= @task.progress_status %></span>
-            </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col-lg-10 offset-lg-1 text-center">
-              <%= link_to '編集する', edit_task_path(@task.id), class: "btn btn-outline-info px-5" %>
-            </div>
-          </div>
-        </div>
-      </div>
+  <h1 class="my-3 text-center task-title"><i class="fa fa-list-alt"></i> ToDoリスト詳細</h1>
+  <div class="row mx-0">
+    <div class="col-10 offset-1">
+      <table class="table show-table">
+        <tbody>
+          <tr>
+            <th>期限</th>
+            <td colspan="2"><%= @task.due.strftime("%Y年%m月%d日 %H:%M") %></td>
+          </tr>
+          <tr>
+            <th>題名</th>
+            <td colspan="2"><%= @task.title %></td>
+          </tr>
+          <tr>
+            <th>詳細</th>
+            <td colspan="2"><%= @task.detail %></td>
+          </tr>
+          <tr>
+            <th>優先度</th>
+            <td class="<%= add_class_name_priority_text_color(@task.priority_status) %>", colspan="2"><%= @task.priority_status %></td>
+          </tr>
+          <tr>
+            <th>進捗度</th>
+            <td class="<%= add_class_name_progress(@task.progress_status) %>", colspan="2"><%= @task.progress_status %></td>
+          </tr>
+          <tr>
+            <th>タグ</th>
+            <td colspan="2"><%= render 'public/tasks/tag_list', tag_list: @task.tag_list %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+  <div class="text-center mb-5">
+    <%= link_to 'ToDoリストを編集する', edit_task_path(@task.id), class: "btn btn-outline-info px-5" %>
   </div>
 </div>

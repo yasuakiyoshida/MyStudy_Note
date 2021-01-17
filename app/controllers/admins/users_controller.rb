@@ -26,9 +26,6 @@ class Admins::UsersController < ApplicationController
     redirect_to admins_users_path
   end
   
-  def search
-  end
-  
   private
   
   def user_params
