@@ -60,6 +60,10 @@
   font-weight: 600;
   font-size: 18px;
 }
+.user-header-content .navbar-nav .nav-bottom a,
+.user-header-content .navbar-nav .nav-bottom h4 {
+  color: #156A15;
+}
 .header-main .navbar-toggler,
 .user-header-main .navbar-toggler,
 .user-header-content .navbar-toggler {
@@ -76,8 +80,9 @@
   border-bottom: solid 2px #CD853F;
   padding: 1rem;
   .navbar-nav .navbar-nav .nav-item a {
-    color: #512700;
+    color: #156A15;
     text-decoration: none;
+    font-size: 16px;
   }
 }
 // 管理者ヘッダー
