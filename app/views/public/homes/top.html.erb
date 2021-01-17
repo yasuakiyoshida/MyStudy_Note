@@ -37,4 +37,8 @@
     </div>
   </div>
 </div>
-<%= render 'study_record', learnings: @learnings %>
+<div class="container study-record">
+  <h1 class="my-3 text-center study-record-title"><i class="fas fa-book"></i> みんなの学習記録</h1>
+  <%= render 'study_record', learnings: @learnings %>
+  <div class="text-center mb-5"><%= link_to 'もっと見る>>', common_learnings_path %></div>
+</div>

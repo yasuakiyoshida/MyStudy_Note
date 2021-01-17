@@ -1,0 +1,6 @@
+<div class="container study-record">
+  <h1 class="my-3 text-center study-record-title"><i class="fas fa-book"></i> みんなの学習記録検索結果</h1>
+  <%= render 'search_form', search: @search %>
+  <%= render 'study_record', learnings: @learning_search %>
+  <%= paginate @learning_search %>
+</div>
