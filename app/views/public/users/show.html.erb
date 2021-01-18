@@ -12,6 +12,7 @@
         <div class="card-body text-center">
           <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", class: "user-img-lg" %>
           <h3 class="mt-3"><%= @user.nickname %></h3>
+          <p class="profile-text"><%= link_to 'フォロー：' + (@user.followings.count).to_s, user_followings_path(@user.id) %>　<%= link_to 'フォロワー：' + (@user.followers.count).to_s, user_followers_path(@user) %></p>
           <p class="profile-text px-5 mt-3 pb-3"><%= @user.biography %></p>
           <%= link_to '過去の学習時間を確認する', user_learning_times_path(@user), class: "btn btn-outline-info profile-time-btn px-5 mt-2" %><br>
            <% if @user == current_user %>

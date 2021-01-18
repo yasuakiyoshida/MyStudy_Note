@@ -1,0 +1,4 @@
+<div class="container">
+  <h1 class="my-3 text-center user-list-title"><i class="fas fa-users"></i></i> <%= @user.nickname %>さんがフォロー中のユーザー</h1>
+  <%= render 'public/users/index', users: @users %>
+</div>
