@@ -300,3 +300,17 @@
     background-color: #FF6633;
   }
 }
+// 画像プレビュー
+.learning-image {
+  width: 250px;
+}
+.user-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.image-preview:hover {
+  cursor: pointer; 
+  opacity: 0.7;
+  transform: scale(1.01, 1.01);
+}
