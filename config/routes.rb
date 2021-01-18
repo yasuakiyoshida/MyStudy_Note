@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     get 'common_learnings/search' => 'homes#search', as: :search_common_learnings
     resources :users, only: [:index, :show, :edit, :update] do
       get 'learning_times' => 'learning_times#index'
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
       get :search, on: :collection
     end
     resources :learnings do
