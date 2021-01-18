@@ -3,6 +3,6 @@ class Admins::LearningCommentsController < ApplicationController
   
   def destroy
     LearningComment.find_by(id: params[:id], learning_id: params[:learning_id]).destroy
-    redirect_to admins_learning_path(params[:learning_id])
+    redirect_to admins_learning_path(params[:learning_id]), notice: 'コメントを削除しました'
   end
 end

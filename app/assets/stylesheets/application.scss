@@ -228,7 +228,7 @@
   font-size: 14px;
   color: #FFF;
   text-decoration: none;
-  white-space: nowrap;
+  // white-space: nowrap;
 }
 .learning-tag {
   border: solid 1px #009900;
@@ -246,7 +246,7 @@
   color: #FFF;
   background: #00CC00;
   text-decoration: none;
-  white-space: nowrap;
+  // white-space: nowrap;
 }
 // ページング
 .pagination {
@@ -279,5 +279,24 @@
   ul li {
     list-style: none;
     font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+}
+// フラッシュメッセージ
+.notifications {
+  color: #FFF;
+  text-align: center;
+  .notice, .alert {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 0;
+  }
+  .notice {
+    background-color: #4689FF;
+  }
+  .alert {
+    background-color: #FF6633;
   }
 }

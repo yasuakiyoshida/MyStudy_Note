@@ -24,7 +24,7 @@ class Public::TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     if @task.save
-      redirect_to task_path(@task)
+      redirect_to task_path(@task), notice: 'ToDoリストを作成しました'
     else
       render :new
     end
@@ -32,7 +32,7 @@ class Public::TasksController < ApplicationController
   
   def update
     if @task.update(task_params)
-      redirect_to task_path(@task)
+      redirect_to task_path(@task), notice: 'ToDoリストを更新しました'
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class Public::TasksController < ApplicationController
   
   def destroy
     @task.destroy
-    redirect_to tasks_path
+    redirect_to tasks_path, notice: 'ToDoリストを削除しました'
   end
   
   private

@@ -22,7 +22,7 @@ class Admins::LearningsController < ApplicationController
   
   def update
     if @learning.update(learning_params)
-      redirect_to admins_learning_path(@learning)
+      redirect_to admins_learning_path(@learning), notice: '学習記録を更新しました'
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class Admins::LearningsController < ApplicationController
   
   def destroy
     @learning.destroy
-    redirect_to admins_learnings_path
+    redirect_to admins_learnings_path, notice: '学習記録を削除しました'
   end
   
   private
