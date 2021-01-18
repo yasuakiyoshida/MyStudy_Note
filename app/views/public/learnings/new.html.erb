@@ -34,8 +34,9 @@
             </div>
             <div class="row mt-4">
               <div class="col-10 offset-1">
-                <%= f.label :image, '画像選択' %><br>
-                <%= f.attachment_field :image %>
+                <%= f.label :image, '画像を選択してください' %><br>
+                <%= f.file_field :image, class: "image-field", style: "display:none;" %>
+                <%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg", onClick: "$('.image-field').click()", class: "learning-image img-thumbnail img-responsive center-block image-preview" %>
               </div>
             </div>
             <div class="row mt-4">

@@ -20,8 +20,9 @@
             </div>
             <div class="row mt-4">
               <div class="col-10 offset-1">
-                <%= f.label :image, 'プロフィール画像選択' %>
-                <%= f.attachment_field :image %>
+                <%= f.label :image, 'プロフィール画像選択' %><br>
+                <%= f.file_field :image, class: "image-field", style: "display:none;" %>
+                <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", onClick: "$('.image-field').click()", class: "user-image img-thumbnail img-responsive center-block image-preview" %>
               </div>
             </div>
             <div class="row mt-4">
