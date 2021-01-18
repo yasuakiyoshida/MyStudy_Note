@@ -3,12 +3,12 @@ class Public::RelationshipsController < ApplicationController
   
   def create
     current_user.follow(params[:user_id])
-    redirect_to request.referer
+    redirect_to request.referer, notice: "フォローしました"
   end
   
   def destroy
     current_user.unfollow(params[:user_id])
-    redirect_to request.referer
+    redirect_to request.referer, notice: "フォローを解除しました"
   end
   
   def followings

@@ -27,7 +27,7 @@ class Public::LearningsController < ApplicationController
     @learning = Learning.new(learning_params)
     @learning.user_id = current_user.id
     if @learning.save
-      redirect_to learning_path(@learning)
+      redirect_to learning_path(@learning), notice: "学習内容を記録しました"
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Public::LearningsController < ApplicationController
   
   def update
     if @learning.update(learning_params)
-      redirect_to learning_path(@learning)
+      redirect_to learning_path(@learning), notice: "学習記録を更新しました"
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class Public::LearningsController < ApplicationController
   
   def destroy
     @learning.destroy
-    redirect_to learnings_path
+    redirect_to learnings_path, notice: "学習記録を削除しました"
   end
   
   private

@@ -8,7 +8,7 @@ class Learning < ApplicationRecord
 
   validates :title, presence: true
   validates :date, presence: true
-  validates :time, presence: true, numericality: {less_than_or_equal_to: 24}
+  validates :time, presence: true, numericality: {less_than_or_equal_to: 24, greater_than: 0}
   validate :date_cannot_be_in_the_future
   validate :total_time_cannot_exceed_24_hours
 
@@ -17,7 +17,7 @@ class Learning < ApplicationRecord
   end
   
   def total_time_cannot_exceed_24_hours
-    if date.presence && time.presence && one_day_time_sum(date) + time >= 24.0
+    if date.presence && time.presence && one_day_time_sum(date) + time > 24.0
       errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が24時間を超えています")
     end
   end
