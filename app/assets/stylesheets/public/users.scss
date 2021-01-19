@@ -18,13 +18,11 @@
   .profile-content-left .card .card-body {
     .user-img-lg {
       width: 150px;
+      height: 150px;
       border-radius: 50%;
     }
-    .profile-text {
-      border-bottom: solid 1px #DEC8B1;
-      a {
-        color: #512700;
-      }
+    .profile-text a {
+      color: #512700;
     }
     .btn {
       border-radius: 25px;

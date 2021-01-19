@@ -1,4 +1,6 @@
 <div class="container">
+  <% breadcrumb :leaning_times, @user %>
+  <%= render "layouts/breadcrumbs" %>
   <h1 class="my-3 text-center learning-title"><i class="fas fa-user-clock"></i> <%= @user.nickname %>さんの学習時間</h1>
   <div class="row">
     <div class="col-10 offset-1">

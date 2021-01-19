@@ -115,7 +115,6 @@
   min-height: 100vh;
   footer {
     margin-top: auto;
-    // width: 100vw;
     color: #512700;
   }
 }
@@ -228,7 +227,6 @@
   font-size: 14px;
   color: #FFF;
   text-decoration: none;
-  // white-space: nowrap;
 }
 .learning-tag {
   border: solid 1px #009900;
@@ -246,7 +244,6 @@
   color: #FFF;
   background: #00CC00;
   text-decoration: none;
-  // white-space: nowrap;
 }
 // ページング
 .pagination {
@@ -313,4 +310,19 @@
   cursor: pointer; 
   opacity: 0.7;
   transform: scale(1.01, 1.01);
+}
+// パンくずリスト
+.breadcrumbs {
+  color: #512700;
+  font-size: 15px;
+  padding: 10px 0;
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  span {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+  a {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+    text-decoration: none;
+    color: #512700;
+  }
 }
