@@ -1,8 +1,7 @@
-<h1>ユーザー一覧画面</h1>
-
-<%= render 'index', users: @users %>
+<div class="container">
+  <% breadcrumb :users, @users %>
+  <%= render "layouts/breadcrumbs" %>
+  <h1 class="my-3 text-center user-list-title"><i class="fas fa-users"></i></i> ユーザー一覧</h1>
   <%= render 'search_form', search: @search %>
-  <div class="sidebar col-lg-4">
-    <%= render 'layouts/sidebar_top', my_today_study_time: @my_today_study_time, my_yesterday_study_time: @my_yesterday_study_time %>
-    <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
-  </div>
+  <%= render 'index', users: @users %>
+</div>

@@ -1,0 +1,52 @@
+<div class="container admin admin-show-title">
+  <h2 class="my-4"><%= @learning.title %>の学習記録詳細</h2>
+  <div class="row">
+    <div class="col-4">
+      <%= attachment_image_tag @learning, :image, size:'300x200', format: "jpeg", fallback: "no_image.jpg", class: "w-75" %>
+    </div>
+    <div class="col-7">
+      <table class="table admin-show-table">
+        <tbody>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @learning.title %></td>
+          </tr>
+          <tr>
+            <th>学習日</th>
+            <td><%= @learning.date.strftime("%Y年%m月%d日") %></td>
+          </tr>
+          <tr>
+            <th>学習時間</th>
+            <td><%= @learning.time %>時間</td>
+          </tr>
+          <tr>
+            <th>詳細</th>
+            <td><%= @learning.detail %></td>
+          </tr>
+          <tr>
+            <th>タグ</th>
+            <td><%= render 'admins/learnings/tag_list', tag_list: @learning.tag_list %></td>
+          </tr>
+          <tr>
+            <th>公開フラグ</th>
+            <td>
+              <% if @learning.is_public == true %>
+                公開中
+              <% else %>
+                非公開
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>投稿ユーザー名</th>
+            <td><%= link_to @learning.user.nickname, admins_users_path(@learning.user) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-center mb-5">
+    <%= link_to '編集する', edit_admins_learning_path(@learning), class: "btn btn-outline-info px-5" %>
+  </div>
+  <%= render 'admins/learnings/comment', learning_comments: @learning_comments, learning: @learning, learning_comment: @learning_comment %>
+</div>

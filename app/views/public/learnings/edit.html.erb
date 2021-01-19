@@ -1,45 +1,48 @@
-<div class="container">
-  <%= render 'layouts/errors', obj: @learning %>
+<div class="container ">
+  <% breadcrumb :edit_learning, @learning %>
+  <%= render "layouts/breadcrumbs" %>
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-10 offset-1">
       <div class="card mx-auto my-5 shadow-lg">
         <div class="card-header learning-header text-center"><i class="far fa-edit"></i> 学習内容を編集する</div>
         <div class="card-body">
-          <%= form_with model: @learning, url: "/learnings/#{@learning.id}", method: :patch, local:true do |f| %>
-            <div class="row mt-3">
-              <div class="col-lg-10 offset-lg-1">
+          <%= form_with model: @learning, url: learning_path(@learning), method: :patch, local:true do |f| %>
+          <%= render 'layouts/errors', obj: @learning %>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
                 <%= f.label :date, '学習日' %>
                 <%= f.date_field :date, class: "mr-5" %>
                 <%= f.label :time, '学習時間' %>
                 <%= f.number_field :time, step: "0.1", in: 0...25 %> 時間
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-lg-10 offset-lg-1">
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
                 <%= f.label :title, 'タイトル' %>
                 <%= f.text_field :title, class: "form-control" %>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-lg-10 offset-lg-1">
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
                 <%= f.label :detail, '詳細' %>
                 <%= f.text_area :detail, size: "20x10", class: "form-control" %>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-lg-10 offset-lg-1">
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
                 <%= f.label :tag_list, 'タグ（","で区切ることで複数のタグを入力できます）' %>
                 <%= f.text_field :tag_list, value: @learning.tag_list.join(','), class: "form-control", placeholder: '例：プログラミング,ruby,rails' %>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-lg-10 offset-lg-1">
-                <%= f.label :image, '画像選択' %><br>
-                <%= f.attachment_field :image %>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :image, '画像を選択してください' %><br>
+                <%= f.file_field :image, class: "image-field", style: "display:none;" %>
+                <%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg", onClick: "$('.image-field').click()", class: "learning-image img-thumbnail img-responsive center-block image-preview" %>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-lg-10 offset-lg-1">
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
                 <%= f.radio_button :is_public, true, checked: true %>
                 <%= f.label :is_public, '公開する', {:value => "true", style: "display: inline-block;"} %>
                 <%= f.radio_button :is_public, false %>
@@ -47,23 +50,15 @@
                 <small class="text-danger">※「公開する」を選択すると全てのユーザーがこの学習記録を閲覧できます</small>
               </div>
             </div>
-            <div class="row mt-4">
-              <div class="col-lg-10 offset-lg-1 text-center">
-                <%= f.submit '更新する', class: "btn btn-outline-primary px-5" %>
+            <div class="row mt-5">
+              <div class="col-10 offset-1 text-center">
+                <%= f.submit '更新する', class: "btn btn-outline-primary px-5 mx-3" %>
+                <%= link_to '削除する', learning_path(@learning.id), method: :delete, "data-confirm" => "#{@learning.title}を学習記録から削除しますか？", class: "btn btn-outline-danger px-5 mx-3" %>
               </div>
             </div>
           <% end %>
-          <div class="row mt-4">
-            <div class="col-lg-10 offset-lg-1 text-center">
-              <%= link_to '削除する', learning_path(@learning.id), method: :delete, "data-confirm" => "#{@learning.title}をリストから削除しますか？", class: "btn btn-outline-danger px-5" %>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-    <div class="sidebar col-lg-4">
-      <%= render 'layouts/sidebar_top', my_today_study_time: @my_today_study_time, my_yesterday_study_time: @my_yesterday_study_time %>
-      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
     </div>
   </div>
 </div>

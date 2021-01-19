@@ -1,46 +1,67 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="card mx-auto mt-5 mb-2 shadow-lg">
-        <% if @user == current_user %> 
-          <div class="card-header user-header text-center"><i class="fa fa-user"></i> マイページ</div>
-        <% else %>
-          <div class="card-header user-header text-center"><i class="fa fa-user"></i> ユーザー情報</div>
-        <% end %>
-        <div class="card-body">
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <%= link_to user_path(current_user) do %>
-                <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", class: "user-img-lg" %>
-              <% end %>
-              <span class="ml-2 user-name-lg"><%= link_to @user.nickname, user_path(@user) %></span>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1">
-              <h5 class="user-text mb-2"> 自己紹介</h5>
-              <p><%= @user.biography %></p>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-lg-10 offset-lg-1 text-center">
-              <% if @user == current_user %>
-                <%= link_to '登録情報を編集する', edit_user_path(current_user), class: "btn btn-outline-info px-5" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="caed-deck">
-        <div class="row">
-          <%= render 'learning_chart', today_study_time: @today_study_time, week_study_time: @week_study_time, month_study_time: @month_study_time, learning_chart: @learning_chart %>
-          <%= render 'task_chart', new_tasks: @new_tasks , processing_tasks: @processing_tasks, completed_tasks: @completed_tasks, pending_tasks: @pending_tasks, task_chart: @task_chart %>
+<div class="container profile">
+  <% breadcrumb :user, @user %>
+  <%= render "layouts/breadcrumbs" %>
+  <h1 class="my-3 text-center profile-title">
+    <% if @user == current_user %>
+      <i class="fa fa-user"></i> マイページ
+    <% else %>
+      <i class="fa fa-user"></i> ユーザー情報
+    <% end %>
+  </h1>
+  <div class="row mx-0">
+    <div class="col-lg-6 profile-content-left px-0">
+      <div class="card m-3">
+        <div class="card-body text-center">
+          <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", class: "user-img-lg" %>
+          <h3 class="mt-3"><%= @user.nickname %></h3>
+          <p class="profile-text"><%= link_to 'フォロー：' + (@user.followings.count).to_s, user_followings_path(@user.id) %>　<%= link_to 'フォロワー：' + (@user.followers.count).to_s, user_followers_path(@user) %></p>
+          <p class="profile-text px-5 mt-3 pb-3"><%= @user.biography %></p>
+           <% if @user == current_user %>
+            <%= link_to '過去の学習時間を確認する', user_learning_times_path(@user), class: "btn btn-outline-info profile-time-btn px-5 mt-2" %><br>
+            <%= link_to 'プロフィールを編集する', edit_user_path(current_user), class: "btn btn-outline-info profile-edit-btn px-5 mt-4" %><br>
+            <%= link_to '学習記録を確認する', learnings_path, class: "btn btn-outline-danger profile-learning-btn px-5 mt-4" %><br>
+            <%= link_to 'ToDoリストを確認する', tasks_path, class: "btn btn-outline-success profile-list-btn px-5 my-4" %><br>
+          <% end %>
         </div>
       </div>
     </div>
-    <div class="sidebar col-lg-4">
-      <%= render 'layouts/sidebar_top', my_today_study_time: @my_today_study_time, my_yesterday_study_time: @my_yesterday_study_time %>
-      <%= render 'layouts/sidebar_bottom', my_tasks: @my_tasks %>
+    <div class="col-lg-6 px-0">
+      <div class="card profile-content-right m-3">
+        <div class="card-body text-center">
+          <h3 class="mb-3">学習時間</h3>
+          <table border="1" width="80%" class="mx-auto mb-2 profile-table">
+            <tr>
+              <th>今日</th>
+              <th>昨日</th>
+              <th>過去1週間</th>
+              <th>過去1ヶ月</th>
+            </tr>
+              <tr>
+              <th><%= @user.learnings.today_study_time %> 時間</th>
+              <th><%= @user.learnings.yesterday_study_time %> 時間</th>
+              <th><%= @user.learnings.week_study_time %> 時間</th>
+              <th><%= @user.learnings.month_study_time %> 時間</th>
+            </tr>
+          </table>
+          <%= column_chart @learning_chart, label: "学習時間 ", width: "100%", id: 'learning_chart' %>
+          <h3 class="my-3">ToDoリスト</h3>
+          <table border="1" width="80%" class="mx-auto mb-2 profile-table">
+            <tr>
+              <th>未着手</th>
+              <th>処理中</th>
+              <th>完了済</th>
+              <th>保留中</th>
+            </tr>
+              <tr>
+              <th class="new-task"><%= @new_tasks %>件</th>
+              <th class="processing-task"><%= @processing_tasks %>件</th>
+              <th class="completed-task"><%= @completed_tasks %>件</th>
+              <th class="pending-task"><%= @pending_tasks %>件</th>
+            </tr>
+          </table>
+          <%= pie_chart @task_chart, colors: ["#FF3333","#FF9900","#005FFF","#00DD00"], donut: true, width: "100%", id: "task_chart" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

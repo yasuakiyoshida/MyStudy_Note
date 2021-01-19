@@ -1,25 +1,45 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+<div class="container">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header sign-header"><i class="fas fa-key"></i> パスワード変更画面</div>
+        <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: password_path, html: { method: :put }) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+            <%= f.hidden_field :reset_password_token %>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :password, '新しいパスワード' %>
+                <% if @minimum_password_length %>
+                  <span>（<%= @minimum_password_length %>文字以上）</span>
+                <% end %>
+                <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :password_confirmation, '新しいパスワードの確認' %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-10 offset-1 text-center">
+                <%= f.submit "パスワードを変更する", class: "btn btn-outline-dark px-5" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row mb-3 sign-btn">
+        <div class="col-8 offset-2 text-center">
+          <%= link_to 'ログインする', new_user_session_path, class: "btn btn-outline-primary px-5" %>
+        </div>
+      </div>
+      <div class="row mb-5 sign-btn">
+        <div class="col-8 offset-2 text-center">
+          <%= link_to '会員登録する', new_user_registration_path, class: "btn btn-outline-info px-5" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>

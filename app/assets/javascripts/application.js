@@ -20,3 +20,28 @@
 //= require Chart.bundle
 //= require_tree .
 /*global $ */
+
+// スライドショー
+$(document).on('turbolinks:load', function () {
+  $('.slick-wrapper').slick({
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 1200
+  });
+});
+
+// 画像プレビュー
+$(document).on('turbolinks:load', function () {
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      let reader = new FileReader();
+      reader.onload = function (e) {
+        $('.image-preview').attr('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('.image-field').change(function () {
+    readURL(this);
+  });
+});

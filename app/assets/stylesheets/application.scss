@@ -16,268 +16,313 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  font-family: 'Yusei Magic', 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
 }
 
-// ヘッダ、フッタ
-.header-top {
-  width: 100vw;
-  background: #FFF;
-  .container {
-    width: 100%;
-    .logo img {
-      width: 100px;
-      height: 100px;
-      margin: 10px 10px 10px 30px;
-    }
-    .header-ul .header-li span a {
-      padding: 15px;
-      font-size: 18px;
-      color: #000;
+// ヘッダー、フッター
+.header-main, // ログイン前
+.user-header-main .user-header-top, // ログイン後ヘッダー上部
+.user-header-main .user-header-content { // ログイン後ハンバーガーメニュー
+  background-image: image-url('header-image.jpg');
+  background-color: rgba(255,255,255,0.3);
+  background-blend-mode: lighten;
+  background-size: cover;
+  background-position: center;
+  border-bottom: solid 2px #CD853F;
+}
+.header-main .navbar-brand a,
+.user-header-main .navbar-brand a,
+.user-header-content .navbar-brand a {
+  font-size: 26px;
+  color: #512700;
+  text-shadow: 2px 2px 3px #00AA00;
+  text-decoration: none;
+  font-weight: 900;
+  font-family: 'Comic Sans MS', sans-serif;
+}
+.header-main .navbar-brand a img,
+.user-header-main .navbar-brand a img,
+.user-header-content .navbar-brand a img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+.header-main .navbar-nav .nav-item a,
+.user-header-main .navbar-nav .nav-item a,
+.user-header-content .navbar-nav .nav-item a {
+  color: #512700;
+  font-weight: 600;
+  font-size: 18px;
+}
+.user-header-content .navbar-nav .nav-bottom a,
+.user-header-content .navbar-nav .nav-bottom h4 {
+  color: #156A15;
+}
+.header-main .navbar-toggler,
+.user-header-main .navbar-toggler,
+.user-header-content .navbar-toggler {
+  border-color: #512700;
+}
+.header-main .navbar-toggler-icon,
+.user-header-main .navbar-toggler-icon,
+.user-header-content .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(81,39,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+// ログイン後ヘッダー下部
+.user-header-bottom nav .navbar-collapse {
+  background: linear-gradient(#F4EDE6, #DEC8B1);
+  border-bottom: solid 2px #CD853F;
+  padding: 1rem;
+  .navbar-nav .navbar-nav .nav-item a {
+    color: #156A15;
+    text-decoration: none;
+    font-size: 16px;
+  }
+}
+// 管理者ヘッダー
+.admin-header-main {
+  background: #222;
+  border-bottom: solid 2px #808080;
+  nav .container {
+    .navbar-brand a {
+      font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+      font-size: 24px;
+      color: #FFF;
       text-decoration: none;
+    }
+    .navbar-toggler {
+      border-color: #FFF;
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+      }
+    }
+    .navbar-collapse ul li a {
+      font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
     }
   }
 }
-.header-bottom {
-  width: 100vw;
-  height: 70px;
-  background: linear-gradient(#3E3E3B, #98878F);
-  line-height: 70px;
-  span {
-    padding: 20px;
-    a {
-      color: #FFF;
-      font-size: 14px;
-      text-decoration: none;
-    }
-    i {
-      color: #FFF;
-    }
-  }
-}
-
-// フッタ下部固定
+// フッター下部固定
 .body,
 #wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-footer {
-  margin-top: auto;
-  width: 100vw;
-  background: #000;
-}
-
-// サイドバー
-.sidebar {
-  .sidebar-header {
-    background: linear-gradient(#000, #C0C0C0);
-    font-size: 20px;
-    color: #FFF;
-  }
-  .card-body {
-    .row .col-lg-12 a img {
-      width: 25%;
-      padding: 0.2em;
-      border-radius: 50%;
-      border: dashed 3px #98878F;
-    }
-    .row .current-user-name a {
-      font-size: 20px;
-      color: #000;
-      text-decoration: none;
-    }
-    .row .my-study-time {
-      padding: 10px 0;
-      border-top: dashed 2px #98878F;
-      border-bottom: dashed 2px #98878F;
-      .fa-clock {
-        color: #94618E;
-      }
-    }
-  }
-  .sidebar-bottom {
-    background: linear-gradient(#3E3E3B, #98878F);
-    font-size: 20px;
-    color: #FFF;
-  }
-  ul .list-group-item {
-    background: #EBECED;
-    a { 
-      text-decoration: none;
-    }
-  }
-  .row .col-lg-12 small a {
-    text-decoration: none;
+  footer {
+    margin-top: auto;
+    color: #512700;
   }
 }
-
+// 管理者フッター
+.admin-footer p {
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+}
 // 共通
 #wrapper {
-  background: #CBC5C1;
-}
-.sign-header {
-  background: linear-gradient(#3E3E3B, #98878F);
-  padding-left: 80px;
-  font-size: 20px;
-  color: #FFF;
+  background: #F4EDE6;
 }
 .card-body a {
   text-decoration: none;
 }
-.card-body,
-.card-img-top {
-  background: #EBECED;
+// 新規登録・ログイン
+.sign-header {
+  background: linear-gradient(#1E90FF, #2C7CFF);
+  padding-left: 80px;
+  font-size: 20px;
+  color: #FFF;
 }
-
+.sign-btn div .btn {
+  width: 300px;
+}
+// 管理者ログイン
+.admin-header,
+.admin-title,
+.admin-search-form,
+.admin-search-btn,
+.admin-search-label {
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+}
+.admin {
+  label,
+  .form-control,
+  small,
+  a,
+  input,
+  span,
+  p {
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+}
 // ボタン
 .btn {
   color: #FFF;
 }
 .btn-outline-success {
-  background-color: #626E60;
+  background-color: #00CC00;
 }
 .btn-outline-primary {
-  background-color: #494E6B;
+  background-color: #0000FF;
 }
 .btn-outline-info {
-  background-color: #8EAEBD;
+  background-color: #00BFFF;
 }
 .btn-outline-danger {
-  background-color: #985E6D;
+  background-color: #CC0000;
 }
-
-// user系
-.user-header {
-  background: linear-gradient( #192231, #494E68);
-  font-size: 20px;
-  color: #FFF;
+.btn-outline-dark {
+  background-color: #999;
 }
-.user-img-lg {
-  width: 15%;
-  padding: 0.2em;
-  border-radius: 50%;
-  border: dashed 3px #98878F;
+.btn-outline-light {
+  color: #000;
+  background-color: #E9E9E9;
+  border-color: #7F7F7F;
 }
-.user-name-lg a {
-  color: #192231;
-  font-size: 24px;
-  text-decoration: none;
+// leaning_times
+.date-period-select {
+  border: solid 1px #009900;
+  background: #33CC66;
 }
-.user-text {
-  position: relative;
-  padding: 0.25em 0;
+// コメント
+.user-comment {
+  .fa-comment {
+    color: #FF6633;
+  }
+  div, small {
+    color: #512700;
+  }
+  .comment-delete {
+    border-bottom: solid 1px #512700;
+  }
 }
-.user-text:after {
-  content: "";
-  display: block;
-  height: 4px;
-  background: -webkit-linear-gradient(to right, rgb(25, 34, 49), transparent);
-  background: linear-gradient(to right, rgb(25, 34, 49), transparent);
-}
-.card .learnings-header {
-  background: #494E6B;
-  height: 32px;
+// いいね
+.favorite {
   a {
-    font-size: 16px;
     text-decoration: none;
   }
-}
-.header-sm,
-#task_chart,
-#learning_chart,
-.list-none {
-  background: #EBECED;
-}
-
-// task系
-.list-header {
-  background: linear-gradient( #985E6D, #8F324A);
-  font-size: 20px;
-  color: #FFF;
-}
-.list-text {
-  background: #EBBFC5;
-  box-shadow: 0px 0px 0px 5px #EBBFC5;
-  border: dashed 1px #985E6D;
-  padding: 0.2em 0.5em;
-  color: #454545;
-}
-.list-status span {
-  font-size: 20px;
-  color: #985E6D;
-}
-.task-group {
-  position: relative;
-  li {
-    background: #EBECED;
-    a {
-      text-decoration: none;
-    }
-  }
-  .task-btn {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    .edit-btn {
-      border: 2px solid #6495ED;
-      border-radius: 100vh;
-    }
-    .delete-btn {
-      border: 2px solid #b84c00;
-      border-radius: 100vh;
-    }
+  .heart {
+    color: #FF3300;
   }
 }
-
-// learning系
-.learning-header {
-  background: linear-gradient(#000, #C0C0C0);
-  font-size: 20px;
+// 検索
+.admin-search-form,
+.search-form {
+  width: 400px;
+}
+.task-search-form {
+  width: 300px;
+}
+.search-button {
+  border-color : #00AA00;
+  background: #00CC00;
   color: #FFF;
 }
-.learning-text {
-  background: #CCC;
-  box-shadow: 0px 0px 0px 5px #CCC;
-  border: dashed 1px #000;
-  padding: 0.2em 0.5em;
-}
-.user-img {
-  width: 10%;
-  padding: 0.2em;
-  border-radius: 50%;
-  border: dashed 3px #98878F;
-}
-.user-name a {
-  color: #192231;
-  font-size: 16px;
+// タグ
+.tag {
+  border-radius: 25px;
+  font-size: 14px;
+  color: #FFF;
   text-decoration: none;
 }
-
-// leaning_times
-.learning-time-header {
-  background: linear-gradient(#3A614F, #BABEA5);
-  font-size: 20px;
+.learning-tag {
+  border: solid 1px #009900;
+  background: #00CC00;
+}
+.task-tag {
+  border: solid 1px #AA5500;
+  background: #FF8000;
+}
+.admin-learning-tag {
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  border: solid 1px #009900;
+  border-radius: 25px;
+  font-size: 14px;
   color: #FFF;
+  background: #00CC00;
+  text-decoration: none;
 }
-
-// コメント
-.comment-header {
-  background: #DDD;
+// ページング
+.pagination {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
 }
-
-// いいね
-.heart {
-  color: #94618E;
+.page-item.active .page-link {
+  border: 1px solid #512700;
+  background: #512700;
 }
-
-// 検索
-.search-form {
-  background: #EBECED;
+.page-item .page-link {
+  border: 1px solid #512700;
+  color: #512700;
+}
+.admin-paginate {
+  .pagination, .page-item.active .page-link, .page-item .page-link {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+}
+// エラーメッセージ
+#error_explanation {
+  text-align: center;
+  background: #FADBDA;
+  border: solid 1px red;
+  color: red;
+  h3 {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+  ul li {
+    list-style: none;
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+}
+// フラッシュメッセージ
+.notifications {
+  color: #FFF;
+  text-align: center;
+  .notice, .alert {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 0;
+  }
+  .notice {
+    background-color: #4689FF;
+  }
+  .alert {
+    background-color: #FF6633;
+  }
+}
+// 画像プレビュー
+.learning-image {
+  width: 250px;
+}
+.user-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.image-preview:hover {
+  cursor: pointer; 
+  opacity: 0.7;
+  transform: scale(1.01, 1.01);
+}
+// パンくずリスト
+.breadcrumbs {
+  color: #512700;
+  font-size: 15px;
+  padding: 10px 0;
+  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  span {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+  a {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+    text-decoration: none;
+    color: #512700;
+  }
 }

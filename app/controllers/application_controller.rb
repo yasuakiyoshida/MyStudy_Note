@@ -1,13 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
-  def set_sidebar_base_data
-    @my_today_study_time = current_user.learnings.today_study_time
-    @my_yesterday_study_time = current_user.learnings.yesterday_study_time
-    @my_tasks = current_user.tasks.limit(5).order("due")
-  end
   
   protected
   

@@ -1,7 +1,6 @@
 class Public::LearningsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_sidebar_base_data, only: [:new, :index, :show, :edit, :search]
   before_action :set_learning_search, only: [:index, :search]
   
   def new
@@ -11,13 +10,12 @@ class Public::LearningsController < ApplicationController
   def index
     @learnings = current_user.learnings.page(params[:page]).reverse_order.per(8)
     if params[:tag_name]
-      @learnings = Learning.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order.per(8)
+      @learnings = current_user.learnings.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order.per(8)
     end
   end
 
   def show
     @learning = Learning.find(params[:id])
-    @user = @learning.user
     @learning_comment = LearningComment.new
     @learning_comments = @learning.learning_comments.page(params[:page]).per(5)
   end
@@ -29,30 +27,25 @@ class Public::LearningsController < ApplicationController
     @learning = Learning.new(learning_params)
     @learning.user_id = current_user.id
     if @learning.save
-      redirect_to learning_path(@learning)
+      redirect_to learning_path(@learning), notice: "学習内容を記録しました"
     else
-      set_sidebar_base_data
       render :new
     end
   end
   
   def update
     if @learning.update(learning_params)
-      redirect_to learning_path(@learning)
+      redirect_to learning_path(@learning), notice: "学習記録を更新しました"
     else
-      set_sidebar_base_data
       render :edit
     end
   end
   
   def destroy
     @learning.destroy
-    redirect_to learnings_path
+    redirect_to learnings_path, notice: "学習記録を削除しました"
   end
   
-  def search
-  end
-
   private
 
   def learning_params
@@ -67,7 +60,7 @@ class Public::LearningsController < ApplicationController
   end
   
   def set_learning_search
-    @search = Learning.ransack(params[:q])
+    @search = current_user.learnings.ransack(params[:q])
     @learning_search = @search.result.page(params[:page]).reverse_order.per(8)
   end
 end

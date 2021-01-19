@@ -1,3 +1,39 @@
 // Place all the styles related to the admins::learnings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// admins/learnings/index
+.admin-learning-card .card-body {
+  border-top: 10px solid #CC0000;
+  .admin-learning-table {
+    table-layout: fixed;
+    thead tr th {
+      font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+      border: 1px solid #A9A9A9;
+      border-bottom: 3px double #A9A9A9;
+    }
+    tbody tr td {
+      font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+      border: 1px solid #A9A9A9;
+      a, .btn, p {
+        font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+      }
+    }
+  }
+}
+// admins/learnings/show
+.admin-show-title {
+  h2 {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+  .row .col-7 .admin-show-table {
+    table-layout: fixed;
+    tbody th, tbody td {
+      border: none;
+      font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+    }
+    tbody a.admin-learning-tag {
+      text-decoration: none;
+    }
+  }
+}

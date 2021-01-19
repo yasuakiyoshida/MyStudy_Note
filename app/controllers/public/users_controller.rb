@@ -1,7 +1,6 @@
 class Public::UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :set_sidebar_base_data, only: [:index, :show, :edit, :search]
   before_action :set_user_search, only: [:index, :search]
   
   def index
@@ -15,10 +14,12 @@ class Public::UsersController < ApplicationController
     @completed_tasks = @user.tasks.where(progress_status: 2).count
     @pending_tasks = @user.tasks.where(progress_status: 3).count
     @task_chart = { '未着手' => @new_tasks, '処理中' => @processing_tasks, '完了済' => @completed_tasks, '保留中' => @pending_tasks }
-    @today_study_time = @user.learnings.today_study_time
-    @week_study_time = @user.learnings.week_study_time
-    @month_study_time = @user.learnings.month_study_time
-    @learning_chart = {'今日' => @today_study_time, '過去一週間' => @week_study_time, '過去1ヶ月' => @month_study_time }
+    @learning_chart = {
+      '今日' => @user.learnings.today_study_time,
+      '昨日' => @user.learnings.yesterday_study_time,
+      '過去一週間' => @user.learnings.week_study_time,
+      '過去1ヶ月' => @user.learnings.month_study_time
+      }
   end
   
   def edit
@@ -26,14 +27,10 @@ class Public::UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: '登録情報を変更しました'
     else
-      set_sidebar_base_data
       render :edit
     end
-  end
-  
-  def search
   end
   
   private

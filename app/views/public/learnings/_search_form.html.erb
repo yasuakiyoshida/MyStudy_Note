@@ -1,4 +1,6 @@
-<%= search_form_for search, url: search_learnings_path do |f| %>
-  <%= f.search_field :title_or_detail_cont, class: "search", placeholder: '学習記録を検索' %>
-  <%= f.submit '検索', class: "search-btn p-1" %>
-<% end %>
+<div class="search-field text-center my-2">
+  <%= search_form_for search, url: search_learnings_path do |f| %>
+    <%= f.search_field :title_or_detail_cont, required: true, class: "search-form p-1", placeholder: '学習記録を検索' %>
+    <%= f.submit '検索', class: "search-button p-1" %>
+  <% end %>
+</div>

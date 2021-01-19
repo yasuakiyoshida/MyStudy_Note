@@ -1,16 +1,37 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">　
+  <% breadcrumb :new_password %>
+  <%= render "layouts/breadcrumbs" %>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header sign-header"><i class="fas fa-key"></i> パスワード再設定</div>
+        <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: password_path, html: { method: :post }) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :email, 'メールアドレス' %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '登録中のメールアドレスを入力してください', class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1 text-center">
+                <%= f.submit "送信する", class: "btn btn-outline-dark px-5" %>
+              </div>
+            </div>
+          <% end %>  
+        </div>
+      </div>
+      <div class="row mb-3 sign-btn">
+        <div class="col-8 offset-2 text-center">
+          <%= link_to 'ログインする', new_user_session_path, class: "btn btn-outline-primary px-5" %>
+        </div>
+      </div>
+      <div class="row mb-5 sign-btn">
+        <div class="col-8 offset-2 text-center">
+          <%= link_to '会員登録する', new_user_registration_path, class: "btn btn-outline-info px-5" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>

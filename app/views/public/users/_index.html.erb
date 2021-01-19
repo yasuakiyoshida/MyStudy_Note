@@ -1,17 +1,37 @@
-<table>
-  <thead>
-    <tr>
-      <th>プロフィール画像</th>
-      <th>ニックネーム</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="row user-list-content">
+  <div class="col-10 offset-1">
     <% users.each do |user| %>
-      <tr>
-        <td><%= attachment_image_tag user, :image, format: "jpeg", fallback: "no_image.jpg" %></td>
-        <td><%= user.nickname %></td>
-      </tr>
+      <div class="card mb-1 mx-auto">
+        <div class="row no-gutters p-2">
+          <div class="col-4 d-flex align-items-center justify-content-end">
+            <%= link_to user_path(user.id) do %>
+              <%= attachment_image_tag user, :image, format: "jpeg", fallback: "user-no-img-min.jpg" %>
+            <% end %>
+          </div>
+          <div class="col-8 p-1">
+            <div class="card-body p-1">
+              <h4 class="user-name"><%= link_to user.nickname, user_path(user.id) %></h4>
+              <p class="card-text my-1"><i class="far fa-clock"></i> 今日の学習時間：<%= user.learnings.today_study_time %> 時間</p>
+              <p class="card-text my-1">
+                <%= link_to 'フォロー：' + (user.followings.count).to_s, user_followings_path(user.id) %>　<%= link_to 'フォロワー：' + (user.followers.count).to_s, user_followers_path(user) %>　
+                <% if current_user != user %>
+                  <% if current_user.following?(user) %>
+                    <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-sm btn-outline-primary text-light" %>
+                  <% else %>
+                    <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-sm btn-outline-success text-light" %>
+                  <% end %>
+                <% end %>
+              </p>
+              <p class="card-text">
+                <% if user.biography.present? %>
+                  <%= user.biography.truncate(50) %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
     <%= paginate users %>
-  </tbody>
-</table>
+  </div>
+</div>

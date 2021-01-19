@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-airbnb'
+  gem 'brakeman', require: false
 end
 
 group :test do
@@ -77,3 +78,8 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+gem 'gretel'
+gem 'rack-attack'

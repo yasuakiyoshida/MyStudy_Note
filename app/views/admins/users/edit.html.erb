@@ -1,1 +1,49 @@
-admin/users/edit
+<div class="container admin">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <div class="card mx-auto my-5 shadow-lg">
+        <div class="card-header admin-header">　<%= @user.nickname %>さんの会員情報編集</div>
+        <div class="card-body">
+          <%= form_with model: @user, url: admins_user_path(@user), method: :patch, local:true do |f| %>
+          <%= render 'layouts/errors', obj: @user %>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :nickname, 'ニックネーム（2〜10文字の範囲）' %>
+                <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :biography, '自己紹介' %>
+                <%= f.text_area :biography, size: "20x10", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :image, 'プロフィール画像選択' %><br>
+                <%= f.file_field :image, class: "image-field", style: "display:none;" %>
+                <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", onClick: "$('.image-field').click()", class: "user-image img-thumbnail img-responsive center-block image-preview" %>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-10 offset-1">
+                <%= f.label :email, 'メールアドレス' %>
+                <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-10 offset-1 text-center">
+                <%= f.submit '更新する', class: "btn btn-outline-primary px-5" %>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-10 offset-1 text-center">
+                <%= link_to '削除する', admins_user_path(@user.id), method: :delete, "data-confirm" => "#{@user.nickname}さんを削除しますか？", class: "btn btn-outline-danger px-5" %>
+              </div>
+            </div>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

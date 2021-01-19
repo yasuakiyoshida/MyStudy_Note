@@ -1,0 +1,6 @@
+<div class="container">
+  <% breadcrumb :followers_user, @user %>
+  <%= render "layouts/breadcrumbs" %>
+  <h1 class="my-3 text-center user-list-title"><i class="fas fa-users"></i></i> <%= @user.nickname %>さんのフォロワー</h1>
+  <%= render 'public/users/index', users: @users %>
+</div>

@@ -1,3 +1,40 @@
 // Place all the styles related to the public::learnings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// public/learnings/new,edit
+.learning-header {
+  background: linear-gradient(#8D1D55, #AAAA00);
+  font-size: 20px;
+  color: #FFF;
+}
+// public/learnings/show
+.learning-title {
+  color: #512700;
+  text-shadow: 0px 0px 20px #AAAA00;
+}
+.show-table {
+  table-layout: fixed;
+  tbody th, tbody td {
+    font-size: 18px;
+    border: none;
+    color: #512700;
+  }
+  .user-info th, .user-info td {
+    vertical-align: baseline;
+  }
+  .learning-tag,
+  tr td a {
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .user-img a {
+    text-decoration: none;
+    color: #512700;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+}
