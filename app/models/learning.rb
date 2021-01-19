@@ -10,18 +10,30 @@ class Learning < ApplicationRecord
   validates :date, presence: true
   validates :time, presence: true, numericality: {less_than_or_equal_to: 24, greater_than: 0}
   validate :date_cannot_be_in_the_future
-  validate :total_time_cannot_exceed_24_hours
+  validate :total_time_cannot_exceed_24_hours ,on: :create
+  # validate :total_time_cannot_exceed_24_hours_for_edit ,on: :update
 
   def one_day_time_sum(date)
     Learning.where(date: date).sum(:time)
   end
-  
+
+  # learning_idがとれない
+  # def one_day_time_sum_unless_target_date(date)
+  #   Learning.where(date: date).sum(:time) - Learning.where(date: date).find_by(id: learning.id)[:time]
+  # end
+
   def total_time_cannot_exceed_24_hours
     if date.presence && time.presence && one_day_time_sum(date) + time > 24.0
       errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が24時間を超えています")
     end
   end
-  
+
+  def total_time_cannot_exceed_24_hours_for_edit
+    if date.presence && time.presence && one_day_time_sum_unless_target_date(date) + time > 24.0
+      errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が24時間を超えています")
+    end
+  end
+
   def date_cannot_be_in_the_future
     if date.presence && date > Date.today
       errors.add(:date, "に未来の日付を設定することはできません")

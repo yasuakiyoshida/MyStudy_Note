@@ -1,5 +1,7 @@
 <div class="container">
-  <h1 class="my-3 text-center task-title"><i class="fa fa-list-alt"></i> <%= current_user.nickname %>さんのToDoリスト一覧検索結果</h1>
+  <% breadcrumb :search_tasks, @task_search %>
+  <%= render "layouts/breadcrumbs" %>
+  <h1 class="my-3 text-center task-title"><i class="fa fa-list-alt"></i> ToDoリスト検索結果</h1>
   <%= render 'public/tasks/search_form', search: @search %>
   <%= render 'public/tasks/index', tasks: @task_search %>
 </div>
