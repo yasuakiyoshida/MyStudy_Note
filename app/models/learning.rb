@@ -8,13 +8,13 @@ class Learning < ApplicationRecord
 
   validates :title, presence: true
   validates :date, presence: true
-  validates :time, presence: true, numericality: {less_than_or_equal_to: 24, greater_than: 0}
+  validates :time, presence: true, numericality: { less_than_or_equal_to: 24, greater_than: 0 }
   validate :date_cannot_be_in_the_future
-  validate :total_time_cannot_exceed_limit_time ,on: :create
-  validate :total_time_cannot_exceed_limit_time_for_edit ,on: :update
-  
+  validate :total_time_cannot_exceed_limit_time, on: :create
+  validate :total_time_cannot_exceed_limit_time_for_edit, on: :update
+
   LIMIT_TIME_HOUR = 24
-  
+
   def one_day_time_sum(date)
     user.learnings.where(date: date).sum(:time)
   end
@@ -46,27 +46,27 @@ class Learning < ApplicationRecord
   end
 
   def self.today_study_time
-    today_learnings = self.where(date: Date.today)
-    self.learning_time_sum(today_learnings)
+    today_learnings = where(date: Date.today)
+    learning_time_sum(today_learnings)
   end
 
   def self.yesterday_study_time
-    yesterday_learnings = self.where(date: Date.yesterday)
-    self.learning_time_sum(yesterday_learnings)
+    yesterday_learnings = where(date: Date.yesterday)
+    learning_time_sum(yesterday_learnings)
   end
 
   def self.week_study_time
     to = Time.current
     from = (to - 6.day).at_beginning_of_day
-    week_learnings = self.where(date: from...to)
-    self.learning_time_sum(week_learnings)
+    week_learnings = where(date: from...to)
+    learning_time_sum(week_learnings)
   end
 
   def self.month_study_time
     to = Time.current
     from = (1.month.ago + 1.day).at_beginning_of_day
-    month_learnings = self.where(date: from...to)
-    self.learning_time_sum(month_learnings)
+    month_learnings = where(date: from...to)
+    learning_time_sum(month_learnings)
   end
 
   def self.learning_time_sum(date_ranges)
@@ -89,10 +89,10 @@ class Learning < ApplicationRecord
     end_date = Time.current
     dates = {}
     (start_date.to_date...end_date.to_date).each do |date|
-      learnings = self.where(date: date)
-      sum_times = self.learning_time_sum(learnings)
+      learnings = where(date: date)
+      sum_times = learning_time_sum(learnings)
       dates.store(date.to_s, sum_times)
     end
-    return dates
+    dates
   end
 end
