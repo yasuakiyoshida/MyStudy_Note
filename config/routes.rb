@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post 'admins/sign_in' => 'devise/sessions#create', as: :admin_session
     delete 'admins/sign_out' => 'devise/sessions#destroy', as: :destroy_admin_session
   end
-  
+
   devise_for :users, skip: :all
   devise_scope :user do
     get 'password' => 'public/passwords#new'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get 'sign_up' => 'public/registrations#new', as: :new_user_registration
     post 'sign_up' => 'public/registrations#create', as: :user_registration
   end
-  
+
   scope module: :public do
     root 'homes#top'
     get 'common_learnings' => 'homes#common_learnings'
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       get :search, on: :collection
     end
   end
-  
+
   namespace :admins do
     resources :users, except: [:new, :create] do
       get :search, on: :collection

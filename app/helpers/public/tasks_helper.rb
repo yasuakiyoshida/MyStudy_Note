@@ -10,7 +10,7 @@ module Public::TasksHelper
       progress_status.gsub(progress_status, "pending-task")
     end
   end
-  
+
   def add_class_name_priority_bg_color(priority_status)
     if priority_status == '高'
       priority_status.gsub(priority_status, "high-priority")
@@ -20,7 +20,7 @@ module Public::TasksHelper
       priority_status.gsub(priority_status, "low-priority")
     end
   end
-  
+
   def add_class_name_priority_text_color(priority_status)
     if priority_status == '高'
       priority_status.gsub(priority_status, "text-danger")
