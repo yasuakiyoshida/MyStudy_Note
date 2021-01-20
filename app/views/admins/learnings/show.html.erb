@@ -1,10 +1,10 @@
 <div class="container admin admin-show-title">
   <h2 class="my-4"><%= @learning.title %>の学習記録詳細</h2>
   <div class="row">
-    <div class="col-4">
-      <%= attachment_image_tag @learning, :image, size:'300x200', format: "jpeg", fallback: "no_image.jpg", class: "w-75" %>
+    <div class="col-lg-4 text-center">
+      <%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg", class: "learning-image img-responsive center-block" %>
     </div>
-    <div class="col-7">
+    <div class="col-lg-8">
       <table class="table admin-show-table">
         <tbody>
           <tr>
