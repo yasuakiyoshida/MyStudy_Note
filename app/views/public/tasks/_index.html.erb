@@ -1,7 +1,7 @@
 <div class="row">
   <% tasks.each.with_index(1) do |task, index| %>
-    <div class="col-8 offset-2">
-      <div class="card-body m-1 task-content <%= add_class_name_priority_bg_color(task.priority_status) %>">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card-body m-1 task-content <%= add_class_name_priority_bg_color(task.priority_status) %> <%= add_class_name_progress(task.progress_status) + '-content' %>">
         <small class="<%= "text-danger" if task.due < Time.now %> card-text">期限：<%= task.due.strftime("%Y年%m月%d日 %H:%M") %><%= "　＊期限が過ぎています" if task.due < Time.now %></small></br>
         <h4 class="card-title my-2"><%= link_to "#{index}. " + task.title, task_path(task.id) %></br></h4>
         <small class="card-text my-1">優先度：<span class="<%= add_class_name_priority_text_color(task.priority_status) %>"><%= task.priority_status %></span><span class="mx-3">進捗度：<span class="<%= add_class_name_progress(task.progress_status) %>"><%= task.progress_status %></span></span></small></br>

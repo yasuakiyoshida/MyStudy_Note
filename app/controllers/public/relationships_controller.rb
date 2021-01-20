@@ -1,5 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:followings, :followers]
 
   def create
     current_user.follow(params[:user_id])
@@ -12,12 +13,15 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def followings
-    @user = User.find(params[:user_id])
     @users = @user.followings.page(params[:page]).per(8)
   end
 
   def followers
-    @user = User.find(params[:user_id])
     @users = @user.followers.page(params[:page]).per(8)
+  end
+
+  private
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end
