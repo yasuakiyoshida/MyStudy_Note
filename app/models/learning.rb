@@ -8,28 +8,29 @@ class Learning < ApplicationRecord
 
   validates :title, presence: true
   validates :date, presence: true
-  validates :time, presence: true, numericality: {less_than_or_equal_to: 24, greater_than: 0}
+  validates :time, presence: true, numericality: { less_than_or_equal_to: 24, greater_than: 0 }
   validate :date_cannot_be_in_the_future
-  validate :total_time_cannot_exceed_24_hours ,on: :create
-  # validate :total_time_cannot_exceed_24_hours_for_edit ,on: :update
+  validate :total_time_cannot_exceed_limit_time, on: :create
+  validate :total_time_cannot_exceed_limit_time_for_edit, on: :update
+
+  LIMIT_TIME_HOUR = 24
 
   def one_day_time_sum(date)
-    Learning.where(date: date).sum(:time)
+    user.learnings.where(date: date).sum(:time)
   end
 
-  # learning_idがとれない
-  # def one_day_time_sum_unless_target_date(date)
-  #   Learning.where(date: date).sum(:time) - Learning.where(date: date).find_by(id: learning.id)[:time]
-  # end
+  def one_day_time_sum_unless_target_date(date)
+    user.learnings.where(date: date).where.not(id: id).sum(:time)
+  end
 
-  def total_time_cannot_exceed_24_hours
-    if date.presence && time.presence && one_day_time_sum(date) + time > 24.0
+  def total_time_cannot_exceed_limit_time
+    if date.presence && time.presence && one_day_time_sum(date) + time > LIMIT_TIME_HOUR
       errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が24時間を超えています")
     end
   end
 
-  def total_time_cannot_exceed_24_hours_for_edit
-    if date.presence && time.presence && one_day_time_sum_unless_target_date(date) + time > 24.0
+  def total_time_cannot_exceed_limit_time_for_edit
+    if date.presence && time.presence && one_day_time_sum_unless_target_date(date) + time > LIMIT_TIME_HOUR
       errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が24時間を超えています")
     end
   end
@@ -45,27 +46,27 @@ class Learning < ApplicationRecord
   end
 
   def self.today_study_time
-    today_learnings = self.where(date: Date.today)
-    self.learning_time_sum(today_learnings)
+    today_learnings = where(date: Date.today)
+    learning_time_sum(today_learnings)
   end
 
   def self.yesterday_study_time
-    yesterday_learnings = self.where(date: Date.yesterday)
-    self.learning_time_sum(yesterday_learnings)
+    yesterday_learnings = where(date: Date.yesterday)
+    learning_time_sum(yesterday_learnings)
   end
 
   def self.week_study_time
     to = Time.current
     from = (to - 6.day).at_beginning_of_day
-    week_learnings = self.where(date: from...to)
-    self.learning_time_sum(week_learnings)
+    week_learnings = where(date: from...to)
+    learning_time_sum(week_learnings)
   end
 
   def self.month_study_time
     to = Time.current
     from = (1.month.ago + 1.day).at_beginning_of_day
-    month_learnings = self.where(date: from...to)
-    self.learning_time_sum(month_learnings)
+    month_learnings = where(date: from...to)
+    learning_time_sum(month_learnings)
   end
 
   def self.learning_time_sum(date_ranges)
@@ -88,10 +89,10 @@ class Learning < ApplicationRecord
     end_date = Time.current
     dates = {}
     (start_date.to_date...end_date.to_date).each do |date|
-      learnings = self.where(date: date)
-      sum_times = self.learning_time_sum(learnings)
+      learnings = where(date: date)
+      sum_times = learning_time_sum(learnings)
       dates.store(date.to_s, sum_times)
     end
-    return dates
+    dates
   end
 end

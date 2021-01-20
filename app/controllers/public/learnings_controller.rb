@@ -2,7 +2,7 @@ class Public::LearningsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :set_learning_search, only: [:index, :search]
-  
+
   def new
     @learning = Learning.new
   end
@@ -32,7 +32,7 @@ class Public::LearningsController < ApplicationController
       render :new
     end
   end
-  
+
   def update
     if @learning.update(learning_params)
       redirect_to learning_path(@learning), notice: "学習記録を更新しました"
@@ -40,12 +40,12 @@ class Public::LearningsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @learning.destroy
     redirect_to learnings_path, notice: "学習記録を削除しました"
   end
-  
+
   private
 
   def learning_params
@@ -58,7 +58,7 @@ class Public::LearningsController < ApplicationController
       redirect_to learning_path(@learning)
     end
   end
-  
+
   def set_learning_search
     @search = current_user.learnings.ransack(params[:q])
     @learning_search = @search.result.page(params[:page]).reverse_order.per(8)
