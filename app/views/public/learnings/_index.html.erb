@@ -1,13 +1,13 @@
 <% learnings.each do |learning| %>
   <div class="card mb-3 mx-auto">
     <div class="row no-gutters p-2 bg-white">
-      <div class="col-6 d-flex align-items-center justify-content-center">
+      <div class="col-lg-6 d-flex align-items-center justify-content-center">
         <%= link_to learning_path(learning.id), class: "image-link-border" do %>
-          <%= attachment_image_tag learning, :image, format: "jpeg", fallback: "no_image.jpg" %>
+          <%= attachment_image_tag learning, :image, format: "jpeg", fallback: "no_image.jpg", class: "learning-image img-responsive center-block"  %>
         <% end %>
       </div>
-      <div class="col-6">
-        <div class="card-body p-2">
+      <div class="col-lg-6 d-flex align-items-center">
+        <div class="card-body text-center text-lg-left p-2">
           <small class="card-text">学習日：<%= learning.date.strftime("%Y年%m月%d日") %></small>
           <h4 class="card-title my-2 pb-1"><%= link_to learning.title, learning_path(learning.id) %></h4>
           <p class="card-text my-1">学習時間：<i class="far fa-clock"></i><%= learning.time %>時間</p>

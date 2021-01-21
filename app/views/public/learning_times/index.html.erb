@@ -3,12 +3,12 @@
   <%= render "layouts/breadcrumbs" %>
   <h1 class="my-3 text-center learning-title"><i class="fas fa-user-clock"></i> <%= current_user.nickname %>さんの学習時間</h1>
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-lg-10 offset-lg-1">
       <div class="card-body">
         <div class="row">
           <span class="col-6 mb-3">
-            <div><i class="far fa-clock"></i> 合計：<%= sum_times %> 時間</div>
-            <div>（<%= to_minute %> 分）</div>
+            <div><i class="far fa-clock"></i> 合計：<%= sum_times(@chart) %> 時間</div>
+            <div>（<%= to_minute(@chart) %> 分）</div>
           </span>
           <span class="dropdown col-6 mb-3 text-right">
             <button class="btn dropdown-toggle date-period-select" type="button" id="dropdown_menu_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
