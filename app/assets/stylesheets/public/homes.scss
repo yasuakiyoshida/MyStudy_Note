@@ -2,88 +2,51 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main-visual-content {
-  position: relative;
-  .mv-title {
-    padding: 0;
-    text-align: center;
-    font-size: 64px;
-    color: #FAFAFA;
-    text-shadow: black 1px 1px 0px, black -1px 1px 0px, black 1px -1px 0px, black -1px -1px 0px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    .mv-text {
-      padding-top: 10px;
+.container-field {
+  width: 98%;
+  margin: 0 auto;
+  .main-visual-content {
+    position: relative;
+    .mv-title {
+      padding: 0;
       text-align: center;
-      font-size: 24px;
+      font-size: 6vw;
       color: #FAFAFA;
       text-shadow: black 1px 1px 0px, black -1px 1px 0px, black 1px -1px 0px, black -1px -1px 0px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      .mv-text {
+        padding-top: 10px;
+        text-align: center;
+        font-size: 2vw;
+        color: #FAFAFA;
+        text-shadow: black 1px 1px 0px, black -1px 1px 0px, black 1px -1px 0px, black -1px -1px 0px;
+      }
     }
-  }
-  .slick-wrapper {
-    margin: 0 auto;
-    width: 95%;
-    .main-visual {
-      height: 700px;
-    }
-    .main-visual1 {
-      background-image: image-url('main-visual1.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .main-visual2 {
-      background-image: image-url('main-visual2.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .main-visual3 {
-      background-image: image-url('main-visual3.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-  }
-}
-.top-content {
-  text-align: center;
-  width: 80%;
-  margin: 0 auto;
-  color: #512700;
-  .top-title {
-    font-weight: 800;
-  }
-}
-.introduction-content {
-  width: 95%;
-  margin: 0 auto;
-  color: #512700;
-  .explanation {
-    display: flex;
-    margin-bottom: 90px;
-    .e-content {
-      width: 30%;
+    .slick-wrapper {
       margin: 0 auto;
-      text-align: center;
-      .e-visual {
-        height: auto;
+      width: 100%;
+      .main-visual {
         width: 100%;
-        border: 1px solid #512700;
-        filter: brightness(96%);
-      }
-      .e-title {
-        margin: 20px 0;
-        font-size: 20px;
-        font-weight: 700;
-      }
-      .e-text {
-        text-align: left;
+        max-width: 100%;
+        max-height: auto;
       }
     }
-    .e-content:nth-child(2) {
-      margin: 0 10px 0 10px;
-    }
+  }
+}
+.top-content .col-lg-12 {
+  text-align: center;
+  margin: 0 auto;
+  color: #512700;
+}
+.introduction-content .col-md-4 {
+  color: #512700;
+  img {
+    border: 1px solid #512700;
+    filter: brightness(96%);
   }
 }
 .study-record-title {
@@ -116,5 +79,14 @@
         color: #FF0033;
       }
     }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .top-title {
+    font-size: 30px;
+  }
+  .study-record-title {
+    font-size: 24px;
   }
 }

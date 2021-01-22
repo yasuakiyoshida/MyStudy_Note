@@ -121,6 +121,7 @@
 // 管理者フッター
 .admin-footer p {
   font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  color: #000;
 }
 // 共通
 #wrapper {
@@ -132,12 +133,12 @@
 // 新規登録・ログイン
 .sign-header {
   background: linear-gradient(#1E90FF, #2C7CFF);
-  padding-left: 80px;
+  text-align: center;
   font-size: 20px;
   color: #FFF;
 }
 .sign-btn div .btn {
-  width: 300px;
+  width: 280px;
 }
 // 管理者ログイン
 .admin-header,
@@ -183,6 +184,9 @@
   border-color: #7F7F7F;
 }
 // leaning_times
+.time-notation {
+  color: #512700;
+}
 .date-period-select {
   border: solid 1px #009900;
   background: #33CC66;
@@ -206,29 +210,26 @@
   }
   .heart {
     color: #FF3300;
+    font-size: 18px;
   }
 }
 // 検索
-.admin-search-form,
-.search-form {
-  width: 400px;
-}
-.task-search-form {
-  width: 300px;
-}
 .search-button {
   border-color : #00AA00;
   background: #00CC00;
   color: #FFF;
 }
 // タグ
-.tag {
+.tag,
+.admin-learning-tag {
   border-radius: 25px;
   font-size: 14px;
   color: #FFF;
   text-decoration: none;
+  line-height: 2.5;
 }
-.learning-tag {
+.learning-tag,
+.admin-learning-tag {
   border: solid 1px #009900;
   background: #00CC00;
 }
@@ -238,12 +239,6 @@
 }
 .admin-learning-tag {
   font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
-  border: solid 1px #009900;
-  border-radius: 25px;
-  font-size: 14px;
-  color: #FFF;
-  background: #00CC00;
-  text-decoration: none;
 }
 // ページング
 .pagination {
@@ -259,9 +254,12 @@
   border: 1px solid #512700;
   color: #512700;
 }
-.admin-paginate {
+#admin_paginate {
   .pagination, .page-item.active .page-link, .page-item .page-link {
     font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
+  .page-item.active .page-link {
+    background: #000;
   }
 }
 // エラーメッセージ
@@ -324,5 +322,38 @@
     font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
     text-decoration: none;
     color: #512700;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  a.page-link {
+    font-size: 14px;
+  }
+  .learning-title {
+    font-size: 24px;
+  }
+  #dropdown_menu_btn {
+    font-size: 12px;
+  }
+  .breadcrumbs {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .header-main .navbar-brand a,
+  .user-header-main .navbar-brand a,
+  .user-header-content .navbar-brand a {
+    font-size: 22px;
+  }
+  .navbar .container .navbar-toggler {
+    padding: 0.2rem;
+  }
+  .learning-image {
+    width: 200px;
+  }
+  a.page-link {
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
   }
 }

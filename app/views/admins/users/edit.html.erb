@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header admin-header">　<%= @user.nickname %>さんの会員情報編集</div>
+        <div class="card-header admin-header text-center"><%= @user.nickname %>さんの会員情報編集</div>
         <div class="card-body">
           <%= form_with model: @user, url: admins_user_path(@user), method: :patch, local:true do |f| %>
           <%= render 'layouts/errors', obj: @user %>
             <div class="row mt-4">
               <div class="col-10 offset-1">
-                <%= f.label :nickname, 'ニックネーム（2〜10文字の範囲）' %>
+                <%= f.label :nickname, 'ニックネーム(2〜10文字の範囲)' %>
                 <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control" %>
               </div>
             </div>

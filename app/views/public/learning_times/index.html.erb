@@ -2,30 +2,28 @@
   <% breadcrumb :leaning_times, current_user %>
   <%= render "layouts/breadcrumbs" %>
   <h1 class="my-3 text-center learning-title"><i class="fas fa-user-clock"></i> <%= current_user.nickname %>さんの学習時間</h1>
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-lg-10 offset-lg-1">
-      <div class="card-body">
-        <div class="row">
-          <span class="col-6 mb-3">
-            <div><i class="far fa-clock"></i> 合計：<%= sum_times(@chart) %> 時間</div>
-            <div>（<%= to_minute(@chart) %> 分）</div>
-          </span>
-          <span class="dropdown col-6 mb-3 text-right">
-            <button class="btn dropdown-toggle date-period-select" type="button" id="dropdown_menu_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.learnings.learnings_period(@period).keys.first.to_date.strftime("%Y年%m月%d日") %> 〜 <%= current_user.learnings.learnings_period(@period).keys.last.to_date.strftime("%Y年%m月%d日") %>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdown_menu_btn">
-              <!-- クエリパラメータでparams[period]の形で値を取得できるようにする -->
-              <%= link_to "週間", user_learning_times_path(current_user, period: "week"), class: "dropdown-item" %>
-              <%= link_to "月間", user_learning_times_path(current_user, period: "month"), class: "dropdown-item" %>
-              <%= link_to "年間", user_learning_times_path(current_user, period: "year"), class: "dropdown-item" %>
-            </div>
-          </span>
-        </div>
-        <div class="row mb-3">
-          <div class="col-12">
-            <%= column_chart @chart, xtitle: "日付 [date]", ytitle: "時間 [hour]", label: "学習時間 ", id: "learning_timechart", height: "500px" %>
+      <div class="row">
+        <span class="col-md-6 mb-3 time-notation">
+          <div><i class="far fa-clock"></i> 合計：<%= sum_times(@chart) %> 時間</div>
+          <div>（<%= to_minute(@chart) %> 分）</div>
+        </span>
+        <span class="dropdown col-md-6 mb-3 text-lg-right">
+          <button class="btn dropdown-toggle date-period-select" type="button" id="dropdown_menu_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.learnings.learnings_period(@period).keys.first.to_date.strftime("%Y年%m月%d日") %> 〜 <%= current_user.learnings.learnings_period(@period).keys.last.to_date.strftime("%Y年%m月%d日") %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown_menu_btn">
+            <!-- クエリパラメータでparams[period]の形で値を取得できるようにする -->
+            <%= link_to "週間", user_learning_times_path(current_user, period: "week"), class: "dropdown-item" %>
+            <%= link_to "月間", user_learning_times_path(current_user, period: "month"), class: "dropdown-item" %>
+            <%= link_to "年間", user_learning_times_path(current_user, period: "year"), class: "dropdown-item" %>
           </div>
+        </span>
+      </div>
+      <div class="row mb-3">
+        <div class="col-lg-12">
+          <%= column_chart @chart, xtitle: "日付 [date]", ytitle: "時間 [hour]", label: "学習時間 ", id: "learning_timechart", height: "500px" %>
         </div>
       </div>
     </div>

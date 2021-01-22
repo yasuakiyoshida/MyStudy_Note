@@ -13,6 +13,8 @@
 }
 .show-table {
   table-layout: fixed;
+  word-break: break-all;
+  word-wrap: break-all;
   tbody th, tbody td {
     font-size: 18px;
     border: none;
@@ -26,13 +28,24 @@
     font-size: 14px;
     text-decoration: none;
   }
-  .user-img a {
+  .user-name a {
     text-decoration: none;
     color: #512700;
-    img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
+    font-size: 18px;
+  }
+  .learning-tbody .learning-detail-text {
+    white-space: pre-wrap;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .learning-tbody tr th, .learning-tbody tr td, .learning-tbody tr .user-name a {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .study-record-title {
+    font-size: 24px;
   }
 }

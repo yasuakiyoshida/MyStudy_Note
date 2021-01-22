@@ -1,11 +1,17 @@
-<%= search_form_for search, url: search_admins_learnings_path do |f| %>
-  <%= f.search_field :user_nickname_or_title_or_detail_cont, class: "search admin-search-form", placeholder: '学習記録を検索' %>
-  <%= f.label :is_public_eq, '公開フラグ：', class: "admin-search-label" %>
-  <%= f.radio_button :is_public_eq, '', {:checked => true} %>
-  <span class="admin-search-label">指定なし</span>
-  <%= f.radio_button :is_public_eq, true %>
-  <span class="admin-search-label">公開中</span>
-  <%= f.radio_button :is_public_eq, false %>
-  <span class="admin-search-label">非公開</span>
-  <%= f.submit '検索', class: "search-btn p-1 admin-search-btn" %>
-<% end %>
+<div class="row">
+  <div class="col-lg-6 offset-lg-3 search-field text-center my-2">
+    <%= search_form_for search, url: search_admins_learnings_path do |f| %>
+      <%= f.search_field :user_nickname_or_title_or_detail_cont, class: "search admin-search-form w-100 mb-2", placeholder: '学習記録を検索' %></br>
+      <div class="select-box text-left">
+        <%= f.label :is_public_eq, '公開フラグ：', class: "admin-search-label" %>
+        <%= f.radio_button :is_public_eq, '', {:checked => true} %>
+        <span class="admin-search-label">指定なし</span>
+        <%= f.radio_button :is_public_eq, true %>
+        <span class="admin-search-label">公開中</span>
+        <%= f.radio_button :is_public_eq, false %>
+        <span class="admin-search-label">非公開</span>
+        <%= f.submit '検索', class: "search-btn p-1 admin-search-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
