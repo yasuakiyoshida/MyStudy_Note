@@ -27,7 +27,7 @@
 
 ## ER図
 
-- [ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
+[ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
 
 ## 機能一覧
 
