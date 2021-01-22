@@ -22,9 +22,11 @@
     .profile-text a {
       color: #512700;
     }
+    .biography-text {
+      white-space: pre-wrap;
+    }
     .btn {
       border-radius: 25px;
-      width: 350px;
     }
     .profile-time-btn {
       background: #005FFF;
@@ -39,6 +41,8 @@
 }
 .profile-table {
   table-layout: fixed;
+  word-break: break-all;
+  word-wrap: break-all;
 }
 .new-task {
   color: #FF3333;
@@ -60,12 +64,15 @@
   .card {
     border: none;
     background: none;
-    .col-4 img {
-      width: 180px;
-      height: 180px;
-      border: 8px outset #00BB00;
+    .col-md-4 {
+      justify-content: flex-end;
+      img {
+        width: 180px;
+        height: 180px;
+        border: 8px outset #00BB00;
+      }
     }
-    .col-8 {
+    .col-md-8 {
       background: #FFF;
       color: #512700;
       border: 1px solid #00BB00;
@@ -73,5 +80,32 @@
         color: #512700;
       }
     }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .user-list-content .card .col-md-4 {
+    justify-content: center; 
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile-title {
+    font-size: 24px;
+  }
+  .profile-btn .col-lg-8 .btn {
+    font-size: 14px;
+  }
+  .profile-table {
+    font-size: 12px;
+  }
+  .user-list-title {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile-btn .col-lg-8 .btn {
+    font-size: 12px;
   }
 }

@@ -1,7 +1,7 @@
 <div class="container admin admin-show-title">
   <h2 class="my-4"><%= @learning.title %>の学習記録詳細</h2>
   <div class="row">
-    <div class="col-lg-4 text-center">
+    <div class="col-lg-4 d-flex align-items-center justify-content-center">
       <%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg", class: "learning-image img-responsive center-block" %>
     </div>
     <div class="col-lg-8">
@@ -9,27 +9,27 @@
         <tbody>
           <tr>
             <th>タイトル</th>
-            <td><%= @learning.title %></td>
+            <td colspan="2"><%= @learning.title %></td>
           </tr>
           <tr>
             <th>学習日</th>
-            <td><%= @learning.date.strftime("%Y年%m月%d日") %></td>
+            <td colspan="2"><%= @learning.date.strftime("%Y年%m月%d日") %></td>
           </tr>
           <tr>
             <th>学習時間</th>
-            <td><%= @learning.time %>時間</td>
+            <td colspan="2"><%= @learning.time %>時間</td>
           </tr>
           <tr>
             <th>詳細</th>
-            <td><%= @learning.detail %></td>
+            <td colspan="2" class="learning-detail-text"><%= @learning.detail %></td>
           </tr>
           <tr>
             <th>タグ</th>
-            <td><%= render 'admins/learnings/tag_list', tag_list: @learning.tag_list %></td>
+            <td colspan="2"><%= render 'admins/learnings/tag_list', tag_list: @learning.tag_list %></td>
           </tr>
           <tr>
             <th>公開フラグ</th>
-            <td>
+            <td colspan="2">
               <% if @learning.is_public == true %>
                 公開中
               <% else %>

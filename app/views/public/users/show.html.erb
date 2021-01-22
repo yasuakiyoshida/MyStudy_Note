@@ -13,15 +13,29 @@
       <div class="card m-3">
         <div class="card-body text-center">
           <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", class: "user-img-lg" %>
-          <h3 class="mt-3"><%= @user.nickname %></h3>
+          <h4 class="mt-3"><%= @user.nickname %></h4>
           <p class="profile-text"><%= link_to 'フォロー：' + (@user.followings.count).to_s, user_followings_path(@user.id) %>　<%= link_to 'フォロワー：' + (@user.followers.count).to_s, user_followers_path(@user) %></p>
-          <p class="profile-text px-5 mt-3 pb-3"><%= @user.biography %></p>
-           <% if @user == current_user %>
-            <%= link_to '過去の学習時間を確認する', user_learning_times_path(@user), class: "btn btn-outline-info profile-time-btn px-5 mt-2" %><br>
-            <%= link_to 'プロフィールを編集する', edit_user_path(current_user), class: "btn btn-outline-info profile-edit-btn px-5 mt-4" %><br>
-            <%= link_to '学習記録を確認する', learnings_path, class: "btn btn-outline-danger profile-learning-btn px-5 mt-4" %><br>
-            <%= link_to 'ToDoリストを確認する', tasks_path, class: "btn btn-outline-success profile-list-btn px-5 my-4" %><br>
-          <% end %>
+          <div class="row">
+            <div class="col-lg-12">
+              <p class="profile-text mt-3 pb-3 text-left biography-text"><%= @user.biography %></p>
+            </div>
+          </div>
+          <div class="row profile-btn">
+            <% if @user == current_user %>
+              <div class="col-lg-8 offset-lg-2">
+                <%= link_to '過去の学習時間を確認', user_learning_times_path(@user), class: "btn btn-outline-info profile-time-btn px-1 mt-2 w-75" %>
+              </div>
+              <div class="col-lg-8 offset-lg-2">
+                <%= link_to 'プロフィールを編集する', edit_user_path(current_user), class: "btn btn-outline-info profile-edit-btn px-1 mt-4 w-75" %>
+              </div>
+              <div class="col-lg-8 offset-lg-2">
+                <%= link_to '学習記録を確認する', learnings_path, class: "btn btn-outline-danger profile-learning-btn px-1 mt-4 w-75" %>
+              </div>
+              <div class="col-lg-8 offset-lg-2">
+                <%= link_to 'ToDoリストを確認する', tasks_path, class: "btn btn-outline-success profile-list-btn px-1 my-4 w-75" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
