@@ -27,7 +27,13 @@
           </tr>
           <tr>
             <th>タグ</th>
-            <td colspan="2"><%= render 'public/learnings/tag_list', tag_list: @learning.tag_list %></td>
+            <td colspan="2">
+              <% if @learning.user == current_user %>
+                <%= render 'public/learnings/tag_list', tag_list: @learning.tag_list %>
+              <% else %>
+                <%= render 'public/homes/tag_list', tag_list: @learning.tag_list %>
+              <% end %>
+            </td>
           </tr>
           <tr class="user-info">
             <th>ユーザー</th>

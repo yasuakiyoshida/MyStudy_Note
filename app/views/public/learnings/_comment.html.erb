@@ -29,7 +29,7 @@
     <div class="row mt-5">
       <div class="col-lg-8 offset-lg-4 text-right">
         <%= form_with(model:[learning, learning_comment], local: true) do |f| %>
-          <%= f.text_area :comment, rows:'5', placeholder: "コメントする" %>
+          <%= f.text_area :comment, required: true, rows:'5', placeholder: "コメントする" %>
           <%= f.submit '送信', class: "btn btn-outline-success" %>
         <% end %>
       </div>

@@ -29,8 +29,21 @@
 .header-main, // ログイン前
 .user-header-main .user-header-top, // ログイン後ヘッダー上部
 .user-header-main .user-header-content { // ログイン後ハンバーガーメニュー
-  background-image: image-url('header-image.jpg');
-  background-color: rgba(255,255,255,0.3);
+  background:
+  linear-gradient(
+    90deg,
+    rgba(208, 147, 82, 0.6),
+    rgba(192, 134, 70, 0.6) 60%,
+    rgba(208, 147, 82, 0.6)
+  ),
+  repeating-radial-gradient(
+    ellipse at 60% 500%,
+    #c08646,
+    #c08646 0.2%,
+    #d09352 0.6%,
+    #d09352 1%
+  );
+  background-color: rgba(255,255,255,0.35);
   background-blend-mode: lighten;
   background-size: cover;
   background-position: center;

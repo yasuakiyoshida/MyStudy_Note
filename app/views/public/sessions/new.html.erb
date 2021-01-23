@@ -10,13 +10,13 @@
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :email, 'メールアドレス' %>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                <%= f.email_field :email, required: true, autofocus: true, autocomplete: "email", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :password, 'パスワード' %>
-                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+                <%= f.password_field :password, required: true, autocomplete: "current-password", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-4">

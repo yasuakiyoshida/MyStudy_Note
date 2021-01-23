@@ -25,11 +25,9 @@
 
 日々の学習時
 
-## 設計書
+## ER図
 
-- [ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
-- [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZrZfYXleJqryuVs07B8dM9c7AUSKKRcDvTP5HzWK754/edit?usp=sharing)
-- [詳細設計](https://docs.google.com/spreadsheets/d/1X0jQ6zwCz9HwTZlb_bZayzUtJzL-yeSc3J9PIY9nzIU/edit?usp=sharing)
+[ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
 
 ## 機能一覧
 

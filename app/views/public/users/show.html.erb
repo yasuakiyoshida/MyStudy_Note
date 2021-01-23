@@ -17,7 +17,7 @@
           <p class="profile-text"><%= link_to 'フォロー：' + (@user.followings.count).to_s, user_followings_path(@user.id) %>　<%= link_to 'フォロワー：' + (@user.followers.count).to_s, user_followers_path(@user) %></p>
           <div class="row">
             <div class="col-lg-12">
-              <p class="profile-text mt-3 pb-3 text-left biography-text"><%= @user.biography %></p>
+              <p class="profile-text mt-3 pb-3 biography-text"><%= @user.biography %></p>
             </div>
           </div>
           <div class="row profile-btn">
