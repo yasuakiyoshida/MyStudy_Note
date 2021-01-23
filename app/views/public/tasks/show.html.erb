@@ -16,7 +16,7 @@
           </tr>
           <tr>
             <th>詳細</th>
-            <td colspan="2"><%= @task.detail %></td>
+            <td colspan="2" class="task-detail-text"><%= @task.detail %></td>
           </tr>
           <tr>
             <th>優先度</th>
@@ -35,6 +35,6 @@
     </div>
   </div>
   <div class="text-center mb-5">
-    <%= link_to 'ToDoリストを編集する', edit_task_path(@task.id), class: "btn btn-outline-info px-5" %>
+    <%= link_to 'ToDoリストを編集する', edit_task_path(@task.id), class: "btn btn-outline-info px-3" %>
   </div>
 </div>

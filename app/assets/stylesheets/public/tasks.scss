@@ -43,7 +43,13 @@
     border-radius: 100vh;
   }
 }
-.show-table tbody tr {
+.show-table {
+  table-layout: fixed;
+  word-break: break-all;
+  word-wrap: break-all;
+  tbody tr .task-detail-text {
+    white-space: pre-wrap;
+  }
   .new-task {
     color: #FF3333;
   }
@@ -55,5 +61,20 @@
   }
   .pending-task {
     color: #00DD00;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .due-select {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .task-title {
+    font-size: 28px;
+  }
+  .select-box {
+    font-size: 12px;
   }
 }
