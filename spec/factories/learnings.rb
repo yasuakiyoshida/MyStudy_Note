@@ -4,7 +4,6 @@ FactoryBot.define do
     detail { '学習記録の詳細' }
     date { Date.today }
     time { '1.5' }
-    is_public { true }
     association :user, factory: :user
   end 
 end

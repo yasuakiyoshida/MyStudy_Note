@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe 'Userモデルのテスト', type: :model do
   
-  describe 'モデルのテスト' do
-  
+  describe 'バリデーションのテスト' do
     it "ニックネーム(2〜10文字以内)、メール、パスワード(6文字以上)がある場合、有効である" do
       expect(FactoryBot.build(:user)).to be_valid
     end
@@ -39,6 +38,20 @@ RSpec.describe User, type: :model do
     
     it "password_confirmationとpasswordが異なる場合、登録できない" do 
       expect(FactoryBot.build(:user, password: "password", password_confirmation: "passwaad")).to_not be_valid 
+    end
+  end
+  
+  describe 'アソシエーションのテスト' do
+    it 'Learningモデルと1:Nとなっている' do
+      expect(User.reflect_on_association(:learnings).macro).to eq :has_many
+    end
+    
+    it 'Taskモデルと1:Nとなっている' do
+      expect(User.reflect_on_association(:tasks).macro).to eq :has_many
+    end
+    
+    it 'LearningCommentモデルと1:Nとなっている' do
+      expect(User.reflect_on_association(:learning_comments).macro).to eq :has_many
     end
   end
 end

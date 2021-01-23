@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Learning, type: :model do
+RSpec.describe 'Learningモデルのテスト', type: :model do
   
-  describe 'モデルのテスト' do
-    
+  describe 'バリデーションのテスト' do
     it "タイトル、学習日、学習時間がある場合、有効である" do
       expect(FactoryBot.build(:learning)).to be_valid
     end
@@ -39,6 +38,16 @@ RSpec.describe Learning, type: :model do
     it "１日の学習時間の合計が24時間を超える場合、無効である" do
       learning1 = FactoryBot.create(:learning, time: 10)
       expect(FactoryBot.build(:learning, time: 15 + learning1.time)).to_not be_valid
+    end
+  end
+  
+  describe 'アソシエーションのテスト' do
+    it 'UserモデルとN:1となっている' do
+      expect(Learning.reflect_on_association(:user).macro).to eq :belongs_to
+    end
+    
+    it 'LearningCommentモデルと1:Nとなっている' do
+      expect(Learning.reflect_on_association(:learning_comments).macro).to eq :has_many
     end
   end
 end
