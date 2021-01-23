@@ -11,7 +11,7 @@
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :nickname, 'ニックネーム(2〜10文字の範囲)' %>
-                <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control" %>
+                <%= f.text_field :nickname, required: true, autofocus: true, autocomplete: "nickname", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-4">
@@ -30,7 +30,7 @@
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :email, 'メールアドレス' %>
-                <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+                <%= f.email_field :email, required: true, autocomplete: "email", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-5">

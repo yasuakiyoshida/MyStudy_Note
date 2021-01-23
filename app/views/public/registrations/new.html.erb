@@ -11,13 +11,13 @@
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :nickname, 'ニックネーム(2〜10文字)', class: "col-10 pl-0" %>
-                <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control" %>
+                <%= f.text_field :nickname, required: true, autofocus: true, autocomplete: "nickname", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :email, 'メールアドレス' %>
-                <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+                <%= f.email_field :email, required: true, autocomplete: "email", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-4">
@@ -26,13 +26,13 @@
                 <% if @minimum_password_length %>
                   <span>（<%= @minimum_password_length %>文字以上）</span>
                 <% end %>
-                <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                <%= f.password_field :password, required: true, autocomplete: "new-password", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :password_confirmation, '確認用パスワード' %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control" %>
               </div>
             </div>
             <div class="row mt-5">
