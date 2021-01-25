@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Public::LearningsController, type: :controller do
   let(:user) { create(:user) }
-  let(:learning) { create(:learning, user: user) }
+  let!(:learning) { create(:learning, user: user) }
   let(:learnings) { user.learnings }
   let(:another_user) { create(:user) }
   let(:another_learning) { create(:learning, user: another_user) }
@@ -210,20 +210,18 @@ RSpec.describe Public::LearningsController, type: :controller do
     end
   end
   
-  # describe "DELETE #destroyのテスト" do
-  #   context "自分の学習記録を削除する場合" do
-  #     before do
-  #       sign_in user
-  #     end
-  #     it "学習記録が削除されること" do
-  #       expect do
-  #         delete :destroy, params: { id: learning }
-  #       end.to change(Learning, :count).by(-1)
-  #     end
-  #     it "削除後、学習記録一覧ページにリダイレクトされること" do
-  #       delete :destroy, params: { id: learning }
-  #       expect(response).to redirect_to learnings_path
-  #     end
-  #   end
-  # end
+  describe "DELETE #destroyのテスト" do
+    before do
+      sign_in user
+    end
+    it "学習記録が削除されること" do
+      expect do
+        delete :destroy, params: { id: learning }
+      end.to change(user.learnings, :count).by(-1)
+    end
+    it "削除後、学習記録一覧ページにリダイレクトされること" do
+      delete :destroy, params: { id: learning }
+      expect(response).to redirect_to learnings_path
+    end
+  end
 end
