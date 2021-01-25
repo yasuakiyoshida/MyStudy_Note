@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :learning_comment do
-    comment { 'コメントです。' }
+    comment { "コメントです。" }
     association :user, factory: :user
     association :learning, factory: :learning
   end 

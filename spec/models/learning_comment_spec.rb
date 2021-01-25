@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'LearningCommentモデルのテスト', type: :model do
-  describe 'バリデーションのテスト' do
+RSpec.describe "LearningCommentモデルのテスト", type: :model do
+  describe "バリデーションのテスト" do
     
     it "コメントがある場合、有効である" do
       expect(FactoryBot.build(:learning_comment)).to be_valid
@@ -12,14 +12,14 @@ RSpec.describe 'LearningCommentモデルのテスト', type: :model do
     end
   end
   
-  describe 'アソシエーションのテスト' do
-    it 'UserモデルとN:1となっている' do
+  describe "アソシエーションのテスト" do
+    it "UserモデルとN:1となっている" do
       expect(LearningComment.reflect_on_association(:user).macro).to eq :belongs_to
     end
   end
   
-  describe 'アソシエーションのテスト' do
-    it 'LearningモデルとN:1となっている' do
+  describe "アソシエーションのテスト" do
+    it "LearningモデルとN:1となっている" do
       expect(LearningComment.reflect_on_association(:learning).macro).to eq :belongs_to
     end
   end
