@@ -18,7 +18,7 @@
               </tr>
             </thead>
             <tbody>
-              <% learnings.each do |learning| %>
+              <% learnings.includes(:taggings, :user).each do |learning| %>
                 <tr>
                   <td><%= link_to learning.user.nickname, admins_user_path(learning.user) %></td>
                   <td><%= link_to learning.title, admins_learning_path(learning) %></td>

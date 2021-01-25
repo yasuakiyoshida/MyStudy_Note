@@ -1,5 +1,5 @@
 <div class="container study-record">
-  <% learnings.each do |learning| %>
+  <% learnings.includes(:taggings, :user).each do |learning| %>
     <div class="card mb-3 mx-auto">
       <div class="row no-gutters p-2 bg-white">
         <div class="col-lg-6 d-flex align-items-center justify-content-center">
