@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Public::TasksController, type: :controller do
   let(:user) { create(:user) }
-  let(:task) { create(:task, user: user) }
+  let!(:task) { create(:task, user: user) }
   let(:tasks) { user.tasks }
   let(:another_user) { create(:user) }
   let(:another_task) { create(:task, user: another_user) }
@@ -235,6 +235,21 @@ RSpec.describe Public::TasksController, type: :controller do
       it "トップページにリダイレクトされること" do
         expect(response).to redirect_to root_path
       end
+    end
+  end
+  
+  describe "DELETE #destroyのテスト" do
+    before do
+      sign_in user
+    end
+    it "ToDoリストが削除されること" do
+      expect do
+        delete :destroy, params: { id: task }
+      end.to change(user.tasks, :count).by(-1)
+    end
+    it "削除後、ToDoリスト一覧ページにリダイレクトされること" do
+      delete :destroy, params: { id: task }
+      expect(response).to redirect_to tasks_path
     end
   end
 end

@@ -21,10 +21,12 @@
             </div>
           </div>
           <div class="row profile-btn">
-            <% if @user == current_user %>
+            <% if user_signed_in? %>
               <div class="col-lg-8 offset-lg-2">
                 <%= link_to '過去の学習時間を確認', user_learning_times_path(@user), class: "btn btn-outline-info profile-time-btn px-1 mt-2 w-75" %>
               </div>
+            <% end %>
+            <% if @user == current_user %>
               <div class="col-lg-8 offset-lg-2">
                 <%= link_to 'プロフィールを編集する', edit_user_path(current_user), class: "btn btn-outline-info profile-edit-btn px-1 mt-4 w-75" %>
               </div>
