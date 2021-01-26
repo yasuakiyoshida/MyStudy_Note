@@ -29,32 +29,15 @@
 .header-main, // ログイン前
 .user-header-main .user-header-top, // ログイン後ヘッダー上部
 .user-header-main .user-header-content { // ログイン後ハンバーガーメニュー
-  background:
-  linear-gradient(
-    90deg,
-    rgba(208, 147, 82, 0.6),
-    rgba(192, 134, 70, 0.6) 60%,
-    rgba(208, 147, 82, 0.6)
-  ),
-  repeating-radial-gradient(
-    ellipse at 60% 500%,
-    #c08646,
-    #c08646 0.2%,
-    #d09352 0.6%,
-    #d09352 1%
-  );
-  background-color: rgba(255,255,255,0.35);
-  background-blend-mode: lighten;
-  background-size: cover;
-  background-position: center;
-  border-bottom: solid 2px #CD853F;
+  background: rgba(81, 176, 0, 0.5);
+  border-bottom: solid 1px #009900;
 }
 .header-main .navbar-brand a,
 .user-header-main .navbar-brand a,
 .user-header-content .navbar-brand a {
-  font-size: 26px;
+  font-size: 30px;
   color: #512700;
-  text-shadow: 2px 2px 3px #00AA00;
+  text-shadow: 2px 2px 5px #008000;
   text-decoration: none;
   font-weight: 900;
   font-family: 'Comic Sans MS', sans-serif;
@@ -70,16 +53,12 @@
 .user-header-main .navbar-nav .nav-item a,
 .user-header-content .navbar-nav .nav-item a {
   color: #512700;
-  font-weight: 600;
   font-size: 18px;
-}
-.user-header-content .navbar-nav .nav-bottom a,
-.user-header-content .navbar-nav .nav-bottom h4 {
-  color: #156A15;
 }
 .header-main .navbar-toggler,
 .user-header-main .navbar-toggler,
-.user-header-content .navbar-toggler {
+.user-header-content .navbar-toggler,
+.user-header-content .navbar-nav .nav-bottom a {
   border-color: #512700;
 }
 .header-main .navbar-toggler-icon,
@@ -89,11 +68,11 @@
 }
 // ログイン後ヘッダー下部
 .user-header-bottom nav .navbar-collapse {
-  background: linear-gradient(#F4EDE6, #DEC8B1);
-  border-bottom: solid 2px #CD853F;
+  background: rgba(81, 39, 0, 0.6);
   padding: 1rem;
   .navbar-nav .navbar-nav .nav-item a {
-    color: #156A15;
+    color: #F8F8F8;
+    font-weight: 100;
     text-decoration: none;
     font-size: 16px;
   }
@@ -129,15 +108,16 @@
   min-height: 100vh;
   footer {
     margin-top: auto;
-    color: #FFF;
   }
 }
 .public-footer {
-  background: #512700;
+  background: rgba(81, 39, 0, 0.6);
+  color: #F8F8F8;
 }
 // 管理者フッター
 .admin-footer {
   background: #222;
+  color: #FFF;
   p {
     font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
   }
@@ -253,7 +233,7 @@
 // タグ
 .tag,
 .admin-learning-tag {
-  border-radius: 25px;
+  border-radius: 10px;
   font-size: 14px;
   color: #FFF;
   text-decoration: none;

@@ -1,6 +1,6 @@
 <% if admin_signed_in? %>
   <header class="admin-header-main">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light py-3">
       <div class="container">
         <div class="navbar-brand"><%= link_to 'MyStudy Note', admins_users_path, class: "logo" %></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
   </header>
 <% elsif user_signed_in? %>
   <header class="user-header-main">
-    <div class="d-none d-lg-block user-header-top">
+    <div class="d-none d-lg-block user-header-top py-3">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <div class="navbar-brand"><%= link_to 'MyStudy Note', root_path, class: "logo" %></div>
@@ -64,7 +64,7 @@
         </div>
       </nav>
     </div>
-    <div class="d-block d-lg-none user-header-content">
+    <div class="d-block d-lg-none user-header-content py-3">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <div class="navbar-brand"><%= link_to 'MyStudy Note', root_path, class: "logo" %></div>
@@ -73,7 +73,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
+              <li class="nav-item pt-3">
                 <%= link_to root_path, class: 'nav-link' do %>
                   <i class="fas fa-home"></i> ホーム
                 <% end %>
@@ -93,9 +93,6 @@
                   <i class="fas fa-sign-out-alt"></i> ログアウト
                 <% end %>
               </li></br>
-              <li class="nav-item nav-bottom">
-                <h4><i class="fab fa-pagelines"></i> マイメニュー <i class="fab fa-pagelines"></i></h4>
-              </li>
               <li class="nav-item nav-bottom">
                 <%= link_to user_path(current_user), class: 'nav-link' do %>
                   <i class="fa fa-user"></i> マイページ
@@ -174,7 +171,7 @@
   </header>
 <% else %>
   <header class="header-main">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light py-3">
       <div class="container">
         <div class="navbar-brand"><%= link_to 'MyStudy Note', root_path, class: "logo" %></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
