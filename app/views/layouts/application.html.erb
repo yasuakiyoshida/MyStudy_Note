@@ -15,7 +15,7 @@
   </head>
   
   <body>
-    <div id="wrapper">
+    <div id="<%= "admin-" if admin_signed_in? %>wrapper">
       <%= render 'layouts/header' %>
       <div class="notifications">
         <% flash.each do |key, value| %>

@@ -122,23 +122,40 @@
 }
 // フッター下部固定
 .body,
-#wrapper {
+#wrapper,
+#admin-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   footer {
     margin-top: auto;
-    color: #512700;
+    color: #FFF;
   }
 }
+.public-footer {
+  background: #512700;
+}
 // 管理者フッター
-.admin-footer p {
-  font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
-  color: #000;
+.admin-footer {
+  background: #222;
+  p {
+    font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+  }
 }
 // 共通
 #wrapper {
-  background: #F4EDE6;
+  background: 
+  radial-gradient(rgba(143,188,143,0.4) 3px, transparent 4px),
+  radial-gradient(rgba(143,188,143,0.4) 3px, transparent 4px),
+  linear-gradient(#F4EDE6 4px, transparent 0),
+  linear-gradient(45deg, transparent 74px, transparent 75px, rgba(143,188,143,0.4) 75px, rgba(143,188,143,0.4) 76px, transparent 77px, transparent 109px),
+  linear-gradient(-45deg, transparent 75px, transparent 76px, rgba(143,188,143,0.4) 76px, rgba(143,188,143,0.4) 77px, transparent 78px, transparent 109px),
+  #F4EDE6;
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+}
+#admin-wrapper {
+  background: #FFF;
 }
 .card-body a {
   text-decoration: none;
@@ -196,7 +213,7 @@
   background-color: #E9E9E9;
   border-color: #7F7F7F;
 }
-// leaning_times
+// 学習時間確認画面
 .time-notation {
   color: #512700;
 }
@@ -206,6 +223,7 @@
 }
 // コメント
 .user-comment {
+  background: #F4EDE6;
   .fa-comment {
     color: #FF6633;
   }
