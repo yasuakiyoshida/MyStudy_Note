@@ -34,7 +34,7 @@ class Admins::LearningsController < ApplicationController
   end
 
   private
-  
+
   def learning_params
     params.require(:learning).permit(:title, :image, :detail, :date, :time, :is_public, :tag_list)
   end

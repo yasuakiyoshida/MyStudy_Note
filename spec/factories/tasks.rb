@@ -4,5 +4,5 @@ FactoryBot.define do
     detail { "ToDoリストの詳細" }
     due { Time.now.next_day }
     association :user, factory: :user
-  end 
+  end
 end

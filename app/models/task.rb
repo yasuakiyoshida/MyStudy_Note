@@ -9,7 +9,7 @@ class Task < ApplicationRecord
   validates :title, presence: true
   validates :due, presence: true
   validate :due_cannot_be_in_the_past, on: :create
-  
+
   def due_cannot_be_in_the_past
     if due.presence && due < Time.now
       errors.add(:due, "に過去の日時を設定することはできません")
