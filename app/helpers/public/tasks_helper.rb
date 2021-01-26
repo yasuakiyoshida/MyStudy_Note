@@ -11,23 +11,13 @@ module Public::TasksHelper
     end
   end
 
-  def add_class_name_priority_bg_color(priority_status)
+  def add_class_name_priority(priority_status)
     if priority_status == '高'
       priority_status.gsub(priority_status, "high-priority")
     elsif priority_status == '中'
       priority_status.gsub(priority_status, "medium-priority")
     elsif priority_status == '低'
       priority_status.gsub(priority_status, "low-priority")
-    end
-  end
-
-  def add_class_name_priority_text_color(priority_status)
-    if priority_status == '高'
-      priority_status.gsub(priority_status, "text-danger")
-    elsif priority_status == '中'
-      priority_status.gsub(priority_status, "text-warning")
-    elsif priority_status == '低'
-      priority_status.gsub(priority_status, "text-dark")
     end
   end
 end

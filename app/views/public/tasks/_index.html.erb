@@ -1,14 +1,14 @@
 <div class="row">
   <% tasks.includes(:taggings).each.with_index(1) do |task, index| %>
     <div class="col-lg-8 offset-lg-2">
-      <div class="card-body m-2 task-content <%= add_class_name_priority_bg_color(task.priority_status) %> <%= add_class_name_progress(task.progress_status) + '-content' %>">
+      <div class="card-body m-2 task-content <%= add_class_name_progress(task.progress_status) + '-content' %>">
         <small class="<%= "text-danger" if task.due < Time.now %> card-text">
           期限：<%= task.due.strftime("%Y年%m月%d日 %H:%M") %></br>
         </small>
         <h5 class="card-title my-2"><%= link_to "#{index}. " + task.title, task_path(task.id) %></br></h5>
         <small class="card-text my-1">
           進捗度：<span class="<%= add_class_name_progress(task.progress_status) %>"><%= task.progress_status %></span>
-          <span class="mx-2">優先度：<span class="<%= add_class_name_priority_text_color(task.priority_status) %>"><%= task.priority_status %></span></span>
+          <span class="mx-2">優先度：<span class="<%= add_class_name_priority(task.priority_status) %> px-1 text-light"><%= task.priority_status %></span></span>
         </small>
         <%= link_to edit_task_path(task.id) do %>
           <i class="fas fa-cogs mr-1" title="編集する"></i>
@@ -16,7 +16,7 @@
         <%= link_to task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？" do %>
           <i class="far fa-trash-alt" title="削除する"></i>
         <% end %><br>
-        <small class="card-text my-2">タグ：<%= render 'tag_list', tag_list: task.tag_list %></small>
+        <small class="card-text">タグ：<%= render 'tag_list', tag_list: task.tag_list %></small>
       </div>
     </div>
   <% end %>

@@ -20,11 +20,11 @@
           </tr>
           <tr>
             <th>優先度</th>
-            <td class="<%= add_class_name_priority_text_color(@task.priority_status) %>", colspan="2"><%= @task.priority_status %></td>
+            <td colspan="2"><span class="<%= add_class_name_priority(@task.priority_status) %> px-2 py-1 text-light"><%= @task.priority_status %></span></td>
           </tr>
           <tr>
             <th>進捗度</th>
-            <td class="<%= add_class_name_progress(@task.progress_status) %>", colspan="2"><%= @task.progress_status %></td>
+            <td colspan="2"><span class="<%= add_class_name_progress(@task.progress_status) %>"><%= @task.progress_status %></span></td>
           </tr>
           <tr>
             <th>タグ</th>
