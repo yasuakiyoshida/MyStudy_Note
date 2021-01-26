@@ -3,5 +3,5 @@ FactoryBot.define do
     comment { "コメントです。" }
     association :user, factory: :user
     association :learning, factory: :learning
-  end 
+  end
 end

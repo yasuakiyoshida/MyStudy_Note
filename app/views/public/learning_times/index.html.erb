@@ -1,8 +1,8 @@
 <div class="container">
-  <% breadcrumb :leaning_times, current_user %>
+  <% breadcrumb :leaning_times, @user %>
   <%= render "layouts/breadcrumbs" %>
-  <h1 class="my-3 text-center learning-title"><i class="fas fa-user-clock"></i> <%= current_user.nickname %>さんの学習時間</h1>
-  <div class="row mt-5">
+  <h1 class="my-3 text-center learning-title"><i class="fas fa-user-clock"></i> <%= @user.nickname %>さんの学習時間</h1>
+  <div class="row my-5 card py-3">
     <div class="col-lg-10 offset-lg-1">
       <div class="row">
         <span class="col-md-6 mb-3 time-notation">
@@ -11,13 +11,13 @@
         </span>
         <span class="dropdown col-md-6 mb-3 text-lg-right">
           <button class="btn dropdown-toggle date-period-select" type="button" id="dropdown_menu_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.learnings.learnings_period(@period).keys.first.to_date.strftime("%Y年%m月%d日") %> 〜 <%= current_user.learnings.learnings_period(@period).keys.last.to_date.strftime("%Y年%m月%d日") %>
+            <%= @user.learnings.learnings_period(@period).keys.first.to_date.strftime("%Y年%m月%d日") %> 〜 <%= @user.learnings.learnings_period(@period).keys.last.to_date.strftime("%Y年%m月%d日") %>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdown_menu_btn">
             <!-- クエリパラメータでparams[period]の形で値を取得できるようにする -->
-            <%= link_to "週間", user_learning_times_path(current_user, period: "week"), class: "dropdown-item" %>
-            <%= link_to "月間", user_learning_times_path(current_user, period: "month"), class: "dropdown-item" %>
-            <%= link_to "年間", user_learning_times_path(current_user, period: "year"), class: "dropdown-item" %>
+            <%= link_to "週間", user_learning_times_path(@user, period: "week"), class: "dropdown-item" %>
+            <%= link_to "月間", user_learning_times_path(@user, period: "month"), class: "dropdown-item" %>
+            <%= link_to "年間", user_learning_times_path(@user, period: "year"), class: "dropdown-item" %>
           </div>
         </span>
       </div>

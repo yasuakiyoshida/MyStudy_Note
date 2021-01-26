@@ -20,31 +20,37 @@
     </div>
   </div>
   <div class="row introduction-content">
-    <div class="col-md-4">
-      <%= image_tag 'e-visual1.png', class: "explanation-visual w-100 mb-3" %>
-      <h3 class="explanation-title text-center">学習の記録</h3>
-      <p class="explanation-text">
-        日付、学習時間、内容を入力することで日々の勉強を記録することができます。記録した内容はいつでも見返すことができます。今までの学習時間はグラフで確認できます。
-      </p>
+    <div class="col-md-4 introduction mb-2">
+      <div class="card p-2">
+        <%= image_tag 'e-visual1.png', class: "explanation-visual w-100 mb-3" %>
+        <h3 class="explanation-title text-center">学習の記録</h3>
+        <p class="explanation-text">
+          日付、学習時間、内容を入力することで日々の勉強を記録することができます。記録した内容はいつでも見返すことができます。今までの学習時間はグラフで確認できます。
+        </p>
+      </div>
     </div>
-    <div class="col-md-4">
-      <%= image_tag 'e-visual2.png', class: "explanation-visual w-100 mb-3" %>
-      <h3 class="explanation-title text-center">学習内容の共有</h3>
-      <p class="explanation-text">
-        他の人の学習記録を閲覧することができるので、自分の学習の参考にしてください。また、学習内容に対していいねやコメントをすることができます。（学習記録は非公開にすることも可能です）
-      </p>
+    <div class="col-md-4 introduction mb-2">
+      <div class="card p-2">
+        <%= image_tag 'e-visual2.png', class: "explanation-visual w-100 mb-3" %>
+        <h3 class="explanation-title text-center">学習内容の共有</h3>
+        <p class="explanation-text">
+          他の人の学習記録を閲覧することができるので、自分の学習の参考にしてください。また、学習内容に対していいねやコメントをすることができます。（学習記録は非公開にすることも可能です）
+        </p>
+      </div>
     </div>
-    <div class="col-md-4">
-      <%= image_tag 'e-visual3.png', class: "explanation-visual w-100 mb-3" %>
-      <h3 class="explanation-title text-center">ToDoリストの作成</h3>
-      <p class="explanation-text">
-        ToDoリストを作成することで自分のタスクを整理することができます。タスクの期限や進捗度も設定可能です。タグ付けによってタスクの種類を指定することもできます。
-      </p>
+    <div class="col-md-4 introduction mb-2">
+      <div class="card p-2">
+        <%= image_tag 'e-visual3.png', class: "explanation-visual w-100 mb-3" %>
+        <h3 class="explanation-title text-center">ToDoリストの作成</h3>
+        <p class="explanation-text">
+          ToDoリストを作成することで自分のタスクを整理することができます。タスクの期限や進捗度も設定可能です。タグ付けによってタスクの種類を指定することもできます。
+        </p>
+      </div>
     </div>
   </div>
 </div>
 <div class="container study-record">
   <h1 class="my-3 text-center study-record-title"><i class="fas fa-book"></i> みんなの学習記録</h1>
   <%= render 'study_record', learnings: @learnings %>
-  <div class="text-center mb-5"><%= link_to 'もっと見る>>', common_learnings_path %></div>
+  <div class="text-center pb-5"><%= link_to 'もっと見る>>', common_learnings_path %></div>
 </div>

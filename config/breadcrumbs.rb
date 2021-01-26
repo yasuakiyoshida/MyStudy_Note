@@ -93,10 +93,10 @@ crumb :edit_learning do |learning|
   parent :learning, learning
 end
 
-# public/leaning_timeはログインユーザーが自分の情報のみ閲覧可能
+# public/leaning_timeはログインユーザーのみ閲覧可能
 crumb :leaning_times do |leaning_times_user|
   link leaning_times_user.nickname + "さんの過去の学習時間", user_learning_times_path(leaning_times_user)
-  parent :root
+  parent :user, leaning_times_user
 end
 
 # public/taskはログインユーザーが自分の情報のみ閲覧可能
