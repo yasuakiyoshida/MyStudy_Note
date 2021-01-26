@@ -3,13 +3,14 @@ require "rails_helper"
 RSpec.describe Public::UsersController, type: :controller do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
-  
+
   describe "GET #indexのテスト" do
     context "ログイン済みの場合" do
       before do
         sign_in user
         get :index
       end
+
       it "ユーザー一覧ページへのリクエストは200 OKとなること" do
         expect(response.status).to eq 200
       end
@@ -20,11 +21,12 @@ RSpec.describe Public::UsersController, type: :controller do
         expect(assigns(:users)).to match_array [user]
       end
     end
-    
+
     context "ログインしていない場合" do
       before do
         get :index
       end
+
       it "ユーザー一覧ページへのリクエストは302 リダイレクトとなること" do
         expect(response.status).to eq 302
       end
@@ -33,11 +35,12 @@ RSpec.describe Public::UsersController, type: :controller do
       end
     end
   end
-  
+
   describe "GET #showのテスト" do
     before do
       get :show, params: { id: user.id }
     end
+
     it "ユーザー詳細ページへのリクエストは200 OKとなること" do
       expect(response.status).to eq 200
     end
@@ -48,13 +51,14 @@ RSpec.describe Public::UsersController, type: :controller do
       expect(assigns(:user)).to eq user
     end
   end
-  
+
   describe "GET #editのテスト" do
     context "ログイン済みの場合" do
       before do
         sign_in user
         get :edit, params: { id: user.id }
       end
+
       it "自分のユーザー編集ページへのリクエストは200 OKとなること" do
         expect(response.status).to eq 200
       end
@@ -65,11 +69,12 @@ RSpec.describe Public::UsersController, type: :controller do
         expect(assigns(:user)).to eq user
       end
     end
-    
+
     context "ログインしていない場合" do
       before do
         get :edit, params: { id: user.id }
       end
+
       it "ユーザー編集ページへのリクエストは302 リダイレクトとなること" do
         expect(response.status).to eq 302
       end
@@ -77,12 +82,13 @@ RSpec.describe Public::UsersController, type: :controller do
         expect(response).to redirect_to new_user_session_path
       end
     end
-    
+
     context "他人のユーザー編集ページの場合" do
       before do
         sign_in user
         get :edit, params: { id: another_user.id }
       end
+
       it "他人のユーザー編集ページへのリクエストは302 リダイレクトとなること" do
         expect(response.status).to eq 302
       end
@@ -91,7 +97,7 @@ RSpec.describe Public::UsersController, type: :controller do
       end
     end
   end
-  
+
   describe "PATCH #updateのテスト" do
     context "自分のユーザー情報であり、かつパラメータが妥当な場合" do
       before do
@@ -99,6 +105,7 @@ RSpec.describe Public::UsersController, type: :controller do
         user_params = { nickname: "Alice" }
         patch :update, params: { id: user.id, user: user_params }
       end
+
       it "ユーザー情報が更新されること" do
         expect(user.reload.nickname).to eq "Alice"
       end
@@ -109,13 +116,14 @@ RSpec.describe Public::UsersController, type: :controller do
         expect(assigns(:user)).to eq user
       end
     end
-    
+
     context "自分のユーザー情報であり、かつパラメータが不正な場合" do
       before do
         sign_in user
         user_params = { nickname: nil }
         patch :update, params: { id: user.id, user: user_params }
       end
+
       it "ユーザー情報が更新されないこと" do
         expect(user.reload.nickname).to eq "ユーザー"
       end
@@ -123,13 +131,14 @@ RSpec.describe Public::UsersController, type: :controller do
         expect(response).to render_template :edit
       end
     end
-    
+
     context "他のユーザーの情報を編集しようとする場合" do
       before do
         sign_in user
         another_user_params = { nickname: "Alice" }
         patch :update, params: { id: another_user.id, user: another_user_params }
       end
+
       it "ユーザー情報が更新されないこと" do
         expect(another_user.reload.nickname).not_to eq "Alice"
       end
