@@ -276,6 +276,9 @@
   display: flex;
   justify-content: center;
   text-decoration: none;
+  .disabled {
+    display: none;
+  }
 }
 .page-item.active .page-link {
   border: 1px solid #512700;
@@ -379,6 +382,10 @@
   }
   .navbar .container .navbar-toggler {
     padding: 0.2rem;
+  }
+  .sign-btn div .btn {
+    font-size: 14px;
+    width: 250px;
   }
   .learning-image {
     width: 200px;
