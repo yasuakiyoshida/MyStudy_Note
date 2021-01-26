@@ -1,9 +1,9 @@
 require "rails_helper"
 
-RSpec.describe Public::SessionsController, type: :controller do
+RSpec.describe Admins::SessionsController, type: :controller do
   describe "GET #newのテスト" do
     before do
-      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
       get :new
     end
 
