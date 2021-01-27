@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Public::HomesController, type: :request do
-
   describe "GET #top" do
     before do
       create :learning
