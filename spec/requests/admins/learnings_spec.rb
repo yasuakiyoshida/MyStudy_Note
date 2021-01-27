@@ -12,7 +12,7 @@ RSpec.describe Admins::LearningsController, type: :request do
         get admins_learnings_url
       end
 
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         expect(response.status).to eq 200
       end
       it "学習記録のタイトルが表示されること" do
@@ -26,7 +26,7 @@ RSpec.describe Admins::LearningsController, type: :request do
         get admins_learnings_url
       end
 
-      it "リクエストが失敗すること" do
+      it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
       it "管理者ログインページにリダイレクトされること" do
@@ -43,7 +43,7 @@ RSpec.describe Admins::LearningsController, type: :request do
         get admins_learning_url learning_english.id
       end
   
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         expect(response.status).to eq 200
       end
       it "学習記録のタイトルと詳細が表示されること" do
@@ -57,7 +57,7 @@ RSpec.describe Admins::LearningsController, type: :request do
         get admins_learning_url learning_english.id
       end
   
-      it "リクエストが失敗すること" do
+      it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
       it "管理者ログインページにリダイレクトされること" do
@@ -74,7 +74,7 @@ RSpec.describe Admins::LearningsController, type: :request do
         get edit_admins_learning_url learning_english.id
       end
 
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         expect(response.status).to eq 200
       end
       it "学習記録のタイトルと詳細が表示されること" do
@@ -88,7 +88,7 @@ RSpec.describe Admins::LearningsController, type: :request do
         get edit_admins_learning_url learning_english.id
       end
 
-      it "リクエストが失敗すること" do
+      it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
       it "管理者ログインページにリダイレクトされること" do
@@ -104,7 +104,7 @@ RSpec.describe Admins::LearningsController, type: :request do
         sign_in admin
       end
 
-      it "リクエストが成功すること" do
+      it "リクエストは302 リダイレクト" do
         patch admins_learning_url learning_english, params: { learning: attributes_for(:learning_math) }
         expect(response.status).to eq 302
       end
@@ -124,7 +124,7 @@ RSpec.describe Admins::LearningsController, type: :request do
         sign_in admin
       end
       
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         patch admins_learning_url learning_english, params: { learning: attributes_for(:learning, title: nil) }
         expect(response.status).to eq 200
       end
@@ -146,7 +146,7 @@ RSpec.describe Admins::LearningsController, type: :request do
       sign_in admin
     end
     
-    it "リクエストが成功すること" do
+    it "リクエストは302 リダイレクト" do
       delete admins_learning_url learning
       expect(response.status).to eq 302
     end

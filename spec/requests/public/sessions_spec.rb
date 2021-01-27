@@ -1,9 +1,9 @@
 require "rails_helper"
 
-RSpec.describe Admins::SessionsController, type: :request do
+RSpec.describe Public::SessionsController, type: :request do
   describe "GET #new" do
     before do
-      get new_admin_session_url
+      get new_user_session_url
     end
 
     it "リクエストは200 OK" do
