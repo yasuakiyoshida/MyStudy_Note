@@ -28,4 +28,14 @@
       </div>
     </div>
   </div>
+  <%= month_calendar events: @learnings do |date, learnings| %>
+    <p class="mb-1"><%= date.day %>日</p>
+    <% learnings.each do |learning| %>
+      <small class="has-study-time">
+        <%= link_to learning_path(learning) do %>
+          <i class="fas fa-clock"></i> <%= learning.time %>h
+        <% end %>
+      </small><br>
+    <% end %>
+  <% end %>
 </div>

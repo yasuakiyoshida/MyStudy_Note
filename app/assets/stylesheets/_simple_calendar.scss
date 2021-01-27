@@ -1,0 +1,47 @@
+.simple-calendar {
+  color: #512700;
+  .calendar-heading a {
+    text-decoration: none;
+  }
+  .table-striped thead th {
+    background: #91B5F2;
+    border-color: #808080;
+  }
+  .day,
+  .table-striped thead tr {
+    color: #512700;
+    background: #f8f8f8;
+    border-color: #808080;
+  }
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    background: #FFFFC0;
+  }
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+    background: #DDD;
+  }
+  .next-month {
+    background: #DDD;
+  }
+  .current-month {}
+
+  .has-events {}
+}
+
+@media screen and (max-width: 576px) {
+  .simple-calendar {
+    display: none;
+  }
+}
