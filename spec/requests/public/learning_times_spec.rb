@@ -10,7 +10,7 @@ RSpec.describe Public::LearningTimesController, type: :request do
         get user_learning_times_url user.id
       end
 
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         expect(response.status).to eq 200
       end
       it "ユーザー名が表示されること" do
@@ -23,7 +23,7 @@ RSpec.describe Public::LearningTimesController, type: :request do
         get user_learning_times_url user.id
       end
 
-      it "リクエストが失敗すること" do
+      it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
       it "ログインページにリダイレクトされること" do

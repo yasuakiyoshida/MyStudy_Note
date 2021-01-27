@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Admins::UsersController, type: :request do
   let(:admin) { create(:admin) }
 
-  describe "GET #indexのテスト" do
+  describe "GET #index" do
     context "ログイン済みの場合" do
       before do
         create :alice
@@ -12,7 +12,7 @@ RSpec.describe Admins::UsersController, type: :request do
         get admins_users_url
       end
 
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         expect(response.status).to eq 200
       end
       it "ユーザー名が表示されること" do
@@ -26,7 +26,7 @@ RSpec.describe Admins::UsersController, type: :request do
         get admins_users_url
       end
 
-      it "リクエストが失敗すること" do
+      it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
       it "管理者ログインページにリダイレクトされること" do
@@ -43,7 +43,7 @@ RSpec.describe Admins::UsersController, type: :request do
         get admins_user_url alice.id
       end
 
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         expect(response.status).to eq 200
       end
       it "ユーザー名と自己紹介が表示されること" do
@@ -57,7 +57,7 @@ RSpec.describe Admins::UsersController, type: :request do
         get admins_user_url alice.id
       end
 
-      it "リクエストが失敗すること" do
+      it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
       it "管理者ログインページにリダイレクトされること" do
@@ -74,7 +74,7 @@ RSpec.describe Admins::UsersController, type: :request do
         get edit_admins_user_url alice.id
       end
 
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         expect(response.status).to eq 200
       end
       it "ユーザー名と自己紹介が表示されること" do
@@ -88,7 +88,7 @@ RSpec.describe Admins::UsersController, type: :request do
         get edit_admins_user_url alice.id
       end
 
-      it "リクエストが失敗すること" do
+      it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
       it "管理者ログインページにリダイレクトされること" do
@@ -104,7 +104,7 @@ RSpec.describe Admins::UsersController, type: :request do
         sign_in admin
       end
       
-      it "リクエストが成功すること" do
+      it "リクエストは302 リダイレクト" do
         patch admins_user_url alice, params: { user: attributes_for(:bob) }
         expect(response.status).to eq 302
       end
@@ -124,7 +124,7 @@ RSpec.describe Admins::UsersController, type: :request do
         sign_in admin
       end
       
-      it "リクエストが成功すること" do
+      it "リクエストは200 OK" do
         patch admins_user_url alice, params: { user: attributes_for(:user, nickname: nil) }
         expect(response.status).to eq 200
       end
@@ -146,7 +146,7 @@ RSpec.describe Admins::UsersController, type: :request do
       sign_in admin
     end
     
-    it "リクエストが成功すること" do
+    it "リクエストは302 リダイレクト" do
       delete admins_user_url user
       expect(response.status).to eq 302
     end

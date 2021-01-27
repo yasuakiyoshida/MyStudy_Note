@@ -8,7 +8,7 @@ RSpec.describe Public::HomesController, type: :request do
       get root_url
     end
 
-    it "リクエストが成功すること" do
+    it "リクエストは200 OK" do
       expect(response.status).to eq 200
     end
     it "見出しが表示されること" do
@@ -25,7 +25,7 @@ RSpec.describe Public::HomesController, type: :request do
       get common_learnings_url
     end
 
-    it "リクエストが成功すること" do
+    it "リクエストは200 OK" do
       expect(response.status).to eq 200
     end
     it "学習記録のタイトルが表示されること" do
