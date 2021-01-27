@@ -6,7 +6,7 @@ RSpec.describe Public::SessionsController, type: :request do
       get new_user_session_url
     end
 
-    it "リクエストが成功すること" do
+    it "リクエストは200 OK" do
       expect(response.status).to eq 200
     end
   end

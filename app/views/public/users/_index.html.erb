@@ -1,6 +1,6 @@
 <div class="row user-list-content">
   <div class="col-lg-10 offset-lg-1">
-    <% users.each do |user| %>
+    <% users.eager_load([:relationships, :followings]).each do |user| %>
       <div class="card mb-1 mx-auto">
         <div class="row no-gutters p-2">
           <div class="col-md-4 d-flex align-items-center">

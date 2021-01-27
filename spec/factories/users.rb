@@ -6,7 +6,7 @@ FactoryBot.define do
     password { "123456" }
     password_confirmation { "123456" }
   end
-  
+
   factory :alice, class: User do
     nickname { "Alice" }
     biography { "Aliceです。よろしくお願いします。" }
@@ -14,7 +14,7 @@ FactoryBot.define do
     password { "aaaaaa" }
     password_confirmation { "aaaaaa" }
   end
-  
+
   factory :bob, class: User do
     nickname { "Bob" }
     biography { "Bobです。よろしくお願いします。" }

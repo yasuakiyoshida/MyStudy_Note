@@ -22,9 +22,9 @@ class Learning < ApplicationRecord
   def one_day_time_sum_unless_target_date(date)
     user.learnings.where(date: date).where.not(id: id).sum(:time)
   end
-  
+
   def start_time
-    self.date
+    date
   end
 
   def total_time_cannot_exceed_limit_time
