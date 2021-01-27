@@ -64,6 +64,7 @@ RSpec.describe Public::LearningsController, type: :request do
 
   describe "GET #show" do
     let(:learning_english) { create :learning_english }
+
     before do
       get learning_url learning_english.id
     end
@@ -80,6 +81,7 @@ RSpec.describe Public::LearningsController, type: :request do
   describe "GET #edit" do
     context "ログイン済みかつ自分の学習記録の場合" do
       let(:learning_english) { create(:learning_english, user: user) }
+
       before do
         sign_in user
         get edit_learning_url learning_english.id
@@ -93,9 +95,10 @@ RSpec.describe Public::LearningsController, type: :request do
         expect(response.body).to include "英語の勉強"
       end
     end
-    
+
     context "ログイン済みかつ他人の学習記録の場合" do
       let(:learning_english) { create(:learning_english, user: another_user) }
+
       before do
         sign_in user
         get edit_learning_url learning_english.id
@@ -105,12 +108,13 @@ RSpec.describe Public::LearningsController, type: :request do
         expect(response.status).to eq 302
       end
       it "その学習記録の詳細ページにリダイレクトされること" do
-        expect(response).to redirect_to(learning_url learning_english)
+        expect(response).to redirect_to(learning_url(learning_english))
       end
     end
 
     context "ログインしていない場合" do
       let(:learning_english) { create :learning_english }
+
       before do
         get edit_learning_url learning_english.id
       end
@@ -171,10 +175,11 @@ RSpec.describe Public::LearningsController, type: :request do
   describe "PATCH #update" do
     context "自分の学習記録であり、かつパラメータが妥当な場合" do
       let(:learning_english) { create(:learning_english, user: user) }
+
       before do
         sign_in user
       end
-      
+
       it "リクエストは302 リダイレクト" do
         patch learning_url learning_english, params: { learning: attributes_for(:learning_math) }
         expect(response.status).to eq 302
@@ -186,16 +191,17 @@ RSpec.describe Public::LearningsController, type: :request do
       end
       it "更新後、更新した学習記録詳細ページにリダイレクトされること" do
         patch learning_url learning_english, params: { learning: attributes_for(:learning_math) }
-        expect(response).to redirect_to(learning_url learning_english)
+        expect(response).to redirect_to(learning_url(learning_english))
       end
     end
 
     context "自分の学習記録であり、かつパラメータが不正な場合" do
       let(:learning_english) { create(:learning_english, user: user) }
+
       before do
         sign_in user
       end
-      
+
       it "リクエストは200 OK" do
         patch learning_url learning_english, params: { learning: attributes_for(:learning_math, title: nil) }
         expect(response.status).to eq 200
@@ -203,7 +209,7 @@ RSpec.describe Public::LearningsController, type: :request do
       it "学習記録のタイトルが更新されないこと" do
         expect do
           patch learning_url learning_english, params: { learning: attributes_for(:learning_math, title: nil) }
-        end.to_not change(Learning.find(learning_english.id), :title)
+        end.not_to change(Learning.find(learning_english.id), :title)
       end
       it "エラーが表示されること" do
         post learnings_url, params: { learning: attributes_for(:learning, title: nil, user: user) }
@@ -213,6 +219,7 @@ RSpec.describe Public::LearningsController, type: :request do
 
     context "他のユーザーの学習記録を編集しようとする場合" do
       let(:learning_english) { create(:learning_english, user: another_user) }
+
       before do
         sign_in user
       end
@@ -220,21 +227,22 @@ RSpec.describe Public::LearningsController, type: :request do
       it "学習記録が更新されないこと" do
         expect do
           patch learning_url learning_english, params: { learning: attributes_for(:learning_math) }
-        end.to_not change(Learning.find(learning_english.id), :title)
+        end.not_to change(Learning.find(learning_english.id), :title)
       end
       it "編集しようとした学習記録詳細ページにリダイレクトされること" do
         patch learning_url learning_english, params: { learning: attributes_for(:learning_math) }
-        expect(response).to redirect_to(learning_url learning_english)
+        expect(response).to redirect_to(learning_url(learning_english))
       end
     end
   end
 
   describe "DELETE #destroy" do
     let!(:learning) { create(:learning, user: user) }
+
     before do
       sign_in user
     end
-    
+
     it "リクエストは302 リダイレクト" do
       delete learning_url learning
       expect(response.status).to eq 302

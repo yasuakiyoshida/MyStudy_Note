@@ -64,7 +64,8 @@ RSpec.describe Public::TasksController, type: :request do
 
   describe "GET #show" do
     context "ログイン済みかつ自分のToDoリストの場合" do
-      let(:task_one) { create(:task_one, user: user)}
+      let(:task_one) { create(:task_one, user: user) }
+
       before do
         sign_in user
         get task_url task_one.id
@@ -80,7 +81,8 @@ RSpec.describe Public::TasksController, type: :request do
     end
 
     context "ログイン済みかつ他人のToDoリストの場合" do
-      let(:task_one) { create(:task_one, user: another_user)}
+      let(:task_one) { create(:task_one, user: another_user) }
+
       before do
         sign_in user
         get task_url task_one.id
@@ -95,7 +97,8 @@ RSpec.describe Public::TasksController, type: :request do
     end
 
     context "ログインしていない場合" do
-      let(:task_one) { create(:task_one, user: user)}
+      let(:task_one) { create(:task_one, user: user) }
+
       before do
         get task_url task_one.id
       end
@@ -112,6 +115,7 @@ RSpec.describe Public::TasksController, type: :request do
   describe "GET #edit" do
     context "ログイン済みかつ自分のToDoリストの場合" do
       let(:task_one) { create(:task_one, user: user) }
+
       before do
         sign_in user
         get edit_task_url task_one.id
@@ -125,9 +129,10 @@ RSpec.describe Public::TasksController, type: :request do
         expect(response.body).to include "一番目のリストの詳細"
       end
     end
-    
+
     context "ログイン済みかつ他人のToDoリストの場合" do
       let(:task_one) { create(:task_one, user: another_user) }
+
       before do
         sign_in user
         get edit_task_url task_one.id
@@ -143,6 +148,7 @@ RSpec.describe Public::TasksController, type: :request do
 
     context "ログインしていない場合" do
       let(:task_one) { create(:task_one, user: user) }
+
       before do
         get edit_task_url task_one.id
       end
@@ -199,14 +205,15 @@ RSpec.describe Public::TasksController, type: :request do
       end
     end
   end
-  
+
   describe "PATCH #update" do
     context "自分のToDoリストであり、かつパラメータが妥当な場合" do
       let(:task_one) { create(:task_one, user: user) }
+
       before do
         sign_in user
       end
-      
+
       it "リクエストは302 リダイレクト" do
         patch task_url task_one, params: { task: attributes_for(:task_second) }
         expect(response.status).to eq 302
@@ -218,16 +225,17 @@ RSpec.describe Public::TasksController, type: :request do
       end
       it "更新後、更新したToDoリスト詳細ページにリダイレクトされること" do
         patch task_url task_one, params: { task: attributes_for(:task_second) }
-        expect(response).to redirect_to(task_url task_one)
+        expect(response).to redirect_to(task_url(task_one))
       end
     end
 
     context "自分のToDoリストであり、かつパラメータが不正な場合" do
       let(:task_one) { create(:task_one, user: user) }
+
       before do
         sign_in user
       end
-      
+
       it "リクエストは200 OK" do
         patch task_url task_one, params: { task: attributes_for(:task_second, title: nil) }
         expect(response.status).to eq 200
@@ -235,7 +243,7 @@ RSpec.describe Public::TasksController, type: :request do
       it "ToDoリストの題名が更新されないこと" do
         expect do
           patch task_url task_one, params: { task: attributes_for(:task_second, title: nil) }
-        end.to_not change(Task.find(task_one.id), :title)
+        end.not_to change(Task.find(task_one.id), :title)
       end
       it "エラーが表示されること" do
         patch task_url task_one, params: { task: attributes_for(:task_second, title: nil) }
@@ -245,6 +253,7 @@ RSpec.describe Public::TasksController, type: :request do
 
     context "他のユーザーのToDoリストを編集しようとする場合" do
       let(:task_one) { create(:task_one, user: another_user) }
+
       before do
         sign_in user
       end
@@ -252,7 +261,7 @@ RSpec.describe Public::TasksController, type: :request do
       it "ToDoリストの題名が更新されないこと" do
         expect do
           patch task_url task_one, params: { task: attributes_for(:task_second) }
-        end.to_not change(Task.find(task_one.id), :title)
+        end.not_to change(Task.find(task_one.id), :title)
       end
       it "トップページにリダイレクトされること" do
         patch task_url task_one, params: { task: attributes_for(:task_second) }
@@ -263,10 +272,11 @@ RSpec.describe Public::TasksController, type: :request do
 
   describe "DELETE #destroy" do
     let!(:task) { create(:task, user: user) }
+
     before do
       sign_in user
     end
-    
+
     it "リクエストは302 リダイレクト" do
       delete task_url task
       expect(response.status).to eq 302

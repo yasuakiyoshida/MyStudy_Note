@@ -37,12 +37,13 @@ RSpec.describe Admins::LearningsController, type: :request do
 
   describe "GET #show" do
     let(:learning_english) { create :learning_english }
+
     context "ログイン済みの場合" do
       before do
         sign_in admin
         get admins_learning_url learning_english.id
       end
-  
+
       it "リクエストは200 OK" do
         expect(response.status).to eq 200
       end
@@ -51,12 +52,12 @@ RSpec.describe Admins::LearningsController, type: :request do
         expect(response.body).to include "英語の勉強"
       end
     end
-    
+
     context "ログインしていない場合" do
       before do
         get admins_learning_url learning_english.id
       end
-  
+
       it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
@@ -68,6 +69,7 @@ RSpec.describe Admins::LearningsController, type: :request do
 
   describe "GET #edit" do
     let(:learning_english) { create :learning_english }
+
     context "ログイン済みの場合" do
       before do
         sign_in admin
@@ -99,6 +101,7 @@ RSpec.describe Admins::LearningsController, type: :request do
 
   describe "PATCH #update" do
     let(:learning_english) { create :learning_english }
+
     context "パラメータが妥当な場合" do
       before do
         sign_in admin
@@ -115,7 +118,7 @@ RSpec.describe Admins::LearningsController, type: :request do
       end
       it "更新した学習記録詳細ページにリダイレクトされること" do
         patch admins_learning_url learning_english, params: { learning: attributes_for(:learning_math) }
-        expect(response).to redirect_to(admins_learning_url learning_english)
+        expect(response).to redirect_to(admins_learning_url(learning_english))
       end
     end
 
@@ -123,7 +126,7 @@ RSpec.describe Admins::LearningsController, type: :request do
       before do
         sign_in admin
       end
-      
+
       it "リクエストは200 OK" do
         patch admins_learning_url learning_english, params: { learning: attributes_for(:learning, title: nil) }
         expect(response.status).to eq 200
@@ -131,7 +134,7 @@ RSpec.describe Admins::LearningsController, type: :request do
       it "学習記録のタイトルが更新されないこと" do
         expect do
           patch admins_learning_url learning_english, params: { learning: attributes_for(:learning, title: nil) }
-        end.to_not change(Learning.find(learning_english.id), :title)
+        end.not_to change(Learning.find(learning_english.id), :title)
       end
       it "エラーが表示されること" do
         patch admins_learning_url learning_english, params: { learning: attributes_for(:learning, title: nil) }
@@ -142,10 +145,11 @@ RSpec.describe Admins::LearningsController, type: :request do
 
   describe "DELETE #destroy" do
     let!(:learning) { create(:learning) }
+
     before do
       sign_in admin
     end
-    
+
     it "リクエストは302 リダイレクト" do
       delete admins_learning_url learning
       expect(response.status).to eq 302

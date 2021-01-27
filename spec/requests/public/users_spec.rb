@@ -38,6 +38,7 @@ RSpec.describe Public::UsersController, type: :request do
 
   describe "GET #show" do
     let(:alice) { create :alice }
+
     before do
       get user_url alice.id
     end
@@ -66,7 +67,7 @@ RSpec.describe Public::UsersController, type: :request do
         expect(response.body).to include "ユーザーです。よろしくお願いします。"
       end
     end
-    
+
     context "ログイン済みかつ他のユーザー情報の場合" do
       before do
         sign_in user
@@ -77,7 +78,7 @@ RSpec.describe Public::UsersController, type: :request do
         expect(response.status).to eq 302
       end
       it "マイページにリダイレクトされること" do
-        expect(response).to redirect_to(user_url user.id)
+        expect(response).to redirect_to(user_url(user.id))
       end
     end
 
@@ -98,11 +99,12 @@ RSpec.describe Public::UsersController, type: :request do
 
   describe "PATCH #update" do
     let(:alice) { create :alice }
+
     context "自分のユーザー情報であり、かつパラメータが妥当な場合" do
       before do
         sign_in user
       end
-      
+
       it "リクエストは302 リダイレクト" do
         patch user_url user, params: { user: attributes_for(:alice) }
         expect(response.status).to eq 302
@@ -114,7 +116,7 @@ RSpec.describe Public::UsersController, type: :request do
       end
       it "更新後、マイページにリダイレクトされること" do
         patch user_url user, params: { user: attributes_for(:alice) }
-        expect(response).to redirect_to(user_url user)
+        expect(response).to redirect_to(user_url(user))
       end
     end
 
@@ -122,15 +124,15 @@ RSpec.describe Public::UsersController, type: :request do
       before do
         sign_in user
       end
-      
+
       it "リクエストは200 OK" do
-         patch user_url user, params: { user: attributes_for(:user, nickname: nil) }
+        patch user_url user, params: { user: attributes_for(:user, nickname: nil) }
         expect(response.status).to eq 200
       end
       it "ユーザー名が更新されないこと" do
         expect do
           patch user_url user, params: { user: attributes_for(:user, nickname: nil) }
-        end.to_not change(User.find(user.id), :nickname)
+        end.not_to change(User.find(user.id), :nickname)
       end
       it "エラーが表示されること" do
         patch user_url user, params: { user: attributes_for(:user, nickname: nil) }
@@ -146,11 +148,11 @@ RSpec.describe Public::UsersController, type: :request do
       it "ユーザー名が更新されないこと" do
         expect do
           patch user_url alice, params: { user: attributes_for(:bob) }
-        end.to_not change(User.find(alice.id), :nickname)
+        end.not_to change(User.find(alice.id), :nickname)
       end
       it "マイページにリダイレクトされること" do
         patch user_url alice, params: { user: attributes_for(:bob) }
-        expect(response).to redirect_to(user_url user)
+        expect(response).to redirect_to(user_url(user))
       end
     end
   end
