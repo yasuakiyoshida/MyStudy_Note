@@ -1,0 +1,2 @@
+$("#new_content").html("<%= j(render 'public/tasks/new', { task: @task }) %>")
+$("#error_message").html("<%= j(render 'layouts/errors', { obj: @task }) %>")

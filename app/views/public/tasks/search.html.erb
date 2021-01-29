@@ -2,6 +2,19 @@
   <% breadcrumb :search_tasks, @task_search %>
   <%= render "layouts/breadcrumbs" %>
   <h1 class="my-3 text-center task-title"><i class="fa fa-list-alt"></i> ToDoリスト検索結果</h1>
+  <!-- モーダルウィンドウ -->
+  <div class="task-modal-content text-center">
+    <%= link_to "#blank", class: "js-modal-open btn-modal-open-new-task", "data-target" => "modal-task-new" do %>
+      <i class="fa fa-plus-square"></i> ToDoリストを作成する
+    <% end %>
+  </div>
+  <div id="modal-task-new" class="modal js-modal">
+    <div class="modal-bg js-modal-close"></div>
+    <div class="modal-content" id="new_content">
+      <%= render 'public/tasks/new', task: @task %>
+    </div>
+  </div>
+  <!-- ここまでモーダルウィンドウ -->
   <%= render 'public/tasks/search_form', search: @search %>
   <%= render 'public/tasks/index', tasks: @task_search %>
 </div>

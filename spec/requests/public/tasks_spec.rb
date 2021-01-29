@@ -4,32 +4,6 @@ RSpec.describe Public::TasksController, type: :request do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
 
-  describe "GET #new" do
-    context "ログイン済みの場合" do
-      before do
-        sign_in user
-        get new_task_url
-      end
-
-      it "リクエストは200 OK" do
-        expect(response.status).to eq 200
-      end
-    end
-
-    context "ログインしていない場合" do
-      before do
-        get new_task_url
-      end
-
-      it "リクエストは302 リダイレクト" do
-        expect(response.status).to eq 302
-      end
-      it "ログインページにリダイレクトされること" do
-        expect(response).to redirect_to new_user_session_url
-      end
-    end
-  end
-
   describe "GET #index" do
     context "ログイン済みの場合" do
       before do
@@ -156,50 +130,6 @@ RSpec.describe Public::TasksController, type: :request do
       it "リクエストは302 リダイレクト" do
         expect(response.status).to eq 302
       end
-      it "ログインページにリダイレクトされること" do
-        expect(response).to redirect_to new_user_session_url
-      end
-    end
-  end
-
-  describe "POST #create" do
-    context "ログイン済みかつ保存に成功した場合" do
-      before do
-        sign_in user
-      end
-
-      it "ToDoリストがデータベースに保存されること" do
-        expect do
-          post tasks_url, params: { task: attributes_for(:task, user: user) }
-        end.to change(user.tasks, :count).by(1)
-      end
-      it "保存後、保存したToDoリスト詳細ページにリダイレクトされること" do
-        post tasks_url, params: { task: attributes_for(:task, user: user) }
-        expect(response).to redirect_to Task.last
-      end
-    end
-
-    context "ログイン済みかつ保存に失敗した場合" do
-      before do
-        sign_in user
-      end
-
-      it "ToDoリストがデータベースに保存されないこと" do
-        expect do
-          post tasks_url, params: { task: attributes_for(:task, title: nil, user: user) }
-        end.to change(user.tasks, :count).by(0)
-      end
-      it "エラーが表示されること" do
-        post tasks_url, params: { task: attributes_for(:task, title: nil, user: user) }
-        expect(response.body).to include "題名を入力してください"
-      end
-    end
-
-    context "ログインしていない場合" do
-      before do
-        post tasks_url, params: { task: attributes_for(:task, user: user) }
-      end
-
       it "ログインページにリダイレクトされること" do
         expect(response).to redirect_to new_user_session_url
       end
