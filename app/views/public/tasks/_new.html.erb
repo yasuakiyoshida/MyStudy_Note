@@ -1,0 +1,64 @@
+<h5 class="text-center task-header px-1"><i class="fa fa-plus-square"></i> ToDoリスト作成</h5>
+<%= form_with model: task, url: tasks_path, method: :post do |f| %>
+<div id="error_message">
+  <%= render 'layouts/errors', obj: task %>
+</div>
+  <table>
+    <tr>
+      <th><%= f.label :due, '期限' %></th>
+    </tr>
+    <tr>
+      <td>
+        <%= raw sprintf(
+          f.datetime_select(
+            :due,
+              {
+                start_year: Time.zone.now.prev_year.year,
+                end_year: Time.zone.now.next_year.year,
+                minute_step: 5,
+                use_two_digit_numbers: true,
+                date_separator: '%s',
+                datetime_separator: '%s',
+                time_separator: '%s'
+              },
+              { class: 'due-select' }
+          ),
+          '年 ', '月 ', '日 ', '時 ') + '分'
+        %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :title, '題名', class: "mt-3" %></th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :title, required: true, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :detail, '詳細', class: "mt-3" %></th>
+    </tr>
+    <tr>
+      <td><%= f.text_area :detail, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :tag_list, 'タグ', class: "mt-3" %><br>
+        <small>※ ","で区切ることで複数入力可</small>
+      </th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :tag_list, value: task.tag_list.join(','), class: "form-control", placeholder: '例：プログラミング,ruby,rails' %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :priority_status, 'タスクの優先度', class: "mt-3" %></th>
+    </tr>
+    <tr>
+      <td><%= f.select :priority_status, Task.priority_statuses.keys, {}, class: "p-1" %></td>
+    </tr>
+    <tr>
+      <td class="text-center"><%= f.submit '作成する', class: "btn btn-outline-success px-4 mt-3" %></td>
+    </tr>
+  </table>
+<% end %>
+<%= link_to "#blank", class: "js-modal-close text-right fa-lg" do %>
+  <i class="fas fa-window-close"></i>
+<% end %>

@@ -83,7 +83,7 @@
                   <i class="fas fa-users"></i> ユーザー一覧
                 <% end %>
               </li>
-              <li class="nav-item mr-4">
+              <li class="nav-item">
                 <%= link_to common_learnings_path, class: 'nav-link' do %>
                   <i class="fas fa-book"></i> みんなの学習記録
                 <% end %>
@@ -109,18 +109,13 @@
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to tasks_path, class: 'nav-link' do %>
-                  <i class="fa fa-list-alt"></i> ToDoリストを確認
-                <% end %>
-              </li>
-              <li class="nav-item nav-bottom">
                 <%= link_to new_learning_path, class: 'nav-link' do %>
                   <i class="fa fa-edit"></i> 学習内容を記録
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to new_task_path, class: 'nav-link' do %>
-                  <i class="fa fa-plus-square"></i> ToDoリストを作成
+                <%= link_to tasks_path, class: 'nav-link' do %>
+                  <i class="fa fa-list-alt"></i> ToDoリスト
                 <% end %>
               </li>
             </ul>
@@ -133,34 +128,29 @@
         <div class="collapse navbar-collapse justify-content-center">
           <div class="navbar-nav">
             <ul class="navbar-nav align-items-center">
-              <li class="nav-item nav-bottom mr-4">
+              <li class="nav-item nav-bottom mx-5">
                 <%= link_to user_path(current_user) do %>
                   <i class="fa fa-user"></i> マイページ
                 <% end %>
               </li>
-              <li class="nav-item nav-bottom mr-4">
+              <li class="nav-item nav-bottom mr-5">
                 <%= link_to user_learning_times_path(current_user), class: 'nav-link' do %>
                   <i class="fas fa-user-clock"></i> 過去の学習時間
                 <% end %>
               </li>
-              <li class="nav-item nav-bottom mr-4">
+              <li class="nav-item nav-bottom mr-5">
                 <%= link_to learnings_path do %>
                   <i class="fas fa-book-open"></i> 学習記録を確認
                 <% end %>
               </li>
-              <li class="nav-item nav-bottom mr-4">
-                <%= link_to tasks_path do %>
-                  <i class="fa fa-list-alt"></i> ToDoリストを確認
-                <% end %>
-              </li>
-              <li class="nav-item nav-bottom mr-4">
+              <li class="nav-item nav-bottom mr-5">
                 <%= link_to new_learning_path do %>
                   <i class="fa fa-edit"></i> 学習内容を記録
                 <% end %>
               </li>
-              <li class="nav-item nav-bottom">
-                <%= link_to new_task_path do %>
-                  <i class="fa fa-plus-square"></i> ToDoリストを作成
+              <li class="nav-item nav-bottom mr-5">
+                <%= link_to tasks_path do %>
+                  <i class="fa fa-list-alt"></i> ToDoリスト
                 <% end %>
               </li>
             </ul>

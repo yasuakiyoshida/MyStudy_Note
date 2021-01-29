@@ -286,7 +286,7 @@
   background: #FADBDA;
   border: solid 1px red;
   color: red;
-  h3 {
+  h4 {
     font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
   }
   ul li {
@@ -355,6 +355,14 @@
   }
   .breadcrumbs {
     font-size: 10px;
+  }
+  #error_explanation {
+    h4 {
+      font-size: 18px;
+    }
+    ul li {
+      font-size: 12px;
+    }
   }
 }
 
