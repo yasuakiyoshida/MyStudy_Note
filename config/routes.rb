@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       resources :learning_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :tasks, except: [:new] do
+    resources :tasks, except: [:new, :edit] do
       get :search, on: :collection
     end
   end

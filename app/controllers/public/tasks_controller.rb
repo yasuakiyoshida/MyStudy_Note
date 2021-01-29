@@ -1,6 +1,6 @@
 class Public::TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:show, :update, :destroy]
   before_action :set_task_search, only: [:index, :search]
   before_action :set_new_task, only: [:index, :search]
 
@@ -14,22 +14,21 @@ class Public::TasksController < ApplicationController
   def show
   end
 
-  def edit
-  end
-
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     if @task.save
-      redirect_to task_path(@task), notice: 'ToDoリストを作成しました'
+      respond_to do |format|
+        format.html { redirect_to task_path(@task), notice: 'ToDoリストを作成しました' }
+      end
     end
   end
 
   def update
     if @task.update(task_params)
-      redirect_to task_path(@task), notice: 'ToDoリストを更新しました'
-    else
-      render :edit
+      respond_to do |format|
+        format.html { redirect_to task_path(@task), notice: 'ToDoリストを更新しました' }
+      end
     end
   end
 

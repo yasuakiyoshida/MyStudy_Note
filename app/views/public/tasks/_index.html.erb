@@ -10,9 +10,19 @@
           進捗度：<span class="<%= add_class_name_progress(task.progress_status) %>"><%= task.progress_status %></span>
           <span class="mx-2">優先度：<span class="<%= add_class_name_priority(task.priority_status) %> px-1 text-light"><%= task.priority_status %></span></span>
         </small>
-        <%= link_to edit_task_path(task.id) do %>
-          <i class="fas fa-cogs mr-1" title="編集する"></i>
-        <% end %>
+        <!-- モーダルウィンドウ -->
+        <span class="task-modal-content task-edit-modal-content">
+          <%= link_to "#blank", class: "js-modal-open btn-modal-open-edit-task", "data-target" => "modal_task_edit_#{task.id}" do %>
+            <i class="fas fa-cogs mr-1" title="編集する"></i>
+          <% end %>
+        </span>
+        <div id="modal_task_edit_<%= task.id %>" class="modal js-modal">
+          <div class="modal-bg js-modal-close"></div>
+          <div class="modal-content" id="edit_content_<%= task.id %>">
+            <%= render 'public/tasks/edit', task: task %>
+          </div>
+        </div>
+        <!-- モーダルウィンドウここまで -->
         <%= link_to task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？" do %>
           <i class="far fa-trash-alt" title="削除する"></i>
         <% end %><br>
