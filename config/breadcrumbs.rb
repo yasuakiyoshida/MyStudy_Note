@@ -114,8 +114,3 @@ crumb :task do |task|
   link "#{task.title}の詳細", task_path(task)
   parent :tasks
 end
-
-crumb :edit_task do |task|
-  link "#{task.title}の編集", edit_task_path(task)
-  parent :task, task
-end
