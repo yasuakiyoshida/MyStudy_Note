@@ -5,7 +5,7 @@
         <div class="row no-gutters p-2">
           <div class="col-md-4 d-flex align-items-center">
             <%= link_to user_path(user.id) do %>
-              <%= attachment_image_tag user, :image, format: "jpeg", fallback: "user-no-img-min.jpg" %>
+              <%= attachment_image_tag user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", class: "bg-light" %>
             <% end %>
           </div>
           <div class="col-md-8 p-1">
