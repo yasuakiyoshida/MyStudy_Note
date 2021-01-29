@@ -4,32 +4,6 @@ RSpec.describe Public::TasksController, type: :request do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
 
-  describe "GET #new" do
-    context "ログイン済みの場合" do
-      before do
-        sign_in user
-        get new_task_url
-      end
-
-      it "リクエストは200 OK" do
-        expect(response.status).to eq 200
-      end
-    end
-
-    context "ログインしていない場合" do
-      before do
-        get new_task_url
-      end
-
-      it "リクエストは302 リダイレクト" do
-        expect(response.status).to eq 302
-      end
-      it "ログインページにリダイレクトされること" do
-        expect(response).to redirect_to new_user_session_url
-      end
-    end
-  end
-
   describe "GET #index" do
     context "ログイン済みの場合" do
       before do
@@ -112,56 +86,6 @@ RSpec.describe Public::TasksController, type: :request do
     end
   end
 
-  describe "GET #edit" do
-    context "ログイン済みかつ自分のToDoリストの場合" do
-      let(:task_one) { create(:task_one, user: user) }
-
-      before do
-        sign_in user
-        get edit_task_url task_one.id
-      end
-
-      it "リクエストは200 OK" do
-        expect(response.status).to eq 200
-      end
-      it "ToDoリストの題名と詳細が表示されること" do
-        expect(response.body).to include "一番目のリストのタイトル"
-        expect(response.body).to include "一番目のリストの詳細"
-      end
-    end
-
-    context "ログイン済みかつ他人のToDoリストの場合" do
-      let(:task_one) { create(:task_one, user: another_user) }
-
-      before do
-        sign_in user
-        get edit_task_url task_one.id
-      end
-
-      it "リクエストは302 リダイレクト" do
-        expect(response.status).to eq 302
-      end
-      it "トップページにリダイレクトされること" do
-        expect(response).to redirect_to root_url
-      end
-    end
-
-    context "ログインしていない場合" do
-      let(:task_one) { create(:task_one, user: user) }
-
-      before do
-        get edit_task_url task_one.id
-      end
-
-      it "リクエストは302 リダイレクト" do
-        expect(response.status).to eq 302
-      end
-      it "ログインページにリダイレクトされること" do
-        expect(response).to redirect_to new_user_session_url
-      end
-    end
-  end
-
   describe "POST #create" do
     context "ログイン済みかつ保存に成功した場合" do
       before do
@@ -176,22 +100,6 @@ RSpec.describe Public::TasksController, type: :request do
       it "保存後、保存したToDoリスト詳細ページにリダイレクトされること" do
         post tasks_url, params: { task: attributes_for(:task, user: user) }
         expect(response).to redirect_to Task.last
-      end
-    end
-
-    context "ログイン済みかつ保存に失敗した場合" do
-      before do
-        sign_in user
-      end
-
-      it "ToDoリストがデータベースに保存されないこと" do
-        expect do
-          post tasks_url, params: { task: attributes_for(:task, title: nil, user: user) }
-        end.to change(user.tasks, :count).by(0)
-      end
-      it "エラーが表示されること" do
-        post tasks_url, params: { task: attributes_for(:task, title: nil, user: user) }
-        expect(response.body).to include "題名を入力してください"
       end
     end
 
@@ -226,28 +134,6 @@ RSpec.describe Public::TasksController, type: :request do
       it "更新後、更新したToDoリスト詳細ページにリダイレクトされること" do
         patch task_url task_one, params: { task: attributes_for(:task_second) }
         expect(response).to redirect_to(task_url(task_one))
-      end
-    end
-
-    context "自分のToDoリストであり、かつパラメータが不正な場合" do
-      let(:task_one) { create(:task_one, user: user) }
-
-      before do
-        sign_in user
-      end
-
-      it "リクエストは200 OK" do
-        patch task_url task_one, params: { task: attributes_for(:task_second, title: nil) }
-        expect(response.status).to eq 200
-      end
-      it "ToDoリストの題名が更新されないこと" do
-        expect do
-          patch task_url task_one, params: { task: attributes_for(:task_second, title: nil) }
-        end.not_to change(Task.find(task_one.id), :title)
-      end
-      it "エラーが表示されること" do
-        patch task_url task_one, params: { task: attributes_for(:task_second, title: nil) }
-        expect(response.body).to include "題名を入力してください"
       end
     end
 

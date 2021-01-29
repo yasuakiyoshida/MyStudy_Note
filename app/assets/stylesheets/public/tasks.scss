@@ -2,10 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.task-header {
-  background: linear-gradient(#009900, #759350);
+.task-new-header,
+.task-edit-header {
   font-size: 20px;
   color: #FFF;
+}
+.task-new-header {
+  background: linear-gradient(#009900, #759350);
+}
+.task-edit-header {
+  background: linear-gradient(#5D99FF, #759350);
 }
 .task-title {
   color: #512700;
@@ -64,6 +70,63 @@
   }
 }
 
+// モーダルウィンドウ
+.task-modal-content {
+  margin: 0 auto;
+  .btn-modal-open-new-task,
+  .btn-modal-open-show-task {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+  }
+  .btn-modal-open-new-task {
+    background: #009900;
+    border: solid 2px #759350;
+  }
+  .btn-modal-open-show-task {
+    background: #4169E1;
+    border: solid 2px #0000FF;
+  }
+  .btn-modal-open-new-task:active {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  }
+}
+.task-edit-modal-content {
+  width: 20px;
+  margin: 0;
+}
+.modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  .modal-bg {
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+  }
+  .modal-content {
+    background: #fff;
+    left: 50%;
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    table {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+}
+
 @media screen and (max-width: 767px) {
   .due-select {
     font-size: 12px;
@@ -76,5 +139,11 @@
   }
   .select-box {
     font-size: 12px;
+  }
+  .modal .modal-content {
+    width: 80%;
+    table tr {
+      font-size: 12px;
+    }
   }
 }

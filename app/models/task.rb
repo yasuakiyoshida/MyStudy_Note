@@ -8,6 +8,7 @@ class Task < ApplicationRecord
 
   validates :title, presence: true
   validates :due, presence: true
+  # updateにもバリデーションつけると過去のToDoリストを編集する際に期限も変えなければならないのでcreateのみ
   validate :due_cannot_be_in_the_past, on: :create
 
   def due_cannot_be_in_the_past

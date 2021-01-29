@@ -34,7 +34,19 @@
       </table>
     </div>
   </div>
-  <div class="text-center mb-5">
-    <%= link_to 'ToDoリストを編集する', edit_task_path(@task.id), class: "btn btn-outline-info px-3" %>
+  <div class="mb-5">
+    <!-- モーダルウィンドウ -->
+    <div class="task-modal-content text-center">
+      <%= link_to "#blank", class: "js-modal-open btn-modal-open-show-task", "data-target" => "modal_task_edit_#{@task.id}" do %>
+        <i class="fas fa-cogs"></i> ToDoリストを編集する
+      <% end %>
+    </div>
+    <div id="modal_task_edit_<%= @task.id %>" class="modal js-modal">
+      <div class="modal-bg js-modal-close"></div>
+      <div class="modal-content" id="edit_content_<%= @task.id %>">
+        <%= render 'public/tasks/edit', task: @task %>
+      </div>
+    </div>
+    <!-- モーダルウィンドウここまで -->
   </div>
 </div>
