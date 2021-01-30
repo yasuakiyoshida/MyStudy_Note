@@ -6,7 +6,7 @@ class Learning < ApplicationRecord
 
   attachment :image
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
   validates :date, presence: true
   validates :time, presence: true, numericality: { less_than_or_equal_to: 24, greater_than: 0 }
   validate :date_cannot_be_in_the_future
