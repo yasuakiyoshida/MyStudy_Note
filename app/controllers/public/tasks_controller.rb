@@ -18,17 +18,13 @@ class Public::TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     if @task.save
-      respond_to do |format|
-        format.html { redirect_to task_path(@task), notice: 'ToDoリストを作成しました' }
-      end
+      redirect_to task_path(@task), notice: 'ToDoリストを作成しました'
     end
   end
 
   def update
     if @task.update(task_params)
-      respond_to do |format|
-        format.html { redirect_to task_path(@task), notice: 'ToDoリストを更新しました' }
-      end
+      redirect_to task_path(@task), notice: 'ToDoリストを更新しました'
     end
   end
 
