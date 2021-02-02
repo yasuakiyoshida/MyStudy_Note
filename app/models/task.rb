@@ -6,7 +6,7 @@ class Task < ApplicationRecord
   enum priority_status: { 高: 0, 中: 1, 低: 2 }
   enum progress_status: { 未着手: 0, 処理中: 1, 完了済: 2, 保留中: 3 }
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
   validates :due, presence: true
   # updateにもバリデーションつけると過去のToDoリストを編集する際に期限も変えなければならないのでcreateのみ
   validate :due_cannot_be_in_the_past, on: :create
