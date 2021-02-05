@@ -23,7 +23,7 @@
           </div>
         </div>
         <!-- モーダルウィンドウここまで -->
-        <%= link_to task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？" do %>
+        <%= link_to task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？", remote: true  do %>
           <i class="far fa-trash-alt" title="削除する"></i>
         <% end %><br>
         <small class="card-text">タグ：<%= render 'tag_list', tag_list: task.tag_list %></small>
@@ -31,3 +31,4 @@
     </div>
   <% end %>
 </div>
+<div class="text-center my-3" id="task_paginate"><%= paginate tasks %></div>

@@ -15,7 +15,8 @@
     </div>
   </div>
   <!-- ここまでモーダルウィンドウ -->
-  <%= render 'public/tasks/search_form', search: @search %>
-  <%= render 'public/tasks/index', tasks: @task_search %>
+  <div id="index_content_search">
+    <%= render 'public/tasks/search_form', search: @search %>
+    <%= render 'public/tasks/index', tasks: @task_search %>
+  </div>
 </div>
-<div class="text-center my-3"><%= paginate @task_search %></div>

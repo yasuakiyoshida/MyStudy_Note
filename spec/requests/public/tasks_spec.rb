@@ -155,26 +155,4 @@ RSpec.describe Public::TasksController, type: :request do
       end
     end
   end
-
-  describe "DELETE #destroy" do
-    let!(:task) { create(:task, user: user) }
-
-    before do
-      sign_in user
-    end
-
-    it "リクエストは302 リダイレクト" do
-      delete task_url task
-      expect(response.status).to eq 302
-    end
-    it "ToDoリストが削除されること" do
-      expect do
-        delete task_url task
-      end.to change(user.tasks, :count).by(-1)
-    end
-    it "ToDoリスト一覧ページにリダイレクトされること" do
-      delete task_url task
-      expect(response).to redirect_to tasks_url
-    end
-  end
 end
