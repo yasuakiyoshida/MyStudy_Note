@@ -50,8 +50,8 @@ $(document).on('turbolinks:load', function () {
 $(document).on('turbolinks:load', function () {
   $('.js-modal-open').each(function(){
     $(this).on('click',function(){
-      var target = $(this).data('target');
-      var modal = document.getElementById(target);
+      let target = $(this).data('target');
+      let modal = document.getElementById(target);
       $(modal).fadeIn();
       return false;
     });
