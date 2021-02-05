@@ -1,14 +1,11 @@
 class Public::TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:show, :update, :destroy]
-  before_action :set_task_search, only: [:index, :search]
+  before_action :set_task_search, only: [:index, :search, :destroy]
   before_action :set_new_task, only: [:index, :search]
+  before_action :set_task_index, only: [:index, :destroy]
 
   def index
-    @tasks = current_user.tasks.page(params[:page]).order("due").per(10)
-    if params[:tag_name]
-      @tasks = current_user.tasks.tagged_with("#{params[:tag_name]}").page(params[:page]).order("due").per(10)
-    end
   end
 
   def show
@@ -18,19 +15,20 @@ class Public::TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     if @task.save
-      redirect_to task_path(@task), notice: 'ToDoリストを作成しました'
+      redirect_to task_path(@task), turbolinks: "advance", notice: 'ToDoリストを作成しました'
     end
   end
 
   def update
     if @task.update(task_params)
-      redirect_to task_path(@task), notice: 'ToDoリストを更新しました'
+      redirect_to task_path(@task), turbolinks: "advance", notice: 'ToDoリストを更新しました'
     end
   end
 
   def destroy
-    @task.destroy
-    redirect_to tasks_path, notice: 'ToDoリストを削除しました'
+    if @task.destroy
+      flash[:notice] = 'ToDoリストを削除しました'
+    end
   end
 
   private
@@ -53,5 +51,12 @@ class Public::TasksController < ApplicationController
   def set_task_search
     @search = current_user.tasks.ransack(params[:q])
     @task_search = @search.result.page(params[:page]).order("due").per(10)
+  end
+
+  def set_task_index
+    @tasks = current_user.tasks.page(params[:page]).order("due").per(10)
+    if params[:tag_name]
+      @tasks = current_user.tasks.tagged_with("#{params[:tag_name]}").page(params[:page]).order("due").per(10)
+    end
   end
 end
