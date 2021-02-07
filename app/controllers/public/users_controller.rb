@@ -1,10 +1,12 @@
 class Public::UsersController < ApplicationController
+  include Searchable
   before_action :authenticate_user!, except: [:show]
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :set_user_search, only: [:index, :search]
 
   def index
-    @users = User.page(params[:page]).per(8)
+    # @users = User.page(params[:page]).per(8)
+    @users = User.index_page(params[:page])
   end
 
   def show
@@ -49,10 +51,5 @@ class Public::UsersController < ApplicationController
     unless @user == current_user
       redirect_to user_path(current_user)
     end
-  end
-
-  def set_user_search
-    @search = User.ransack(params[:q])
-    @user_search = @search.result.page(params[:page]).per(8)
   end
 end

@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  def self.index_page(page)
+    page(page).per(8)
+  end
 end
