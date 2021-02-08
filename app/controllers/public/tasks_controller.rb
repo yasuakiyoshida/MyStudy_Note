@@ -50,13 +50,13 @@ class Public::TasksController < ApplicationController
 
   def set_task_search
     @search = current_user.tasks.ransack(params[:q])
-    @task_search = @search.result.page(params[:page]).order("due").per(10)
+    @task_search = @search.result.page(params[:page]).sorted(10)
   end
 
   def set_task_index
-    @tasks = current_user.tasks.page(params[:page]).order("due").per(10)
+    @tasks = current_user.tasks.page(params[:page]).sorted(10)
     if params[:tag_name]
-      @tasks = current_user.tasks.tagged_with("#{params[:tag_name]}").page(params[:page]).order("due").per(10)
+      @tasks = current_user.tasks.tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(10)
     end
   end
 end
