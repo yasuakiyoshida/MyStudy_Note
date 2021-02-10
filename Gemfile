@@ -94,3 +94,4 @@ gem 'devise-i18n-views'
 gem 'gretel'
 gem 'rack-attack'
 gem 'simple_calendar', '~> 2.0'
+gem 'rails_best_practices', require: false

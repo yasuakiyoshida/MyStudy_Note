@@ -21,7 +21,7 @@
                   <td><%= link_to user.nickname, admins_user_path(user) %></td>
                   <td><%= user.email %></td>
                   <td class="admin-user-biography" colspan="2">
-                    <% if user.biography.present? %>
+                    <% if user.biography? %>
                       <%= user.biography.truncate(40) %>
                     <% end %>
                   </td>
