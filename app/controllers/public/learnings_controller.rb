@@ -10,7 +10,7 @@ class Public::LearningsController < ApplicationController
   def index
     @learnings = current_user.learnings.includes(:tags).page(params[:page]).sorted(8)
     if params[:tag_name]
-      @learnings = current_user.learnings.tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(8)
+      @learnings = current_user.learnings.includes(:tags).tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(8)
     end
   end
 
@@ -60,7 +60,7 @@ class Public::LearningsController < ApplicationController
   end
 
   def set_learning_search
-    @search = current_user.learnings.ransack(params[:q])
+    @search = current_user.learnings.includes(:tags).ransack(params[:q])
     @learning_search = @search.result.page(params[:page]).sorted(8)
   end
 end
