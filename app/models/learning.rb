@@ -44,7 +44,7 @@ class Learning < ApplicationRecord
       errors.add(:date, "に未来の日付を設定することはできません")
     end
   end
-  
+
   # simple_calendar
   def start_time
     date
@@ -59,31 +59,31 @@ class Learning < ApplicationRecord
       today_learnings = where(date: Date.today)
       learning_time_sum(today_learnings)
     end
-  
+
     def yesterday_study_time
       yesterday_learnings = where(date: Date.yesterday)
       learning_time_sum(yesterday_learnings)
     end
-  
+
     def week_study_time
       to = Time.current
       from = (to - 6.day).at_beginning_of_day
       week_learnings = where(date: from...to)
       learning_time_sum(week_learnings)
     end
-  
+
     def month_study_time
       to = Time.current
       from = (1.month.ago + 1.day).at_beginning_of_day
       month_learnings = where(date: from...to)
       learning_time_sum(month_learnings)
     end
-  
+
     def learning_time_sum(date_ranges)
       total_time = date_ranges.inject(0) { |sum, date_range| sum + date_range.time }
       total_time.floor(1)
     end
-  
+
     def learnings_period(period)
       current = Time.current.beginning_of_day
       case period
