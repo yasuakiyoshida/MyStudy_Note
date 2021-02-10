@@ -5,7 +5,6 @@ class Public::UsersController < ApplicationController
   before_action :set_user_search, only: [:index, :search]
 
   def index
-    # @users = User.page(params[:page]).per(8)
     @users = User.index_page(params[:page])
   end
 

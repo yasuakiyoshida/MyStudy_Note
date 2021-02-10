@@ -5,6 +5,6 @@ module Searchable
 
   def set_user_search
     @search = User.ransack(params[:q])
-    @user_search = @search.result.page(params[:page]).per(8)
+    @user_search = @search.result.index_page(params[:page])
   end
 end
