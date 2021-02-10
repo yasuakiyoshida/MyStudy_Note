@@ -23,7 +23,7 @@
                   <td><%= link_to learning.user.nickname, admins_user_path(learning.user) %></td>
                   <td><%= link_to learning.title, admins_learning_path(learning) %></td>
                   <td class="admin-learning-detail">
-                    <% if learning.detail.present? %>
+                    <% if learning.detail? %>
                       <%= learning.detail.truncate(20) %>
                     <% end %>
                   </td>
