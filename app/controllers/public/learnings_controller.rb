@@ -8,7 +8,7 @@ class Public::LearningsController < ApplicationController
   end
 
   def index
-    @learnings = current_user.learnings.page(params[:page]).sorted(8)
+    @learnings = current_user.learnings.includes(:tags).page(params[:page]).sorted(8)
     if params[:tag_name]
       @learnings = current_user.learnings.tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(8)
     end

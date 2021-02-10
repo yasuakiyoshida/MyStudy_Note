@@ -36,7 +36,7 @@ class Public::TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :detail, :priority_status, :due, :progress_status, :tag_list)
   end
-  
+
   def set_new_task
     @task = Task.new
   end
@@ -49,14 +49,14 @@ class Public::TasksController < ApplicationController
   end
 
   def set_task_search
-    @search = current_user.tasks.ransack(params[:q])
+    @search = current_user.tasks.includes(:tags).ransack(params[:q])
     @task_search = @search.result.page(params[:page]).sorted(10)
   end
 
   def set_task_index
-    @tasks = current_user.tasks.page(params[:page]).sorted(10)
+    @tasks = current_user.tasks.includes(:tags).page(params[:page]).sorted(10)
     if params[:tag_name]
-      @tasks = current_user.tasks.tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(10)
+      @tasks = current_user.tasks.includes(:tags).tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(10)
     end
   end
 end
