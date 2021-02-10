@@ -12,9 +12,6 @@ class Admins::LearningsController < ApplicationController
 
   def show
     @learning_comments = @learning.learning_comments.page(params[:page]).per(5)
-    if params[:tag_name]
-      @learnings = Learning.includes(:tags, :user).tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(8)
-    end
   end
 
   def edit
