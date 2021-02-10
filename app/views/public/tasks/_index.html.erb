@@ -1,5 +1,5 @@
 <div class="row">
-  <% tasks.includes(:taggings).each.with_index(1) do |task, index| %>
+  <% tasks.each.with_index(1) do |task, index| %>
     <div class="col-lg-8 offset-lg-2">
       <div class="card-body m-2 task-content <%= add_class_name_progress(task.progress_status) + '-content' %>">
         <small class="<%= "text-danger" if task.due < Time.now %> card-text">
@@ -26,7 +26,7 @@
         <%= link_to task_path(task.id), method: :delete, "data-confirm" => "#{task.title}をリストから削除しますか？", remote: true  do %>
           <i class="far fa-trash-alt" title="削除する"></i>
         <% end %><br>
-        <small class="card-text">タグ：<%= render 'tag_list', tag_list: task.tag_list %></small>
+        <small class="card-text">タグ：<%= render 'tag_list', tags: task.tags %></small>
       </div>
     </div>
   <% end %>
