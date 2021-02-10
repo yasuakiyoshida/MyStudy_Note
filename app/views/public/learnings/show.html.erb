@@ -29,9 +29,9 @@
             <th>タグ</th>
             <td colspan="2">
               <% if @learning.user == current_user %>
-                <%= render 'public/learnings/tag_list', tag_list: @learning.tag_list %>
+                <%= render 'public/learnings/tag_list', tags: @learning.tags %>
               <% else %>
-                <%= render 'public/homes/tag_list', tag_list: @learning.tag_list %>
+                <%= render 'public/homes/tag_list', tags: @learning.tags %>
               <% end %>
             </td>
           </tr>

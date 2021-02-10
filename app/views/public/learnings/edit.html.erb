@@ -31,7 +31,7 @@
             <div class="row mt-4">
               <div class="col-10 offset-1">
                 <%= f.label :tag_list, 'タグ（","で区切ることで複数のタグを入力できます）' %>
-                <%= f.text_field :tag_list, value: @learning.tag_list.join(','), class: "form-control", placeholder: '例：プログラミング,ruby,rails' %>
+                <%= f.text_field :tag_list, value: @learning.tags.pluck(:name).join(','), class: "form-control", placeholder: '例：プログラミング,ruby,rails' %>
               </div>
             </div>
             <div class="row mt-4">
