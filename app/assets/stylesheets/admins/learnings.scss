@@ -33,6 +33,14 @@
     tbody th, tbody td {
       border: none;
       font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'Noto Serif JP', sans-serif;
+      .user-profile-resize {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+      }
+      a {
+        text-decoration: none;
+      }
     }
     .biography-text,
     .learning-detail-text {

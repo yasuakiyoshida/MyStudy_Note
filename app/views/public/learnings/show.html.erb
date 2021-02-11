@@ -4,11 +4,7 @@
   <h1 class="my-3 text-center learning-title"><i class="fa fa-book"></i> 学習記録詳細</h1>
   <div class="row mx-0 bg-light mb-3 p-2 rounded">
     <div class="col-lg-4 d-flex align-items-center justify-content-center">
-      <% if @image_url.nil? %>
-        <%= image_tag "no_image.jpg", class: "learning-image img-responsive center-block" %>
-      <% else %>
-        <%= image_tag @learning.image_url, class: "learning-image img-responsive center-block" %>
-      <% end %>
+      <%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg", class: "learning-image img-responsive center-block" %>
     </div>
     <div class="col-lg-8">
       <table class="table show-table">
@@ -41,7 +37,12 @@
           </tr>
           <tr class="user-info">
             <th>ユーザー</th>
-            <td colspan="2" class="user-name"><%= link_to @learning.user.nickname, user_path(@learning.user) %></td>
+            <td colspan="2" class="user-name">
+              <%= link_to user_path(@learning.user) do %>
+                <%= image_tag @learning.user.image_url, class: "user-profile-resize" %>
+                <%= @learning.user.nickname %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td colspan="2">

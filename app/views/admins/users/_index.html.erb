@@ -18,7 +18,13 @@
             <tbody>
               <% users.each do |user| %>
                 <tr>
-                  <td><%= link_to user.nickname, admins_user_path(user) %></td>
+                  <td>
+                    <%= link_to admins_user_path(user) do %>
+                      <%= image_tag user.image_url, class: "user-profile-resize" %>
+                      <%= user.nickname %>
+                    <% end %>
+                    <!--%= link_to user.nickname, admins_user_path(user) %-->
+                  </td>
                   <td><%= user.email %></td>
                   <td class="admin-user-biography" colspan="2">
                     <% if user.biography? %>
