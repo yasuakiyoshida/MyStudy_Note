@@ -37,7 +37,12 @@
           </tr>
           <tr class="user-info">
             <th>ユーザー</th>
-            <td colspan="2" class="user-name"><%= link_to @learning.user.nickname, user_path(@learning.user) %></td>
+            <td colspan="2" class="user-name">
+              <%= link_to user_path(@learning.user) do %>
+                <%= image_tag @learning.user.image_url, class: "user-profile-resize" %>
+                <%= @learning.user.nickname %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td colspan="2">

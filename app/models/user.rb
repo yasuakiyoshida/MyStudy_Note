@@ -30,6 +30,14 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def image_url
+    if self.image_id?
+      "https://mystudynote-img-files-resize.s3-ap-northeast-1.amazonaws.com/store/#{self.image_id}-thumbnail."
+    else
+      'https://mystudynote-img-files-resize.s3-ap-northeast-1.amazonaws.com/store/user-no-img.png'
+    end
+  end
+
   def self.index_page(page)
     page(page).per(8)
   end
