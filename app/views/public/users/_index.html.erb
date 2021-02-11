@@ -23,7 +23,7 @@
                 <% end %>
               </p>
               <p class="card-text">
-                <% if user.biography.present? %>
+                <% if user.biography? %>
                   <%= user.biography.truncate(50) %>
                 <% end %>
               </p>

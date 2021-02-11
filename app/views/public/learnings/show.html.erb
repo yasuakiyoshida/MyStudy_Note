@@ -4,7 +4,11 @@
   <h1 class="my-3 text-center learning-title"><i class="fa fa-book"></i> 学習記録詳細</h1>
   <div class="row mx-0 bg-light mb-3 p-2 rounded">
     <div class="col-lg-4 d-flex align-items-center justify-content-center">
-      <%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg", class: "learning-image img-responsive center-block" %>
+      <% if @image_url.nil? %>
+        <%= image_tag "no_image.jpg", class: "learning-image img-responsive center-block" %>
+      <% else %>
+        <%= image_tag @learning.image_url, class: "learning-image img-responsive center-block" %>
+      <% end %>
     </div>
     <div class="col-lg-8">
       <table class="table show-table">
@@ -29,9 +33,9 @@
             <th>タグ</th>
             <td colspan="2">
               <% if @learning.user == current_user %>
-                <%= render 'public/learnings/tag_list', tag_list: @learning.tag_list %>
+                <%= render 'public/learnings/tag_list', tags: @learning.tags %>
               <% else %>
-                <%= render 'public/homes/tag_list', tag_list: @learning.tag_list %>
+                <%= render 'public/homes/tag_list', tags: @learning.tags %>
               <% end %>
             </td>
           </tr>

@@ -4,17 +4,14 @@ class Admins::LearningsController < ApplicationController
   before_action :set_learning_search, only: [:index, :search]
 
   def index
-    @learnings = Learning.page(params[:page]).sorted(8)
+    @learnings = Learning.includes(:tags, :user).page(params[:page]).sorted(8)
     if params[:tag_name]
-      @learnings = Learning.tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(8)
+      @learnings = Learning.includes(:tags, :user).tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(8)
     end
   end
 
   def show
     @learning_comments = @learning.learning_comments.page(params[:page]).per(5)
-    if params[:tag_name]
-      @learnings = Learning.tagged_with("#{params[:tag_name]}").page(params[:page]).sorted(8)
-    end
   end
 
   def edit
@@ -44,7 +41,7 @@ class Admins::LearningsController < ApplicationController
   end
 
   def set_learning_search
-    @search = Learning.ransack(params[:q])
+    @search = Learning.includes(:tags, :user).ransack(params[:q])
     @learning_search = @search.result.page(params[:page]).sorted(8)
   end
 end

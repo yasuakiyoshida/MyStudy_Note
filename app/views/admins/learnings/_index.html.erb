@@ -18,12 +18,12 @@
               </tr>
             </thead>
             <tbody>
-              <% learnings.includes(:taggings, :user).each do |learning| %>
+              <% learnings.each do |learning| %>
                 <tr>
                   <td><%= link_to learning.user.nickname, admins_user_path(learning.user) %></td>
                   <td><%= link_to learning.title, admins_learning_path(learning) %></td>
                   <td class="admin-learning-detail">
-                    <% if learning.detail.present? %>
+                    <% if learning.detail? %>
                       <%= learning.detail.truncate(20) %>
                     <% end %>
                   </td>
@@ -34,7 +34,7 @@
                       非公開
                     <% end %>
                   </td>
-                  <td class="admin-tag"><%= render 'admins/learnings/tag_list', tag_list: learning.tag_list %></td>
+                  <td class="admin-tag"><%= render 'admins/learnings/tag_list', tags: learning.tags %></td>
                   <td class="text-center">
                     <%= link_to '編集', edit_admins_learning_path(learning), class: "btn btn-outline-info admin-btn my-1" %>
                     <%= link_to '削除', admins_learning_path(learning), method: :delete, "data-confirm" => "#{learning.title}を削除しますか？", class: "btn btn-outline-danger admin-btn my-1" %>

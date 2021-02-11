@@ -46,7 +46,7 @@
       </th>
     </tr>
     <tr>
-      <td><%= f.text_field :tag_list, value: task.tag_list.join(','), class: "form-control", placeholder: '例：プログラミング,ruby,rails' %></td>
+      <td><%= f.text_field :tag_list, value: task.tags.pluck(:name).join(','), class: "form-control", placeholder: '例：プログラミング,ruby,rails' %></td>
     </tr>
     <tr>
       <th><%= f.label :priority_status, 'タスクの優先度', class: "mt-3" %></th>

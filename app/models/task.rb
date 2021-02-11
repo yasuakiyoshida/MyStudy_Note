@@ -5,7 +5,7 @@ class Task < ApplicationRecord
 
   enum priority_status: { 高: 0, 中: 1, 低: 2 }
   enum progress_status: { 未着手: 0, 処理中: 1, 完了済: 2, 保留中: 3 }
-  
+
   scope :sorted, -> (count) { order("due").per(count) }
 
   validates :title, presence: true, length: { maximum: 50 }
