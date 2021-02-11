@@ -105,5 +105,13 @@ class Learning < ApplicationRecord
       end
       dates
     end
+
+    def image_url
+      if Rails.env.production?
+        "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-ap-northeast-1.amazonaws.com/store/" + self.image_id
+      else
+        Refile.attachment_url(self, :image)
+      end
+    end
   end
 end
