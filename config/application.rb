@@ -21,7 +21,7 @@ module MystudyNote
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
     # Security
     config.middleware.use Rack::Attack
-    
+
     config.generators do |g|
       g.test_framework :rspec,
         controller_specs: false,
