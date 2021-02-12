@@ -7,6 +7,10 @@ class Task < ApplicationRecord
   enum progress_status: { 未着手: 0, 処理中: 1, 完了済: 2, 保留中: 3 }
 
   scope :sorted, -> (count) { order("due").per(count) }
+  scope :count_new, -> { where(progress_status: 0).count }
+  scope :count_processing, -> { where(progress_status: 1).count }
+  scope :count_completed, -> { where(progress_status: 2).count }
+  scope :count_pending, -> { where(progress_status: 3).count }
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :due, presence: true
