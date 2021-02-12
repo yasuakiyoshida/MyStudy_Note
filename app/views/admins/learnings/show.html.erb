@@ -42,7 +42,7 @@
             <td>
               <%= link_to admins_user_path(@learning.user) do %>
                 <%= image_tag @learning.user.image_url, class: "user-profile-resize" %>
-                <%= @learning.user.nickname %>
+                <%= @learning.user_nickname %>
               <% end %>
             </td>
           </tr>

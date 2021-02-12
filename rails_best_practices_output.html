@@ -60,27 +60,13 @@
       to see more useful Rails Best Practices.
     </p>
     <p>
-        Found 49 warnings.
+        Found 43 warnings.
     </p>
     <table>
           <tr>
               <td>
                 <input type="checkbox" class="error-type" id="AlwaysAddDbIndexReview" value="AlwaysAddDbIndexReview"
                 />&nbsp;<label for="AlwaysAddDbIndexReview">Always Add Db Index</label>
-              </td>
-              <td>
-                <input type="checkbox" class="error-type" id="OveruseRouteCustomizationsReview" value="OveruseRouteCustomizationsReview"
-                />&nbsp;<label for="OveruseRouteCustomizationsReview">Overuse Route Customizations</label>
-              </td>
-              <td>
-                <input type="checkbox" class="error-type" id="UseModelAssociationReview" value="UseModelAssociationReview"
-                />&nbsp;<label for="UseModelAssociationReview">Use Model Association</label>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                <input type="checkbox" class="error-type" id="LawOfDemeterReview" value="LawOfDemeterReview"
-                />&nbsp;<label for="LawOfDemeterReview">Law Of Demeter</label>
               </td>
               <td>
                 <input type="checkbox" class="error-type" id="RemoveEmptyHelpersReview" value="RemoveEmptyHelpersReview"
@@ -117,6 +103,16 @@
               <td>
                 <input type="checkbox" class="error-type" id="RemoveTrailingWhitespaceCheck" value="RemoveTrailingWhitespaceCheck"
                 />&nbsp;<label for="RemoveTrailingWhitespaceCheck">Remove Trailing Whitespace</label>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                <input type="checkbox" class="error-type" id="OveruseRouteCustomizationsReview" value="OveruseRouteCustomizationsReview"
+                />&nbsp;<label for="OveruseRouteCustomizationsReview">Overuse Route Customizations</label>
+              </td>
+              <td>
+                <input type="checkbox" class="error-type" id="UseModelAssociationReview" value="UseModelAssociationReview"
+                />&nbsp;<label for="UseModelAssociationReview">Use Model Association</label>
               </td>
           </tr>
         <tr>
@@ -205,60 +201,6 @@
             <td class='line'>88</td>
             <td class='message'>
               <a href='https://rails-bestpractices.com/posts/2010/07/24/always-add-db-index/' target='_blank'>always add db index (tasks => [user_id])</a>
-            </td>
-          </tr>
-          <tr class="LawOfDemeterReview">
-            <td class='filename'>
-                app/views/admins/learnings/_comment.html.erb
-            </td>
-            <td class='line'>6</td>
-            <td class='message'>
-              <a href='https://rails-bestpractices.com/posts/2010/07/24/the-law-of-demeter/' target='_blank'>law of demeter</a>
-            </td>
-          </tr>
-          <tr class="LawOfDemeterReview">
-            <td class='filename'>
-                app/views/admins/learnings/_index.html.erb
-            </td>
-            <td class='line'>23</td>
-            <td class='message'>
-              <a href='https://rails-bestpractices.com/posts/2010/07/24/the-law-of-demeter/' target='_blank'>law of demeter</a>
-            </td>
-          </tr>
-          <tr class="LawOfDemeterReview">
-            <td class='filename'>
-                app/views/admins/learnings/show.html.erb
-            </td>
-            <td class='line'>42</td>
-            <td class='message'>
-              <a href='https://rails-bestpractices.com/posts/2010/07/24/the-law-of-demeter/' target='_blank'>law of demeter</a>
-            </td>
-          </tr>
-          <tr class="LawOfDemeterReview">
-            <td class='filename'>
-                app/views/public/homes/_study_record.html.erb
-            </td>
-            <td class='line'>16</td>
-            <td class='message'>
-              <a href='https://rails-bestpractices.com/posts/2010/07/24/the-law-of-demeter/' target='_blank'>law of demeter</a>
-            </td>
-          </tr>
-          <tr class="LawOfDemeterReview">
-            <td class='filename'>
-                app/views/public/learnings/_comment.html.erb
-            </td>
-            <td class='line'>6</td>
-            <td class='message'>
-              <a href='https://rails-bestpractices.com/posts/2010/07/24/the-law-of-demeter/' target='_blank'>law of demeter</a>
-            </td>
-          </tr>
-          <tr class="LawOfDemeterReview">
-            <td class='filename'>
-                app/views/public/learnings/show.html.erb
-            </td>
-            <td class='line'>40</td>
-            <td class='message'>
-              <a href='https://rails-bestpractices.com/posts/2010/07/24/the-law-of-demeter/' target='_blank'>law of demeter</a>
             </td>
           </tr>
           <tr class="MoveCodeIntoModelReview">
@@ -391,7 +333,7 @@
             <td class='filename'>
                 app/models/learning.rb
             </td>
-            <td class='line'>49</td>
+            <td class='line'>51</td>
             <td class='message'>
               <a href='' target='_blank'>remove unused methods (Learning#start_time)</a>
             </td>
