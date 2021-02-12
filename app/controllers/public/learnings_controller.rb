@@ -24,8 +24,7 @@ class Public::LearningsController < ApplicationController
   end
 
   def create
-    @learning = Learning.new(learning_params)
-    @learning.user_id = current_user.id
+    @learning = current_user.learnings.new(learning_params)
     if @learning.save
       redirect_to learning_path(@learning), notice: "学習内容を記録しました"
     else
