@@ -96,3 +96,4 @@ gem 'rack-attack'
 gem 'simple_calendar', '~> 2.0'
 gem 'rails_best_practices', require: false
 gem 'counter_culture'
+gem 'whenever', require: false
