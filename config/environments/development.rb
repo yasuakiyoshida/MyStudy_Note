@@ -83,4 +83,8 @@ Rails.application.configure do
     :password => ENV['SMTP_PASSWORD'],
     :authentication => 'login'
   }
+
+  # Batch
+    config.autoload_paths += Dir["#{config.root}/lib"]
+    config.eager_load_paths += Dir["#{config.root}/lib/**/"]
 end
