@@ -119,6 +119,9 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
+    counter_culture (2.7.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     crass (1.0.6)
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -426,6 +429,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chartkick
   coffee-rails (~> 4.2)
+  counter_culture
   devise
   devise-i18n
   devise-i18n-views

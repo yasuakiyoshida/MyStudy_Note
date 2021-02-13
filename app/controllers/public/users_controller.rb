@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   before_action :set_user_search, only: [:index, :search]
 
   def index
-    @users = User.index_page(params[:page])
+    @users = User.eager_load([:relationships, :followings]).index_page(params[:page])
   end
 
   def show
