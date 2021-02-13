@@ -24,6 +24,10 @@
 
 日々の学習時
 
+## インフラ構成図
+
+![AWS構成図](https://user-images.githubusercontent.com/72193151/107850593-e0032280-6e46-11eb-8fc8-24441a52a996.png)
+
 ## ER図
 
 [ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
