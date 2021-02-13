@@ -40,7 +40,7 @@
             <td colspan="2" class="user-name">
               <%= link_to user_path(@learning.user) do %>
                 <%= image_tag @learning.user.image_url, class: "user-profile-resize" %>
-                <%= @learning.user.nickname %>
+                <%= @learning.user_nickname %>
               <% end %>
             </td>
           </tr>
@@ -49,7 +49,7 @@
               <% if user_signed_in? %>
                 <div class="favorite-btn"><%= render 'favorite', learning: @learning %></div>
               <% else %>
-                <div class="favorite-btn favorite"><p class="heart">♥<%= @learning.favorites.count %> いいね</p></div>
+                <div class="favorite-btn favorite"><p class="heart">♥<%= @learning.favorites_count %> いいね</p></div>
               <% end %>
             </td>
           </tr>

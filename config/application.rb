@@ -21,7 +21,11 @@ module MystudyNote
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
     # Security
     config.middleware.use Rack::Attack
-    
+
+    # Batch
+    config.autoload_paths += Dir["#{config.root}/lib"]
+    config.eager_load_paths += Dir["#{config.root}/lib/**/"]
+
     config.generators do |g|
       g.test_framework :rspec,
         controller_specs: false,

@@ -39,7 +39,12 @@
           </tr>
           <tr>
             <th>投稿ユーザー名</th>
-            <td><%= link_to @learning.user.nickname, admins_users_path(@learning.user) %></td>
+            <td>
+              <%= link_to admins_user_path(@learning.user) do %>
+                <%= image_tag @learning.user.image_url, class: "user-profile-resize" %>
+                <%= @learning.user_nickname %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>

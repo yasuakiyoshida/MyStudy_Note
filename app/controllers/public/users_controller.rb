@@ -5,26 +5,30 @@ class Public::UsersController < ApplicationController
   before_action :set_user_search, only: [:index, :search]
 
   def index
-    @users = User.index_page(params[:page])
+    @users = User.eager_load([:relationships, :followings]).index_page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @new_tasks = @user.tasks.where(progress_status: 0).count
-    @processing_tasks = @user.tasks.where(progress_status: 1).count
-    @completed_tasks = @user.tasks.where(progress_status: 2).count
-    @pending_tasks = @user.tasks.where(progress_status: 3).count
+    @new_tasks = @user.tasks.count_new
+    @processing_tasks = @user.tasks.count_processing
+    @completed_tasks = @user.tasks.count_completed
+    @pending_tasks = @user.tasks.count_pending
     @task_chart = {
       '未着手' => @new_tasks,
       '処理中' => @processing_tasks,
       '完了済' => @completed_tasks,
       '保留中' => @pending_tasks,
     }
+    @today_study_time = @user.learnings.today_study_time
+    @yesterday_study_time = @user.learnings.yesterday_study_time
+    @week_study_time = @user.learnings.week_study_time
+    @month_study_time = @user.learnings.month_study_time
     @learning_chart = {
-      '今日' => @user.learnings.today_study_time,
-      '昨日' => @user.learnings.yesterday_study_time,
-      '過去一週間' => @user.learnings.week_study_time,
-      '過去1ヶ月' => @user.learnings.month_study_time,
+      '今日' => @today_study_time,
+      '昨日' => @yesterday_study_time,
+      '過去一週間' => @week_study_time,
+      '過去1ヶ月' => @month_study_time,
     }
   end
 

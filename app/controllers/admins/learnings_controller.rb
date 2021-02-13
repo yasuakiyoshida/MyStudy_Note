@@ -11,7 +11,7 @@ class Admins::LearningsController < ApplicationController
   end
 
   def show
-    @learning_comments = @learning.learning_comments.page(params[:page]).per(5)
+    @learning_comments = @learning.learning_comments.includes(:user).page(params[:page]).per(5)
   end
 
   def edit

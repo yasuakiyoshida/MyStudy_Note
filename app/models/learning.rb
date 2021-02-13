@@ -4,6 +4,8 @@ class Learning < ApplicationRecord
   has_many :favorites, dependent: :destroy
   acts_as_taggable
 
+  delegate :nickname, to: :user, prefix: true
+
   attachment :image
 
   scope :publish, -> { where(is_public: 1) }

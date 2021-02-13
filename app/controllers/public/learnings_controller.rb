@@ -17,15 +17,14 @@ class Public::LearningsController < ApplicationController
   def show
     @learning = Learning.find(params[:id])
     @learning_comment = LearningComment.new
-    @learning_comments = @learning.learning_comments.page(params[:page]).per(5)
+    @learning_comments = @learning.learning_comments.includes(:user).page(params[:page]).per(5)
   end
 
   def edit
   end
 
   def create
-    @learning = Learning.new(learning_params)
-    @learning.user_id = current_user.id
+    @learning = current_user.learnings.new(learning_params)
     if @learning.save
       redirect_to learning_path(@learning), notice: "学習内容を記録しました"
     else

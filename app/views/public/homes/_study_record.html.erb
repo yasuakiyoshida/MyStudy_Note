@@ -12,8 +12,8 @@
             <small class="card-text">学習日：<%= learning.date.strftime("%Y年%m月%d日") %></small>
             <h4 class="card-title my-3 pb-1"><%= link_to learning.title, learning_path(learning.id) %></h4>
             <p class="card-text my-2">学習時間：<i class="far fa-clock"></i><%= learning.time %>時間</p>
-            <small class="card-text my-3"><i class="far fa-comment"></i>コメント：<%= learning.learning_comments.count %>　<i class="far fa-heart"></i>いいね：<%= learning.favorites.count %></small><br>
-            <small class="card-text my-3"><%= learning.created_at.strftime("%Y年%m月%d日") %>投稿 by <%= link_to learning.user.nickname, user_path(learning.user) %></small><br>
+            <small class="card-text my-3"><i class="far fa-comment"></i>コメント：<%= learning.learning_comments_count %>　<i class="far fa-heart"></i>いいね：<%= learning.favorites_count %></small><br>
+            <small class="card-text my-3"><%= learning.created_at.strftime("%Y年%m月%d日") %>投稿 by <%= link_to learning.user_nickname, user_path(learning.user) %></small><br>
             <p class="card-text my-2">タグ：<%= render 'tag_list', tags: learning.tags %></p>
           </div>
         </div>
