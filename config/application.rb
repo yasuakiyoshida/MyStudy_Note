@@ -23,8 +23,10 @@ module MystudyNote
     config.middleware.use Rack::Attack
 
     # Batch
-    config.autoload_paths += Dir["#{config.root}/lib"]
-    config.eager_load_paths += Dir["#{config.root}/lib/**/"]
+    if Rails.env.deveropment?
+      config.autoload_paths += Dir["#{config.root}/lib"]
+      config.eager_load_paths += Dir["#{config.root}/lib/**/"]
+    end
 
     config.generators do |g|
       g.test_framework :rspec,
