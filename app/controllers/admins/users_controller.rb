@@ -5,7 +5,7 @@ class Admins::UsersController < ApplicationController
   before_action :set_user_search, only: [:index, :search]
 
   def index
-    @users = User.index_page(params[:page])
+    @users = User.page(params[:page]).per(8)
   end
 
   def show
