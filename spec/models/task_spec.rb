@@ -10,6 +10,10 @@ RSpec.describe "Taskモデルのテスト", type: :model do
       expect(FactoryBot.build(:task, title: nil)).not_to be_valid
     end
 
+    it "タイトルが50文字を超える場合、無効である" do
+      expect(FactoryBot.build(:task, title: "あ" * 51)).not_to be_valid
+    end
+
     it "期限がない場合、無効である" do
       expect(FactoryBot.build(:task, due: nil)).not_to be_valid
     end
