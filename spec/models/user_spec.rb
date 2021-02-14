@@ -52,5 +52,9 @@ RSpec.describe "Userモデルのテスト", type: :model do
     it "LearningCommentモデルと1:Nとなっている" do
       expect(User.reflect_on_association(:learning_comments).macro).to eq :has_many
     end
+
+    it "Favoriteモデルと1:Nとなっている" do
+      expect(User.reflect_on_association(:favorites).macro).to eq :has_many
+    end
   end
 end
