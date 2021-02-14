@@ -37,8 +37,4 @@ class User < ApplicationRecord
       'https://mystudynote-img-files-resize.s3-ap-northeast-1.amazonaws.com/store/user-no-img.png'
     end
   end
-
-  def self.index_page(page)
-    page(page).per(8)
-  end
 end
