@@ -24,15 +24,41 @@
 
 日々の学習時
 
-## ER図
+### インフラ構成図
+
+![AWS構成図](https://user-images.githubusercontent.com/72193151/107850593-e0032280-6e46-11eb-8fc8-24441a52a996.png)
+
+### ER図
 
 [ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
 
-## 機能一覧
+### 機能一覧
 
 [機能一覧](https://docs.google.com/spreadsheets/d/1uf71gUTZzam3aA9dKymw8a_ryugLgIWPh6h5TMhJITw/edit?usp=sharing)
+- CSSフレームワーク（bootstrap4）
+- ユーザー認証機能（devise）
+- CRUD処理（学習記録、ToDoリスト）
+- いいね、コメント機能
+- フォロー機能
+- テスト（Rspec、capybara、factory_bot）
+- コードフォーマット（Rubocop-airbnb、rails_best_pracitces）
+- セキュリティチェック（brakeman）
+- 過剰アクセス対策（rack-attack）
+- 画像アップロード（refile、refile-mini_magick、refile-s3）
+- 画像プレビュー
+- 検索（ransack）
+- メール（ActionMailer）
+- グラフ（chartkick）
+- ページネーション（kaminari）
+- カレンダー（simple_calendar）
+- タグ（acts-as-taggable-on）
+- パンくずリスト（gretel）
+- スライドショー（slick）
+- 管理者ログイン（devise）
+- N+1問題（bullet、counter_culture）
+- バッチ（whenever）
 
-## 開発環境
+### 開発環境
 
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -51,7 +77,4 @@ RAILS_ENV=production bundle exec whenever --clear-crontab
 
 # cronのログ確認
 RAILS_ENV=production crontab  -l
-
-# ログの内容を確認
-vi log/cron.log 
 ```
