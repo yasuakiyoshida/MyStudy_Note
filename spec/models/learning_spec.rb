@@ -10,6 +10,10 @@ RSpec.describe "Learningモデルのテスト", type: :model do
       expect(FactoryBot.build(:learning, title: nil)).not_to be_valid
     end
 
+    it "タイトルが50文字を超える場合、無効である" do
+      expect(FactoryBot.build(:learning, title: "あ" * 51)).not_to be_valid
+    end
+
     it "学習日がない場合、無効である" do
       expect(FactoryBot.build(:learning, date: nil)).not_to be_valid
     end
@@ -47,6 +51,10 @@ RSpec.describe "Learningモデルのテスト", type: :model do
 
     it "LearningCommentモデルと1:Nとなっている" do
       expect(Learning.reflect_on_association(:learning_comments).macro).to eq :has_many
+    end
+
+    it "Favoriteモデルと1:Nとなっている" do
+      expect(Learning.reflect_on_association(:favorites).macro).to eq :has_many
     end
   end
 end

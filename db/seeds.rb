@@ -10,3 +10,26 @@ Admin.find_or_create_by(id: 1) do |admin|
   admin.email = ENV['ADMIN_EMAIL']
   admin.password = ENV['ADMIN_PASSWORD']
 end
+
+User.create!(
+  [
+    {
+      nickname: 'ゲスト',
+      biography: 'ゲストです。よろしくおねがいします。',
+      email: 'test1234user5678@example.com',
+      password: '123456789',
+    },
+    {
+      nickname: 'アリス',
+      biography: 'アリスです。よろしくおねがいします。',
+      email: 'test1234alice5678@example.com',
+      password: 'aaaaaa',
+    },
+    {
+      nickname: 'ボブ',
+      biography: 'ボブです。よろしくおねがいします。',
+      email: 'test1234bob5678@example.com',
+      password: 'bbbbbb',
+    },
+  ]
+)
