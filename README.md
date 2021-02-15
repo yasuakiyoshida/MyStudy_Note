@@ -77,7 +77,4 @@ RAILS_ENV=production bundle exec whenever --clear-crontab
 
 # cronのログ確認
 RAILS_ENV=production crontab  -l
-
-# ログの内容を確認
-vi log/cron.log 
 ```
