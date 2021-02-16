@@ -99,11 +99,11 @@ class Learning < ApplicationRecord
         start_date = current.ago(6.days)
       end
       end_date = Time.current
+      learnings = where(date: start_date..end_date).group(:date).sum(:time)
       dates = {}
-      (start_date.to_date...end_date.to_date).each do |date|
-        learnings = where(date: date)
-        sum_times = learning_time_sum(learnings)
-        dates.store(date.to_s, sum_times)
+      # 学習していない日も0時間として表示する
+      (start_date.to_date..end_date.to_date).each do |date|
+        dates.store(date, learnings.values_at(date.to_date)[0].to_f)
       end
       dates
     end
