@@ -1,4 +1,4 @@
-module Searchable
+module UserSearchable
   extend ActiveSupport::Concern
 
   private
@@ -7,5 +7,4 @@ module Searchable
     @search = User.ransack(params[:q])
     @user_search = @search.result.page(params[:page]).per(8)
   end
-
 end
