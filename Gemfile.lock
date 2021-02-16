@@ -463,7 +463,6 @@ DEPENDENCIES
   rspec-rails
   rubocop-airbnb
   sass-rails (~> 5.0)
-  selenium-webdriver
   simple_calendar (~> 2.0)
   spring
   spring-commands-rspec
