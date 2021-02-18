@@ -1,5 +1,4 @@
 class Admins::UsersController < ApplicationController
-  include Searchable
   before_action :authenticate_admin!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user_search, only: [:index, :search]
@@ -35,5 +34,10 @@ class Admins::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_user_search
+    @search = User.ransack(params[:q])
+    @user_search = @search.result.page(params[:page]).per(8)
   end
 end
