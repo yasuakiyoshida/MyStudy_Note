@@ -18,18 +18,22 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { in: 2..10 }
   validates :email, presence: true, uniqueness: true
 
+  # ユーザーをフォロー
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
 
+  # フォロー解除
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
 
+  # ユーザーをフォローしているか
   def following?(user)
     followings.include?(user)
   end
 
+  # S3のURL取得
   def image_url
     if self.image_id?
       "https://mystudynote-img-files-resize.s3-ap-northeast-1.amazonaws.com/store/#{self.image_id}-thumbnail."

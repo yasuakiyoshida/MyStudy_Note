@@ -31,13 +31,13 @@ class Learning < ApplicationRecord
 
   def total_time_cannot_exceed_limit_time
     if date.presence && time.presence && one_day_time_sum(date) + time > LIMIT_TIME_HOUR
-      errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が24時間を超えています")
+      errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が#{LIMIT_TIME_HOUR}時間を超えています")
     end
   end
 
   def total_time_cannot_exceed_limit_time_for_edit
     if date.presence && time.presence && one_day_time_sum_unless_target_date(date) + time > LIMIT_TIME_HOUR
-      errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が24時間を超えています")
+      errors.add(:date, "：#{date.strftime("%Y年%m月%d日")}の学習時間の合計が#{LIMIT_TIME_HOUR}時間を超えています")
     end
   end
 
@@ -52,6 +52,7 @@ class Learning < ApplicationRecord
     date
   end
 
+  # ユーザーが投稿に対していいねしているか確認
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
@@ -86,6 +87,7 @@ class Learning < ApplicationRecord
       total_time.floor(1)
     end
 
+    # chartkick
     def learnings_period(period)
       current = Time.current.beginning_of_day
       case period
