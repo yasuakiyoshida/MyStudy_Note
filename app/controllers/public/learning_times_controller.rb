@@ -5,6 +5,6 @@ class Public::LearningTimesController < ApplicationController
     @user = User.find(params[:user_id])
     @learnings = @user.learnings
     @period = params[:period]
-    @chart = @user.learnings.learnings_period(@period)
+    @chart = @learnings.learnings_period(@period)
   end
 end
