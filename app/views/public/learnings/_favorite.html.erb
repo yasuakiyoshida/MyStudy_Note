@@ -2,7 +2,7 @@
   <div class="col-lg-10 offset-lg-1 favorite">
     <% if learning.favorited_by?(current_user) %>
       <%= link_to learning_favorites_path(learning), method: :delete, remote: true do %>
-        <!-- いいね数をcounter_cultureで表示するとトランザクション後に更新するので反映に時間がかかる -> sizeで表示 -->
+        <!-- いいね数をcounter_cultureで表示するとトランザクション後に更新するので、いいねをした際、反映に時間がかかる -->
         <p class="heart">♥<%= learning.favorites.size %> いいね</p>
       <% end %>
     <% else %>
