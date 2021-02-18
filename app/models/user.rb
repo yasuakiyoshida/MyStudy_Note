@@ -35,8 +35,8 @@ class User < ApplicationRecord
 
   # S3のURL取得
   def image_url
-    if self.image_id?
-      "https://mystudynote-img-files-resize.s3-ap-northeast-1.amazonaws.com/store/#{self.image_id}-thumbnail."
+    if image_id?
+      "https://mystudynote-img-files-resize.s3-ap-northeast-1.amazonaws.com/store/#{image_id}-thumbnail."
     else
       'https://mystudynote-img-files-resize.s3-ap-northeast-1.amazonaws.com/store/user-no-img.png'
     end
