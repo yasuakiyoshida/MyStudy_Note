@@ -1,15 +1,13 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:followings, :followers]
+  before_action :set_user
 
   def create
     current_user.follow(params[:user_id])
-    redirect_to request.referer, notice: "フォローしました"
   end
 
   def destroy
     current_user.unfollow(params[:user_id])
-    redirect_to request.referer, notice: "フォローを解除しました"
   end
 
   def followings
