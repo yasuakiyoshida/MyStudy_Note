@@ -14,9 +14,11 @@
         <div class="card-body text-center">
           <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", class: "user-img-lg" %>
           <h4 class="mt-3"><%= @user.nickname %></h4>
-          <p class="profile-text follow_btn">
-            <%= render "public/users/relationships", user: @user %>
-          </p>
+          <% if user_signed_in? %>
+            <p class="profile-text follow_btn">
+              <%= render "public/users/relationships", user: @user %>
+            </p>
+          <% end %>
           <div class="row">
             <div class="col-lg-12">
               <p class="profile-text mt-3 pb-3 biography-text"><%= @user.biography %></p>
