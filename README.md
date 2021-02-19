@@ -38,8 +38,8 @@
 - CSSフレームワーク（bootstrap4）
 - ユーザー認証機能（devise）
 - CRUD処理（学習記録、ToDoリスト）
-- いいね、コメント機能
-- フォロー機能
+- いいね（Ajax）、コメント機能
+- フォロー機能（Ajax）
 - テスト（Rspec、capybara、factory_bot）
 - コードフォーマット（Rubocop-airbnb、rails_best_pracitces）
 - セキュリティチェック（brakeman）
