@@ -1,0 +1,9 @@
+<%= link_to 'フォロー：' + (user.followings.size).to_s, user_followings_path(user.id) %>&nbsp;
+<%= link_to 'フォロワー：' + (user.followers.size).to_s, user_followers_path(user) %>&nbsp;
+<% if current_user != user %>
+  <% if current_user.following?(user) %>
+    <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, remote: true, class: "btn btn-sm btn-outline-primary text-light" %>
+  <% else %>
+    <%= link_to "フォローする", user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-sm btn-outline-success text-light" %>
+  <% end %>
+<% end %>
