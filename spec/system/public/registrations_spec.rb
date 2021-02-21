@@ -10,11 +10,13 @@ RSpec.describe "user新規登録", type: :system do
       fill_in "メールアドレス", with: user.email
       fill_in "パスワード", with: user.password
       fill_in "確認用パスワード", with: user.password_confirmation
-      expect do
+      aggregate_failures do
+        expect do
         click_button "新規登録する"
-      end.to change(User, :count).by(1)
-      expect(current_path).to eq "/"
-      expect(page).to have_content "アカウント登録が完了しました"
+        end.to change(User, :count).by(1)
+        expect(current_path).to eq "/"
+        expect(page).to have_content "アカウント登録が完了しました"
+      end
     end
   end
 
@@ -27,12 +29,14 @@ RSpec.describe "user新規登録", type: :system do
       fill_in "メールアドレス", with: user.email
       fill_in "パスワード", with: user.password
       fill_in "確認用パスワード", with: user.password_confirmation
-      expect do
+      aggregate_failures do
+        expect do
         click_button "新規登録する"
-      end.to change(User, :count).by(0)
-      expect(current_path).to eq "/sign_up"
-      expect(page).to have_content "エラーが発生したため ユーザ は保存されませんでした。"
-      expect(page).to have_content "ニックネームは2文字以上で入力してください"
+        end.to change(User, :count).by(0)
+        expect(current_path).to eq "/sign_up"
+        expect(page).to have_content "エラーが発生したため ユーザ は保存されませんでした。"
+        expect(page).to have_content "ニックネームは2文字以上で入力してください"
+      end
     end
   end
 end

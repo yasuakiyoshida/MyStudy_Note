@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header sign-header"><i class="fas fa-sign-in-alt"></i> ログイン</div>
+        <div class="card-header sign-header"><i class="fas fa-sign-in-alt"></i>&nbsp;ログイン</div>
         <div class="card-body">
           <%= form_with model: @user, url: user_session_path, local: true do |f| %>
             <div class="row mt-4">
@@ -27,7 +27,7 @@
             </div>
             <div class="row mt-4">
               <div class="col-10 offset-1 text-center">
-                <%= f.submit "　ログインする　", class: "btn btn-outline-primary" %>
+                <%= f.submit "ログインする", class: "btn btn-outline-primary px-4" %>
               </div>
             </div>
           <% end %>
