@@ -2,25 +2,25 @@
   <header class="admin-header-main">
     <nav class="navbar navbar-expand-lg navbar-light py-3">
       <div class="container">
-        <div class="navbar-brand"><%= link_to 'MyStudy Note', admins_users_path, class: "logo" %></div>
+        <div class="navbar-brand"><%= link_to "MyStudy Note", admins_users_path, class: "logo" %></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-4">
-              <%= link_to admins_users_path, class: 'nav-link text-light' do %>
-                <i class="fas fa-users"></i> ユーザー一覧
+              <%= link_to admins_users_path, class: "nav-link text-light" do %>
+                <i class="fas fa-users"></i>&nbsp;ユーザー一覧
               <% end %>
             </li>
             <li class="nav-item mr-4">
-              <%= link_to admins_learnings_path, class: 'nav-link text-light' do %>
-                <i class="fas fa-book"></i> 学習記録一覧
+              <%= link_to admins_learnings_path, class: "nav-link text-light" do %>
+                <i class="fas fa-book"></i>&nbsp;学習記録一覧
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
-                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light logout-btn" do %>
+                <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
               <% end %>
             </li>
           </ul>
@@ -33,30 +33,30 @@
     <div class="d-none d-lg-block user-header-top py-3">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <div class="navbar-brand"><%= link_to 'MyStudy Note', root_path, class: "logo" %></div>
+          <div class="navbar-brand"><%= link_to "MyStudy Note", root_path, class: "logo" %></div>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon collapse-close"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item mr-4">
-                <%= link_to root_path, class: 'nav-link' do %>
-                  <i class="fas fa-home"></i> ホーム
+                <%= link_to root_path, class: "nav-link" do %>
+                  <i class="fas fa-home"></i>&nbsp;ホーム
                 <% end %>
               </li>
               <li class="nav-item mr-4">
-                <%= link_to users_path, class: 'nav-link' do %>
-                  <i class="fas fa-users"></i> ユーザー一覧
+                <%= link_to users_path, class: "nav-link" do %>
+                  <i class="fas fa-users"></i>&nbsp;ユーザー一覧
                 <% end %>
               </li>
               <li class="nav-item mr-4">
-                <%= link_to common_learnings_path, class: 'nav-link' do %>
-                  <i class="fas fa-book"></i> みんなの学習記録
+                <%= link_to common_learnings_path, class: "nav-link" do %>
+                  <i class="fas fa-book"></i>&nbsp;みんなの学習記録
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-                  <i class="fas fa-sign-out-alt"></i> ログアウト
+                <%= link_to destroy_user_session_path, method: :delete, class: "nav-link logout-btn" do %>
+                  <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
                 <% end %>
               </li>
             </ul>
@@ -67,55 +67,55 @@
     <div class="d-block d-lg-none user-header-content py-3">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <div class="navbar-brand"><%= link_to 'MyStudy Note', root_path, class: "logo" %></div>
+          <div class="navbar-brand"><%= link_to "MyStudy Note", root_path, class: "logo" %></div>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon collapse-close"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item pt-3">
-                <%= link_to root_path, class: 'nav-link' do %>
-                  <i class="fas fa-home"></i> ホーム
+                <%= link_to root_path, class: "nav-link" do %>
+                  <i class="fas fa-home"></i>&nbsp;ホーム
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to users_path, class: 'nav-link' do %>
-                  <i class="fas fa-users"></i> ユーザー一覧
+                <%= link_to users_path, class: "nav-link" do %>
+                  <i class="fas fa-users"></i>&nbsp;ユーザー一覧
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to common_learnings_path, class: 'nav-link' do %>
-                  <i class="fas fa-book"></i> みんなの学習記録
+                <%= link_to common_learnings_path, class: "nav-link" do %>
+                  <i class="fas fa-book"></i>&nbsp;みんなの学習記録
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-                  <i class="fas fa-sign-out-alt"></i> ログアウト
+                <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                  <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
                 <% end %>
               </li></br>
               <li class="nav-item nav-bottom">
-                <%= link_to user_path(current_user), class: 'nav-link' do %>
-                  <i class="fa fa-user"></i> マイページ
+                <%= link_to user_path(current_user), class: "nav-link" do %>
+                  <i class="fa fa-user"></i>&nbsp;マイページ
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to user_learning_times_path(current_user), class: 'nav-link' do %>
-                  <i class="fas fa-user-clock"></i> 過去の学習時間
+                <%= link_to user_learning_times_path(current_user), class: "nav-link" do %>
+                  <i class="fas fa-user-clock"></i>&nbsp;過去の学習時間
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to learnings_path, class: 'nav-link' do %>
-                  <i class="fas fa-book-open"></i> 学習記録を確認
+                <%= link_to learnings_path, class: "nav-link" do %>
+                  <i class="fas fa-book-open"></i>&nbsp;学習記録を確認
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to new_learning_path, class: 'nav-link' do %>
-                  <i class="fa fa-edit"></i> 学習内容を記録
+                <%= link_to new_learning_path, class: "nav-link" do %>
+                  <i class="fa fa-edit"></i>&nbsp;学習内容を記録
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to tasks_path, class: 'nav-link' do %>
-                  <i class="fa fa-list-alt"></i> ToDoリスト
+                <%= link_to tasks_path, class: "nav-link" do %>
+                  <i class="fa fa-list-alt"></i>&nbsp;ToDoリスト
                 <% end %>
               </li>
             </ul>
@@ -130,27 +130,27 @@
             <ul class="navbar-nav align-items-center">
               <li class="nav-item nav-bottom mx-5">
                 <%= link_to user_path(current_user) do %>
-                  <i class="fa fa-user"></i> マイページ
+                  <i class="fa fa-user"></i>&nbsp;マイページ
                 <% end %>
               </li>
               <li class="nav-item nav-bottom mr-5">
-                <%= link_to user_learning_times_path(current_user), class: 'nav-link' do %>
-                  <i class="fas fa-user-clock"></i> 過去の学習時間
+                <%= link_to user_learning_times_path(current_user), class: "nav-link" do %>
+                  <i class="fas fa-user-clock"></i>&nbsp;過去の学習時間
                 <% end %>
               </li>
               <li class="nav-item nav-bottom mr-5">
                 <%= link_to learnings_path do %>
-                  <i class="fas fa-book-open"></i> 学習記録を確認
+                  <i class="fas fa-book-open"></i>&nbsp;学習記録を確認
                 <% end %>
               </li>
               <li class="nav-item nav-bottom mr-5">
                 <%= link_to new_learning_path do %>
-                  <i class="fa fa-edit"></i> 学習内容を記録
+                  <i class="fa fa-edit"></i>&nbsp;学習内容を記録
                 <% end %>
               </li>
               <li class="nav-item nav-bottom mr-5">
                 <%= link_to tasks_path do %>
-                  <i class="fa fa-list-alt"></i> ToDoリスト
+                  <i class="fa fa-list-alt"></i>&nbsp;ToDoリスト
                 <% end %>
               </li>
             </ul>
@@ -163,30 +163,30 @@
   <header class="header-main py-3">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-        <div class="navbar-brand"><%= link_to 'MyStudy Note', root_path, class: "logo" %></div>
+        <div class="navbar-brand"><%= link_to "MyStudy Note", root_path, class: "logo" %></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-4">
-              <%= link_to root_path, class: 'nav-link' do %>
-                <i class="fas fa-home"></i> ホーム
+              <%= link_to root_path, class: "nav-link" do %>
+                <i class="fas fa-home"></i>&nbsp;ホーム
               <% end %>
             </li>
             <li class="nav-item mr-4">
-              <%= link_to common_learnings_path, class: 'nav-link' do %>
-                <i class="fas fa-book"></i> みんなの学習記録
+              <%= link_to common_learnings_path, class: "nav-link" do %>
+                <i class="fas fa-book"></i>&nbsp;みんなの学習記録
               <% end %>
             </li>
             <li class="nav-item mr-4">
-              <%= link_to new_user_registration_path, class: 'nav-link' do %>
-                <i class="fas fa-user-plus"></i> 会員登録
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
+                <i class="fas fa-user-plus"></i>&nbsp;会員登録
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to new_user_session_path, class: 'nav-link' do %>
-                <i class="fas fa-sign-in-alt"></i> ログイン
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                <i class="fas fa-sign-in-alt"></i>&nbsp;ログイン
               <% end %>
             </li>
           </ul>
