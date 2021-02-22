@@ -26,7 +26,7 @@
 
 ### インフラ構成図
 
-![AWS構成図](https://user-images.githubusercontent.com/72193151/107850593-e0032280-6e46-11eb-8fc8-24441a52a996.png)
+![AWS構成図](https://user-images.githubusercontent.com/72193151/108654789-bfa12b00-750c-11eb-9692-db1157505d93.png)
 
 ### ER図
 
