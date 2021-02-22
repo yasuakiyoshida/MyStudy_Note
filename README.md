@@ -32,7 +32,7 @@
 
 [ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
 
-### 機能一覧
+### 機能・技術一覧
 
 [機能一覧](https://docs.google.com/spreadsheets/d/1uf71gUTZzam3aA9dKymw8a_ryugLgIWPh6h5TMhJITw/edit?usp=sharing)
 - CSSフレームワーク（bootstrap4）
@@ -60,8 +60,9 @@
 
 ### 開発環境
 
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JS ライブラリ：jQuery
-- IDE：Cloud9
+- OS：macOS Big Sur(11.1)
+- シェル：bash
+- Ruby：2.6.3
+- Ruby on Rails：5.2.4.4
+- HTML&CSS(bootstrap,SCSS)
+- JavaScript(jQuery)
