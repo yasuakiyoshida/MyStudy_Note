@@ -14,7 +14,7 @@ RSpec.describe "userログインとログアウト", type: :system do
         expect(page).to have_content "ログインしました。"
       end
 
-      find(".logout-btn").click
+      find(".logout-link").click
       aggregate_failures do
         expect(current_path).to eq "/"
         expect(page).to have_link "ログイン"
