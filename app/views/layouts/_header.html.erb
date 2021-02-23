@@ -19,7 +19,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light logout-btn" do %>
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light logout-link" do %>
                 <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
               <% end %>
             </li>
@@ -55,7 +55,7 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, class: "nav-link logout-btn" do %>
+                <%= link_to destroy_user_session_path, method: :delete, class: "nav-link logout-link" do %>
                   <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
                 <% end %>
               </li>
@@ -94,7 +94,7 @@
                 <% end %>
               </li></br>
               <li class="nav-item nav-bottom">
-                <%= link_to user_path(current_user), class: "nav-link" do %>
+                <%= link_to user_path(current_user), class: "nav-link mypage-link" do %>
                   <i class="fa fa-user"></i>&nbsp;マイページ
                 <% end %>
               </li>
