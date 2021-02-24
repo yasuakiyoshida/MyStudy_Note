@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "userログインとログアウト", type: :system do
   let(:user) { create(:user) }
+
   context "ログインできる場合" do
     it "正確なパラメータを入力したらログインでき、トップ画面に遷移する。その後、ログアウトする。" do
       visit root_path
