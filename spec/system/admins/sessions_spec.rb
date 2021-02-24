@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "adminログインとログアウト", type: :system do
   let(:admin) { create(:admin) }
+
   context "ログインできる場合" do
     it "正確なパラメータを入力したらログインでき、管理者側ユーザー一覧画面に遷移する。その後、ログアウトして管理者ログイン画面に遷移する。" do
       visit admin_session_path

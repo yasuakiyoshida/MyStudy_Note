@@ -26,13 +26,13 @@
 
 ### インフラ構成図
 
-![AWS構成図](https://user-images.githubusercontent.com/72193151/107850593-e0032280-6e46-11eb-8fc8-24441a52a996.png)
+![AWS構成図](https://user-images.githubusercontent.com/72193151/108654789-bfa12b00-750c-11eb-9692-db1157505d93.png)
 
 ### ER図
 
 [ER図](https://drive.google.com/file/d/1SM3UTrxBLw9H04xEEPTkETF_sXcT-DZi/view?usp=sharing)
 
-### 機能一覧
+### 機能・技術一覧
 
 [機能一覧](https://docs.google.com/spreadsheets/d/1uf71gUTZzam3aA9dKymw8a_ryugLgIWPh6h5TMhJITw/edit?usp=sharing)
 - CSSフレームワーク（bootstrap4）
@@ -60,21 +60,9 @@
 
 ### 開発環境
 
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JS ライブラリ：jQuery
-- IDE：Cloud9
-
-#### バッチ処理の確認
-
-```
-# 定時処理の内容をcronへ反映
-RAILS_ENV=production bundle exec whenever --update-crontab
-
-# cronへ反映した内容を削除
-RAILS_ENV=production bundle exec whenever --clear-crontab
-
-# cronのログ確認
-RAILS_ENV=production crontab  -l
-```
+- OS：macOS Big Sur(11.1)
+- シェル：bash
+- Ruby：2.6.3
+- Ruby on Rails：5.2.4.4
+- HTML&CSS(bootstrap,SCSS)
+- JavaScript(jQuery)
