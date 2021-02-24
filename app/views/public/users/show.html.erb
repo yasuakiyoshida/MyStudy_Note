@@ -3,9 +3,9 @@
   <%= render "layouts/breadcrumbs" %>
   <h1 class="my-3 text-center profile-title">
     <% if @user == current_user %>
-      <i class="fa fa-user"></i> マイページ
+      <i class="fa fa-user"></i>&nbsp;マイページ
     <% else %>
-      <i class="fa fa-user"></i> ユーザー情報
+      <i class="fa fa-user"></i>&nbsp;ユーザー情報
     <% end %>
   </h1>
   <div class="row mx-0">
@@ -13,7 +13,9 @@
       <div class="card m-3">
         <div class="card-body text-center">
           <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "user-no-img-min.jpg", class: "user-img-lg" %>
-          <h4 class="mt-3"><%= @user.nickname %></h4>
+          <h4 class="mt-3 username">
+            <%= @user.nickname %>
+          </h4>
           <p class="profile-text follow_btn">
             <%= render "public/users/relationships", user: @user %>
           </p>
@@ -70,7 +72,7 @@
               <th>完了済</th>
               <th>保留中</th>
             </tr>
-              <tr>
+            <tr>
               <th class="new-task"><%= @new_tasks %>件</th>
               <th class="processing-task"><%= @processing_tasks %>件</th>
               <th class="completed-task"><%= @completed_tasks %>件</th>
