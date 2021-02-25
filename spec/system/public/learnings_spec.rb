@@ -26,5 +26,20 @@ RSpec.describe "learning作成と詳細画面、編集画面", type: :system do
         expect(page).to have_content "ruby"
       end
     end
+
+    it "不正なパラメータを入力したら投稿できない。その後、学習記録作成画面が表示される。" do
+      fill_in "学習日", with: "2021-01-01"
+      fill_in "学習時間", with: "25"
+      fill_in "タイトル", with: "あ" * 51
+      aggregate_failures do
+        expect do
+        click_button "記録する"
+        end.to change(user.learnings, :count).by(0)
+        expect(page).to have_content "学習内容を記録する"
+        expect(page).to have_content "タイトルは50文字以内で入力してください"
+        expect(page).to have_content "学習時間は24以下の値にしてください"
+        expect(page).to have_content "学習日：2021年01月01日の学習時間の合計が24時間を超えています"
+      end
+    end
   end
 end
