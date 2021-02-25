@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "user詳細、編集", type: :system do
+RSpec.describe "user詳細画面と編集画面", type: :system do
   let(:user) { create(:user) }
 
   context "user詳細画面" do
@@ -45,7 +45,7 @@ RSpec.describe "user詳細、編集", type: :system do
       end
 
       find(".profile-edit-btn").click
-      # ユーザー編集画面の確認
+      # 再度ユーザー編集画面の確認
       aggregate_failures do
         expect(current_path).to eq "/users/#{user.id}/edit"
         expect(page).to have_field "ニックネーム(2〜10文字の範囲)", with: "ユーザー名更新"
