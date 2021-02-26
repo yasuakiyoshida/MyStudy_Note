@@ -59,7 +59,7 @@
   </div>
   <% if @learning.user == current_user %>
     <div class="text-center mb-5">
-      <%= link_to '学習内容を編集する', edit_learning_path(@learning), class: "btn btn-outline-info px-5" %>
+      <%= link_to '学習内容を編集する', edit_learning_path(@learning), class: "btn btn-outline-info px-5 learning-edit-btn" %>
     </div>
   <% end %>
   <%= render 'public/learnings/comment', learning: @learning, learning_comment: @learning_comment, learning_comments: @learning_comments %>
