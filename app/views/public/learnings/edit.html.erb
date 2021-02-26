@@ -52,12 +52,12 @@
             </div>
             <div class="row mt-5">
               <div class="col-10 offset-1 text-center">
-                <%= f.submit '更新する', class: "btn btn-outline-primary px-5" %>
+                <%= f.submit '更新する', class: "btn btn-outline-primary px-5 learning-update-btn" %>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-10 offset-1 text-center">
-                <%= link_to '削除する', learning_path(@learning.id), method: :delete, "data-confirm" => "#{@learning.title}を学習記録から削除しますか？", class: "btn btn-outline-danger px-5" %>
+                <%= link_to '削除する', learning_path(@learning.id), method: :delete, "data-confirm" => "#{@learning.title}を学習記録から削除しますか？", class: "btn btn-outline-danger px-5 learning-delete-btn" %>
               </div>
             </div>
           <% end %>
