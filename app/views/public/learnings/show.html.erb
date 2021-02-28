@@ -1,7 +1,9 @@
 <div class="container">
   <% breadcrumb :learning, @learning %>
   <%= render "layouts/breadcrumbs" %>
-  <h1 class="my-3 text-center learning-title"><i class="fa fa-book"></i> 学習記録詳細</h1>
+  <h1 class="my-3 text-center learning-title">
+    <i class="fa fa-book"></i>&nbsp;学習記録詳細
+  </h1>
   <div class="row mx-0 bg-light mb-3 p-2 rounded">
     <div class="col-lg-4 d-flex align-items-center justify-content-center">
       <%= attachment_image_tag @learning, :image, format: "jpeg", fallback: "no_image.jpg", class: "learning-image img-responsive center-block" %>
