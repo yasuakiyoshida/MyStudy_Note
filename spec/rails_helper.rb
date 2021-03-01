@@ -35,6 +35,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include UserSignInModule
+  config.include AdminSignInModule
   config.include LearningNewModule
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
