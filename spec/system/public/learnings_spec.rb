@@ -176,19 +176,24 @@ RSpec.describe "learning", type: :system do
       end
     end
   end
-end
-  # describe "学習記録を削除する", js: true do
-  #   before do
-  #     create(:learning_english, user: user)
-  #     sign_in_as(user)
-  #     find(".learning-index-link").click
-  #     click_on "英語"
-  #     click_on "学習内容を編集する"
-  #   end
 
-  #   it "正確なパラメータを入力したら投稿が出来る。その後、投稿した学習記録の詳細画面に遷移する。" do
-  #     expect(page).to have_current_path "/learnings/1/edit"
-  #     sleep 3
-  #   end
-  # end
-  
+  describe "学習記録を削除する" do
+    before do
+      create(:learning_english, user: user)
+      sign_in_as(user)
+      find(".learning-index-link").click
+      click_on "英語"
+      click_on "学習内容を編集する"
+    end
+
+    it "'削除する'ボタンを選択すると学習記録が削除され、その後、学習記録一覧画面に遷移する。" do
+      aggregate_failures do
+        expect do
+        click_on "削除する"
+        end.to change(user.learnings, :count).by(-1)
+        expect(current_path).to eq "/learnings"
+        expect(page).to have_content("学習記録を削除しました")
+      end
+    end
+  end
+end
