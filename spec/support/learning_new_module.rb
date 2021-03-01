@@ -7,7 +7,7 @@ module LearningNewModule
     fill_in "タグ", with: "rails,ruby"
     choose "公開する"
   end
-  
+
   def learning_create_second(learning)
     fill_in "学習日", with: "2021-02-02"
     fill_in "学習時間", with: "20"
