@@ -4,7 +4,9 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header user-header text-center"><i class="fa fa-user"></i> ユーザー情報編集</div>
+        <div class="card-header user-header text-center">
+          <i class="fa fa-user"></i>&nbsp;ユーザー情報編集
+        </div>
         <div class="card-body">
           <%= form_with model: @user, url: user_path(@user), method: :patch, local:true do |f| %>
           <%= render 'layouts/errors', obj: @user %>

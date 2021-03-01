@@ -13,7 +13,7 @@ RSpec.describe "sessions", type: :system do
         click_button "ログインする"
         aggregate_failures do
           expect(current_path).to eq "/"
-          expect(page).to have_content "ログインしました。"
+          expect(page).to have_content("ログインしました。")
         end
       end
     end
@@ -27,7 +27,7 @@ RSpec.describe "sessions", type: :system do
         click_button "ログインする"
         aggregate_failures do
           expect(current_path).to eq "/sign_in"
-          expect(page).to have_content "メールアドレスまたはパスワードが違います。"
+          expect(page).to have_content("メールアドレスまたはパスワードが違います。")
         end
       end
     end
@@ -42,8 +42,8 @@ RSpec.describe "sessions", type: :system do
       find(".logout-link").click
       aggregate_failures do
         expect(current_path).to eq "/"
-        expect(page).to have_link "ログイン"
-        expect(page).to have_content "ログアウトしました。"
+        expect(page).to have_link("ログイン")
+        expect(page).to have_content("ログアウトしました。")
       end
     end
   end
