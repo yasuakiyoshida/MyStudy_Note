@@ -1,7 +1,9 @@
 <div class="container">
   <% breadcrumb :search_users, @user_search %>
   <%= render "layouts/breadcrumbs" %>
-  <h1 class="my-3 text-center user-list-title"><i class="fas fa-users"></i></i> ユーザー検索結果</h1>
+  <h1 class="my-3 text-center user-list-title">
+    <i class="fas fa-users"></i></i>&nbsp;ユーザー検索結果
+  </h1>
   <%= render 'search_form', search: @search %>
   <%= render 'index', users: @user_search %>
 </div>

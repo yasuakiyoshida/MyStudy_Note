@@ -16,7 +16,7 @@ RSpec.describe "registrations", type: :system do
           click_button "新規登録する"
           end.to change(User, :count).by(1)
           expect(current_path).to eq "/"
-          expect(page).to have_content "アカウント登録が完了しました"
+          expect(page).to have_content("アカウント登録が完了しました")
         end
       end
     end
@@ -35,8 +35,8 @@ RSpec.describe "registrations", type: :system do
           click_button "新規登録する"
           end.to change(User, :count).by(0)
           expect(current_path).to eq "/sign_up"
-          expect(page).to have_content "エラーが発生したため ユーザ は保存されませんでした。"
-          expect(page).to have_content "ニックネームは2文字以上で入力してください"
+          expect(page).to have_content("エラーが発生したため ユーザ は保存されませんでした。")
+          expect(page).to have_content("ニックネームは2文字以上で入力してください")
         end
       end
     end

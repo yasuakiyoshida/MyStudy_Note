@@ -57,10 +57,10 @@
               <th>過去1ヶ月</th>
             </tr>
               <tr>
-              <th><%= @today_study_time %> 時間</th>
-              <th><%= @yesterday_study_time %> 時間</th>
-              <th><%= @week_study_time %> 時間</th>
-              <th><%= @month_study_time %> 時間</th>
+              <th><%= @today_study_time %>&nbsp;時間</th>
+              <th><%= @yesterday_study_time %>&nbsp;時間</th>
+              <th><%= @week_study_time %>&nbsp;時間</th>
+              <th><%= @month_study_time %>&nbsp;時間</th>
             </tr>
           </table>
           <%= column_chart @learning_chart, label: "学習時間 ", width: "100%", id: 'learning_chart' %>
