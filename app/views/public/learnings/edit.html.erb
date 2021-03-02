@@ -4,7 +4,9 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <div class="card mx-auto my-5 shadow-lg">
-        <div class="card-header learning-header text-center"><i class="far fa-edit"></i> 学習内容を編集する</div>
+        <div class="card-header learning-header text-center">
+          <i class="far fa-edit"></i>&nbsp;学習内容を編集する
+        </div>
         <div class="card-body">
           <%= form_with model: @learning, url: learning_path(@learning), method: :patch, local:true do |f| %>
           <%= render 'layouts/errors', obj: @learning %>
@@ -13,7 +15,7 @@
                 <%= f.label :date, '学習日' %>
                 <%= f.date_field :date, class: "mr-3 mb-2" %>
                 <%= f.label :time, '学習時間' %>
-                <%= f.number_field :time, required: true, step: "0.1", in: 0...25 %> <span><small>時間</small></span>
+                <%= f.number_field :time, required: true, step: "0.1", in: 0...25 %>&nbsp;<span><small>時間</small></span>
               </div>
             </div>
             <div class="row mt-4">
@@ -52,12 +54,12 @@
             </div>
             <div class="row mt-5">
               <div class="col-10 offset-1 text-center">
-                <%= f.submit '更新する', class: "btn btn-outline-primary px-5" %>
+                <%= f.submit '更新する', class: "btn btn-outline-primary px-5 learning-update-btn" %>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-10 offset-1 text-center">
-                <%= link_to '削除する', learning_path(@learning.id), method: :delete, "data-confirm" => "#{@learning.title}を学習記録から削除しますか？", class: "btn btn-outline-danger px-5" %>
+                <%= link_to '削除する', learning_path(@learning.id), method: :delete, "data-confirm" => "#{@learning.title}を学習記録から削除しますか？", class: "btn btn-outline-danger px-5 learning-delete-btn" %>
               </div>
             </div>
           <% end %>

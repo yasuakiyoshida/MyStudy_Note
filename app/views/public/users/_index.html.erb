@@ -11,7 +11,9 @@
           <div class="col-md-8 p-1">
             <div class="card-body p-1 text-center text-md-left">
               <h4 class="user-name"><%= link_to user.nickname, user_path(user.id) %></h4>
-              <p class="card-text my-1"><i class="far fa-clock"></i> 今日の学習時間：<%= user.learnings.today_study_time %> 時間</p>
+              <p class="card-text my-1">
+                <i class="far fa-clock"></i>&nbsp;今日の学習時間：<%= user.learnings.today_study_time %>&nbsp;時間
+              </p>
               <p class="card-text my-1">
                 <%= link_to 'フォロー：' + (user.followings.size).to_s, user_followings_path(user.id) %>&nbsp;
                 <%= link_to 'フォロワー：' + (user.followers.size).to_s, user_followers_path(user) %>

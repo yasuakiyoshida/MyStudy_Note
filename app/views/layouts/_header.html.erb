@@ -45,7 +45,7 @@
                 <% end %>
               </li>
               <li class="nav-item mr-4">
-                <%= link_to users_path, class: "nav-link" do %>
+                <%= link_to users_path, class: "nav-link user-index-link" do %>
                   <i class="fas fa-users"></i>&nbsp;ユーザー一覧
                 <% end %>
               </li>
@@ -104,12 +104,12 @@
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to learnings_path, class: "nav-link" do %>
+                <%= link_to learnings_path, class: "nav-link learning-index-link" do %>
                   <i class="fas fa-book-open"></i>&nbsp;学習記録を確認
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to new_learning_path, class: "nav-link" do %>
+                <%= link_to new_learning_path, class: "nav-link learning-new-link" do %>
                   <i class="fa fa-edit"></i>&nbsp;学習内容を記録
                 <% end %>
               </li>

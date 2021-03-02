@@ -1,7 +1,9 @@
 <div class="container study-record">
   <% breadcrumb :search_learnings, @learning_search %>
   <%= render "layouts/breadcrumbs" %>
-  <h1 class="my-3 text-center learning-title"><i class="fas fa-book-open"></i> <%= current_user.nickname %>さんの学習記録検索結果</h1>
+  <h1 class="my-3 text-center learning-title">
+    <i class="fas fa-book-open"></i>&nbsp;<%= current_user.nickname %>さんの学習記録検索結果
+  </h1>
   <%= render 'search_form', search: @search %>
   <%= render 'index', learnings: @learning_search %>
 </div>
