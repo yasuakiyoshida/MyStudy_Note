@@ -60,7 +60,7 @@
 
 ### 開発環境
 
-- OS：macOS Big Sur(11.1)
+- OS：Linux(CentOS)
 - シェル：bash
 - Ruby：2.6.3
 - Ruby on Rails：5.2.4.4
