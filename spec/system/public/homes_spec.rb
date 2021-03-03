@@ -81,14 +81,14 @@ RSpec.describe "home", type: :system do
       end
 
       it "学習記録の画像を選択すると学習記録詳細画面に遷移する" do
-        click_on "学習記録のタイトル"
+        first(".image-link-border").click
         aggregate_failures do
-          expect(current_path).to eq "/learnings/#{learning.id}"
+          expect(current_path).to eq "/learnings/#{bob_learning.id}"
           expect(page).to have_content("学習記録詳細")
-          expect(page).to have_content("学習記録のタイトル")
-          expect(page).to have_content("学習記録の詳細")
-          expect(page).to have_content("1.5時間")
-          expect(page).to have_content("ユーザー")
+          expect(page).to have_content("数学")
+          expect(page).to have_content("数学の勉強")
+          expect(page).to have_content("3.5時間")
+          expect(page).to have_content("Bob")
         end
       end
 
