@@ -22,4 +22,12 @@ FactoryBot.define do
     time { "3.5" }
     association :user, factory: :user
   end
+
+  factory :learning_japanese, class: Learning do
+    title { "国語" }
+    detail { "国語の勉強" }
+    date { Date.today }
+    time { "5.0" }
+    association :user, factory: :user
+  end
 end

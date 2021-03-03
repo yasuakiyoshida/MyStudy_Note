@@ -40,7 +40,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item mr-4">
-                <%= link_to root_path, class: "nav-link" do %>
+                <%= link_to root_path, class: "nav-link home-top-link" do %>
                   <i class="fas fa-home"></i>&nbsp;ホーム
                 <% end %>
               </li>
@@ -50,7 +50,7 @@
                 <% end %>
               </li>
               <li class="nav-item mr-4">
-                <%= link_to common_learnings_path, class: "nav-link" do %>
+                <%= link_to common_learnings_path, class: "nav-link common-learnings-link" do %>
                   <i class="fas fa-book"></i>&nbsp;みんなの学習記録
                 <% end %>
               </li>
@@ -170,22 +170,22 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-4">
-              <%= link_to root_path, class: "nav-link" do %>
+              <%= link_to root_path, class: "nav-link home-top-link" do %>
                 <i class="fas fa-home"></i>&nbsp;ホーム
               <% end %>
             </li>
             <li class="nav-item mr-4">
-              <%= link_to common_learnings_path, class: "nav-link" do %>
+              <%= link_to common_learnings_path, class: "nav-link common-learnings-link" do %>
                 <i class="fas fa-book"></i>&nbsp;みんなの学習記録
               <% end %>
             </li>
             <li class="nav-item mr-4">
-              <%= link_to new_user_registration_path, class: "nav-link" do %>
+              <%= link_to new_user_registration_path, class: "nav-link sign-up-link" do %>
                 <i class="fas fa-user-plus"></i>&nbsp;会員登録
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to new_user_session_path, class: "nav-link" do %>
+              <%= link_to new_user_session_path, class: "nav-link sign-in-link" do %>
                 <i class="fas fa-sign-in-alt"></i>&nbsp;ログイン
               <% end %>
             </li>
