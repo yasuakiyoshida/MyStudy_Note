@@ -99,7 +99,7 @@
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to user_learning_times_path(current_user), class: "nav-link" do %>
+                <%= link_to user_learning_times_path(current_user), class: "nav-link learning-times-link" do %>
                   <i class="fas fa-user-clock"></i>&nbsp;過去の学習時間
                 <% end %>
               </li>
@@ -114,7 +114,7 @@
                 <% end %>
               </li>
               <li class="nav-item nav-bottom">
-                <%= link_to tasks_path, class: "nav-link" do %>
+                <%= link_to tasks_path, class: "nav-link task-index-link" do %>
                   <i class="fa fa-list-alt"></i>&nbsp;ToDoリスト
                 <% end %>
               </li>
