@@ -211,4 +211,69 @@ RSpec.describe "home", type: :system do
       end
     end
   end
+
+  describe "みんなの学習記録一覧画面" do
+    before do
+      visit root_path
+      find(".common-learnings-link").click
+    end
+
+    it "'みんなの学習記録'リンクを選択するとみんなの学習記録一覧画面に遷移する。" do
+      aggregate_failures do
+        expect(current_path).to eq "/common_learnings"
+        expect(page).to have_content("みんなの学習記録")
+      end
+    end
+
+    it "投稿された学習記録が表示されている。" do
+      aggregate_failures do
+        expect(page).to have_content("学習記録のタイトル")
+        expect(page).to have_content("英語")
+        expect(page).to have_content("数学")
+        expect(page).to have_content("by ユーザー")
+        expect(page).to have_content("by Alice")
+        expect(page).to have_content("by Bob")
+      end
+    end
+
+    it "学習記録のタイトルを選択すると学習記録詳細画面に遷移する" do
+      click_on "学習記録のタイトル"
+      aggregate_failures do
+        expect(current_path).to eq "/learnings/#{learning.id}"
+        expect(page).to have_content("学習記録詳細")
+        expect(page).to have_content("学習記録のタイトル")
+        expect(page).to have_content("学習記録の詳細")
+        expect(page).to have_content("1.5時間")
+        expect(page).to have_content("ユーザー")
+      end
+    end
+
+    it "学習記録の画像を選択すると学習記録詳細画面に遷移する" do
+      first(".image-link-border").click
+      aggregate_failures do
+        expect(current_path).to eq "/learnings/#{bob_learning.id}"
+        expect(page).to have_content("学習記録詳細")
+        expect(page).to have_content("数学")
+        expect(page).to have_content("数学の勉強")
+        expect(page).to have_content("3.5時間")
+        expect(page).to have_content("Bob")
+      end
+    end
+
+    it "学習記録のユーザー名を選択するとユーザー詳細画面に遷移する" do
+      click_on "Alice"
+      aggregate_failures do
+        expect(current_path).to eq "/users/#{alice.id}"
+        expect(page).to have_content("ユーザー情報")
+        expect(page).to have_content("Aliceです。よろしくお願いします。")
+      end
+    end
+
+    it "検索バーが表示されている。" do
+      aggregate_failures do
+        expect(page).to have_button("検索")
+        expect(page).to have_selector(".search-form")
+      end
+    end
+  end
 end
