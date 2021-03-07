@@ -276,4 +276,69 @@ RSpec.describe "home", type: :system do
       end
     end
   end
+
+  describe "みんなの学習記録検索画面" do
+    before do
+      visit root_path
+      find(".common-learnings-link").click
+    end
+
+    it "ユーザー名で検索できる" do
+      fill_in "学習記録を検索", with: "Alice"
+      click_on "検索"
+      aggregate_failures do
+        expect(page).to have_content("みんなの学習記録検索結果")
+        expect(page).to have_content("Alice")
+        expect(page).to have_content("英語")
+        expect(page).to_not have_content("ユーザー")
+        expect(page).to_not have_content("学習記録のタイトル")
+        expect(page).to_not have_content("Bob")
+        expect(page).to_not have_content("数学")
+      end
+    end
+
+    it "学習記録のタイトルで検索できる" do
+      fill_in "学習記録を検索", with: "英語"
+      click_on "検索"
+      aggregate_failures do
+        expect(page).to have_content("みんなの学習記録検索結果")
+        expect(page).to have_content("Alice")
+        expect(page).to have_content("英語")
+        expect(page).to_not have_content("ユーザー")
+        expect(page).to_not have_content("学習記録のタイトル")
+        expect(page).to_not have_content("Bob")
+        expect(page).to_not have_content("数学")
+      end
+    end
+
+    it "学習記録の詳細で検索できる" do
+      fill_in "学習記録を検索", with: "英語の勉強"
+      click_on "検索"
+      aggregate_failures do
+        expect(page).to have_content("みんなの学習記録検索結果")
+        expect(page).to have_content("Alice")
+        expect(page).to have_content("英語")
+        expect(page).to_not have_content("ユーザー")
+        expect(page).to_not have_content("学習記録のタイトル")
+        expect(page).to_not have_content("Bob")
+        expect(page).to_not have_content("数学")
+      end
+    end
+
+    it "ユーザー名'Alice'で検索後、ユーザー名'Bob'で検索できる" do
+      fill_in "学習記録を検索", with: "Alice"
+      click_on "検索"
+      fill_in "学習記録を検索", with: "Bob"
+      click_on "検索"
+      aggregate_failures do
+        expect(page).to have_content("みんなの学習記録検索結果")
+        expect(page).to have_content("Bob")
+        expect(page).to have_content("数学")
+        expect(page).to_not have_content("ユーザー")
+        expect(page).to_not have_content("学習記録のタイトル")
+        expect(page).to_not have_content("Alice")
+        expect(page).to_not have_content("英語")
+      end
+    end
+  end
 end
