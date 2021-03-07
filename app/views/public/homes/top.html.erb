@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <div class="main-visual-content">
-        <h1 class="mv-title">MyStudy Note<br><small class="mv-text">自分だけの学習ノートを作成しよう！</small></h1>
+        <h1 class="mv-title">
+          MyStudy Note<br>
+          <small class="mv-text">自分だけの学習ノートを作成しよう！</small>
+        </h1>
         <div class="slick-wrapper">
           <%= image_tag 'main-visual1.jpg', class: "main-visual" %>
           <%= image_tag 'main-visual2.jpg', class: "main-visual" %>
@@ -50,7 +53,11 @@
   </div>
 </div>
 <div class="container study-record">
-  <h1 class="my-3 text-center study-record-title"><i class="fas fa-book"></i> みんなの学習記録</h1>
+  <h1 class="my-3 text-center study-record-title">
+    <i class="fas fa-book"></i>&nbsp;みんなの学習記録
+  </h1>
   <%= render 'study_record', learnings: @learnings %>
-  <div class="text-center pb-5"><%= link_to 'もっと見る>>', common_learnings_path %></div>
+  <div class="text-center pb-5">
+    <%= link_to 'もっと見る>>', common_learnings_path %>
+  </div>
 </div>
