@@ -16,6 +16,24 @@ RSpec.describe "sessions", type: :system do
           expect(page).to have_content("ログインしました。")
         end
       end
+
+      it "'会員登録がお済みでない方はこちら'リンクを選択すると新規登録画面に遷移する" do
+        visit new_user_session_path
+        click_on "会員登録がお済みでない方はこちら"
+        aggregate_failures do
+          expect(current_path).to eq "/sign_up"
+          expect(page).to have_content("会員登録")
+        end
+      end
+
+      it "'パスワードを忘れた方はこちら'リンクを選択するとパスワード再設定画面に遷移する" do
+        visit new_user_session_path
+        click_on "パスワードを忘れた方はこちら"
+        aggregate_failures do
+          expect(current_path).to eq "/password/new"
+          expect(page).to have_content("パスワード再設定")
+        end
+      end
     end
 
     context "失敗する場合" do
