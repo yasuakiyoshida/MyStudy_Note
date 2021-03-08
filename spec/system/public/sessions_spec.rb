@@ -17,7 +17,7 @@ RSpec.describe "sessions", type: :system do
         end
       end
 
-      it "'会員登録がお済みでない方はこちら'リンクを選択すると新規登録画面に遷移する" do
+      it "'会員登録がお済みでない方はこちら'リンクを選択すると会員登録画面に遷移する" do
         visit new_user_session_path
         click_on "会員登録がお済みでない方はこちら"
         aggregate_failures do
